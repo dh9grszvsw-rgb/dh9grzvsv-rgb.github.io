@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="美容室SALON LUMIÈRE。髪と心を整える、上質なプライベートサロン。">
+<title>SALON LUMIÈRE｜美容室</title>
+<style>
+:root{
+  --bg:#faf8f5; --card:#fff; --text:#292623; --sub:#746d66;
+  --accent:#9a8065; --line:#e8e0d8; --dark:#262321;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans JP","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8}
+a{text-decoration:none;color:inherit}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.container{width:min(1120px,92%);margin:auto}
+header{position:fixed;z-index:20;top:0;left:0;width:100%;background:rgba(250,248,245,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(232,224,216,.8)}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:Georgia,serif;letter-spacing:.12em;font-size:22px}
+.logo small{display:block;font-family:inherit;font-size:8px;letter-spacing:.35em;color:var(--accent);margin-top:-5px}
+nav{display:flex;gap:28px;font-size:13px;letter-spacing:.08em}
+nav a:hover{color:var(--accent)}
+.reserve{background:var(--dark);color:white;padding:10px 18px;border-radius:30px}
+.menu-btn{display:none;background:none;border:0;font-size:25px}
+.hero{min-height:720px;padding-top:76px;display:grid;grid-template-columns:1.05fr .95fr}
+.hero-copy{display:flex;align-items:center;padding:70px 8vw 70px max(4vw,calc((100vw - 1120px)/2))}
+.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.28em;margin-bottom:20px}
+h1{font-family:Georgia,"Yu Mincho",serif;font-size:clamp(42px,6vw,76px);font-weight:400;line-height:1.1;letter-spacing:.04em}
+.hero-copy p{margin:25px 0 32px;color:var(--sub);font-size:15px}
+.btn{display:inline-block;background:var(--dark);color:white;padding:13px 28px;border-radius:30px;font-size:13px;letter-spacing:.1em}
+.hero-photo{min-height:644px;background:#e9e1d8}
+.placeholder{position:relative;overflow:hidden;background:linear-gradient(135deg,#e8dfd5,#f5f0ea)}
+.placeholder::after{content:"PHOTO";position:absolute;inset:0;display:grid;place-items:center;color:#a69686;letter-spacing:.3em;font-family:Georgia,serif;font-size:18px}
+.section{padding:105px 0}
+.section-head{text-align:center;margin-bottom:50px}
+.section-head .eyebrow{margin-bottom:8px}
+h2{font-family:Georgia,"Yu Mincho",serif;font-size:38px;font-weight:400}
+.concept{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.concept-photo{height:480px}
+.concept-text p{color:var(--sub);margin:22px 0}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}
+.feature{padding:22px;border:1px solid var(--line);background:#fff}
+.feature strong{display:block;font-family:Georgia,serif;font-size:20px;margin-bottom:7px}
+.feature span{font-size:12px;color:var(--sub)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.menu-card{background:#fff;border:1px solid var(--line);padding:27px}
+.menu-card h3{font-family:Georgia,serif;font-size:22px;font-weight:400;margin-bottom:15px}
+.menu-row{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:10px 0;font-size:14px}
+.menu-row span:last-child{font-weight:bold}
+.styles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.style-photo{height:360px}
+.staff{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.staff-photo{height:330px}
+.staff-card h3{font-family:Georgia,serif;font-weight:400;margin-top:15px}
+.staff-card p{font-size:12px;color:var(--sub)}
+.coupon{background:var(--dark);color:white;padding:60px;border-radius:3px;text-align:center}
+.coupon h2{font-size:34px}
+.coupon p{color:#ddd;margin:12px 0 25px}
+.coupon .btn{background:white;color:var(--dark)}
+.access{display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.info{background:#fff;border:1px solid var(--line);padding:35px}
+.info dl{display:grid;grid-template-columns:110px 1fr;border-top:1px solid var(--line);padding:12px 0;font-size:14px}
+.info dt{color:var(--sub)}
+.map{min-height:360px;background:#e6dfd7;display:grid;place-items:center;color:#8c8176;letter-spacing:.12em}
+footer{background:#211f1d;color:white;padding:55px 0;text-align:center}
+footer .logo{font-size:25px}
+footer p{font-size:12px;color:#aaa;margin-top:12px}
+.mobile-bar{display:none}
+@media(max-width:800px){
+  header{height:64px}.nav{height:64px}
+  nav{display:none;position:absolute;top:64px;left:0;width:100%;background:var(--bg);padding:20px;flex-direction:column;gap:14px;text-align:center;border-bottom:1px solid var(--line)}
+  nav.open{display:flex}.nav .reserve{display:none}.menu-btn{display:block}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-copy{padding:100px 7% 55px;order:2}
+  .hero-photo{min-height:400px;order:1}
+  .section{padding:75px 0}
+  .concept,.access{grid-template-columns:1fr;gap:30px}
+  .concept-photo{height:350px}
+  .features,.styles,.staff{grid-template-columns:1fr}
+  .style-photo{height:330px}.staff-photo{height:360px}
+  .menu-grid{grid-template-columns:1fr}
+  .coupon{padding:45px 20px}
+  .mobile-bar{display:grid;grid-template-columns:repeat(2,1fr);position:fixed;bottom:0;left:0;width:100%;z-index:30;background:white;border-top:1px solid var(--line)}
+  .mobile-bar a{text-align:center;padding:10px;font-size:12px}
+  .mobile-bar a:last-child{background:var(--dark);color:white}
+  footer{padding-bottom:85px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">LUMIÈRE<small>HAIR SALON</small></a>
+    <nav id="nav">
+      <a href="#concept">CONCEPT</a><a href="#menu">MENU</a><a href="#style">STYLE</a>
+      <a href="#staff">STAFF</a><a href="#access">ACCESS</a>
+    </nav>
+    <a href="#reserve" class="reserve">ご予約</a>
+    <button class="menu-btn" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div>
+      <div class="eyebrow">BEAUTY / STYLE / LIFE</div>
+      <h1>あなたらしさを、<br>もっと美しく。</h1>
+      <p>髪質・骨格・ライフスタイルまで考えた、<br>あなただけのヘアデザインをご提案します。</p>
+      <a class="btn" href="#reserve">ご予約はこちら　→</a>
+    </div>
+  </div>
+  <div class="hero-photo placeholder"><img src="images/main.jpg" alt="メイン写真"></div>
+</section>
+
+<section id="concept" class="section">
+ <div class="container concept">
+  <div class="concept-photo placeholder"><img src="images/salon.jpg" alt="店内写真"></div>
+  <div class="concept-text">
+   <div class="eyebrow">CONCEPT</div><h2>美しさを、日常に。</h2>
+   <p>一人ひとりの髪質や顔立ち、普段のスタイリングまで丁寧にカウンセリング。サロン帰りだけではなく、毎日の暮らしの中で「扱いやすい」「自分らしい」と感じられるスタイルを目指します。</p>
+   <div class="features">
+    <div class="feature"><strong>01</strong><span>丁寧なカウンセリング</span></div>
+    <div class="feature"><strong>02</strong><span>似合わせデザイン</span></div>
+    <div class="feature"><strong>03</strong><span>上質なヘアケア</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="menu" class="section">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">MENU</div><h2>メニュー・料金</h2></div>
+  <div class="menu-grid">
+   <div class="menu-card"><h3>Cut</h3>
+    <div class="menu-row"><span>カット</span><span>¥5,500</span></div>
+    <div class="menu-row"><span>学生カット</span><span>¥4,400</span></div>
+    <div class="menu-row"><span>メンズカット</span><span>¥5,000</span></div>
+   </div>
+   <div class="menu-card"><h3>Color</h3>
+    <div class="menu-row"><span>カラー</span><span>¥7,700〜</span></div>
+    <div class="menu-row"><span>イルミナカラー</span><span>¥9,000〜</span></div>
+    <div class="menu-row"><span>カラー＋カット</span><span>¥12,500〜</span></div>
+   </div>
+   <div class="menu-card"><h3>Perm</h3>
+    <div class="menu-row"><span>パーマ</span><span>¥8,800〜</span></div>
+    <div class="menu-row"><span>デジタルパーマ</span><span>¥13,200〜</span></div>
+   </div>
+   <div class="menu-card"><h3>Treatment</h3>
+    <div class="menu-row"><span>ベーシック</span><span>¥3,300</span></div>
+    <div class="menu-row"><span>プレミアム</span><span>¥5,500</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="style" class="section">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">STYLE</div><h2>Hair Collection</h2></div>
+  <div class="styles">
+   <div class="style-photo placeholder"><img src="images/style1.jpg" alt="ヘアスタイル1"></div>
+   <div class="style-photo placeholder"><img src="images/style2.jpg" alt="ヘアスタイル2"></div>
+   <div class="style-photo placeholder"><img src="images/style3.jpg" alt="ヘアスタイル3"></div>
+  </div>
+ </div>
+</section>
+
+<section id="staff" class="section">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">STAFF</div><h2>スタッフ</h2></div>
+  <div class="staff">
+   <div class="staff-card"><div class="staff-photo placeholder"><img src="images/staff1.jpg" alt="スタッフ1"></div><h3>YUKI / Stylist</h3><p>ナチュラルで扱いやすいスタイルが得意です。</p></div>
+   <div class="staff-card"><div class="staff-photo placeholder"><img src="images/staff2.jpg" alt="スタッフ2"></div><h3>MAI / Stylist</h3><p>透明感カラー・女性らしいデザインが得意です。</p></div>
+   <div class="staff-card"><div class="staff-photo placeholder"><img src="images/staff3.jpg" alt="スタッフ3"></div><h3>REN / Stylist</h3><p>メンズスタイル・ショートをお任せください。</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="reserve" class="section">
+ <div class="container">
+  <div class="coupon"><div class="eyebrow">FIRST VISIT</div><h2>初めてのお客様へ</h2>
+   <p>カット＋カラー＋トリートメント<br>初回限定　¥11,000〜</p>
+   <a class="btn" href="tel:0000000000">電話で予約する</a>
+  </div>
+ </div>
+</section>
+
+<section id="access" class="section">
+ <div class="container">
+  <div class="section-head"><div class="eyebrow">ACCESS</div><h2>Salon Information</h2></div>
+  <div class="access">
+   <div class="info">
+    <dl><dt>店名</dt><dd>SALON LUMIÈRE</dd></dl>
+    <dl><dt>住所</dt><dd>〒000-0000<br>大阪府〇〇市〇〇町0-0-0</dd></dl>
+    <dl><dt>営業時間</dt><dd>10:00〜19:00</dd></dl>
+    <dl><dt>定休日</dt><dd>毎週月曜日・第2火曜日</dd></dl>
+    <dl><dt>TEL</dt><dd>000-0000-0000</dd></dl>
+   </div>
+   <div class="map">MAP / GOOGLE MAPをここに設置</div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="logo">LUMIÈRE<small>HAIR SALON</small></div>
+ <p>© 2026 SALON LUMIÈRE. All Rights Reserved.</p>
+</footer>
+
+<div class="mobile-bar">
+ <a href="#">⌂ HOME</a><a href="#reserve">予約する →</a>
+</div>
+</body>
+</html>
