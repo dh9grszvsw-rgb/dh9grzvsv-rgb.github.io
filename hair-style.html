@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hair Style | HAIRSALON amona</title>
+<style>
+:root{--bg:#fbf8f4;--paper:#fff;--text:#292421;--sub:#776d66;--line:#ddd4cc;--accent:#96715e}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif}
+a{color:inherit;text-decoration:none} img{display:block;max-width:100%}
+header{position:sticky;top:0;z-index:30;background:rgba(251,248,244,.97);border-bottom:1px solid var(--line)}
+.head{width:min(1180px,92%);height:70px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:Georgia,serif;font-size:26px;letter-spacing:.08em} .brand small{display:block;font:9px sans-serif;letter-spacing:.25em}
+nav{display:flex;gap:24px;font-size:12px;letter-spacing:.1em} .reserve{background:#2c2724;color:white;padding:11px 20px;border-radius:999px;font-weight:700}
+.hero{width:min(1180px,92%);margin:42px auto 22px} .eyebrow{color:#a07b66;letter-spacing:.3em;font-size:12px}
+h1{font:400 clamp(48px,6vw,76px) Georgia,serif;margin:8px 0} .lead{color:var(--sub);font-size:13px}
+.filters{width:min(1180px,92%);margin:22px auto;background:#fff;border:1px solid var(--line);padding:14px 16px}
+.row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:5px 0} .label{min-width:88px;font-weight:700}
+.filter{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer}
+.filter.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.grid{width:min(1180px,92%);margin:0 auto 56px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.style-card{position:relative;background:#fff;border:1px solid #ebe2dc;border-radius:10px;padding:10px;overflow:hidden;min-width:0}
+.photo-box{height:310px;background:#f5f0ec;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.photo-box img{width:100%;height:100%;object-fit:contain;object-position:center}
+.style-card h3{font-size:14px;line-height:1.45;margin:10px 0 8px;min-height:41px;font-weight:500}
+.tags{display:flex;gap:5px;flex-wrap:wrap;min-height:24px} .tag{font-size:10px;color:var(--sub);border:1px solid var(--line);border-radius:5px;padding:3px 7px}
+.fav{position:absolute;right:15px;top:15px;z-index:3;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:21px;cursor:pointer}
+.fav.on{color:#dc5d7e}
+.back{text-align:center;margin:0 0 60px} .back a{display:inline-block;border:1px solid var(--accent);border-radius:999px;padding:12px 32px}
+footer{border-top:1px solid var(--line);padding:25px;text-align:center;color:var(--sub);font-size:11px}
+@media(max-width:900px){nav{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.photo-box{height:280px}}
+@media(max-width:560px){.grid{grid-template-columns:1fr 1fr;gap:10px}.photo-box{height:190px}.style-card{padding:7px}.style-card h3{font-size:12px;min-height:34px}.label{width:100%;min-width:0}}
+</style>
+</head>
+<body>
+<header><div class="head">
+<a class="brand" href="index.html">amona<small>HAIR SALON</small></a>
+<nav><a href="index.html#concept">CONCEPT</a><a href="index.html#menu">MENU</a><a href="hair-style.html">STYLE</a><a href="index.html#staff">STAFF</a><a href="index.html#kids">KIDS</a><a href="index.html#reserve">RESERVE</a><a href="index.html#access">ACCESS</a></nav>
+<a class="reserve" href="index.html#reserve">ご予約</a>
+</div></header>
+
+<section class="hero">
+<div class="eyebrow">STYLE CATALOG</div>
+<h1>Hair Style</h1>
+<p class="lead">気になるスタイルを選んで、あなたに似合うイメージを探してみてください。</p>
+</section>
+
+<section class="filters">
+<div class="row"><span class="label">レディース</span>
+<button class="filter active" data-filter="all">すべて</button>
+<button class="filter" data-filter="ショート">ショート</button>
+<button class="filter" data-filter="ボブ">ボブ</button>
+<button class="filter" data-filter="ミディアム">ミディアム</button>
+<button class="filter" data-filter="ロング">ロング</button>
+<button class="filter" data-filter="レイヤー">レイヤー</button>
+<button class="filter" data-filter="カラー">カラー</button>
+<button class="filter" data-filter="髪質改善">髪質改善</button>
+<button class="filter" data-filter="ヘアセット">ヘアセット</button>
+</div>
+<div class="row"><span class="label">キッズ</span><button class="filter" data-filter="キッズ">キッズカット</button></div>
+</section>
+
+<main id="styleGrid" class="grid">
+
+    <article class="style-card" data-tags="キッズ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_01.jpg" alt="キッズカット"></div>
+      <h3>キッズカット</h3>
+      <div class="tags"><span class="tag">キッズ</span></div>
+    </article>
+    <article class="style-card" data-tags="キッズ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_02.jpg" alt="オン眉キッズカット"></div>
+      <h3>オン眉キッズカット</h3>
+      <div class="tags"><span class="tag">キッズ</span></div>
+    </article>
+    <article class="style-card" data-tags="キッズ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_03.jpg" alt="キッズカット／子供カット"></div>
+      <h3>キッズカット／子供カット</h3>
+      <div class="tags"><span class="tag">キッズ</span></div>
+    </article>
+    <article class="style-card" data-tags="ミディアム レイヤー">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_04.jpg" alt="レイヤーカット×アプリコットベージュ"></div>
+      <h3>レイヤーカット×アプリコットベージュ</h3>
+      <div class="tags"><span class="tag">ミディアム</span><span class="tag">レイヤー</span></div>
+    </article>
+    <article class="style-card" data-tags="ショート ウルフ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_05.jpg" alt="ネオウルフ"></div>
+      <h3>ネオウルフ</h3>
+      <div class="tags"><span class="tag">ショート</span><span class="tag">ウルフ</span></div>
+    </article>
+    <article class="style-card" data-tags="ミディアム レイヤー カラー">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_06.jpg" alt="上品なツヤ髪・大人の地毛風ピンクブラウン×レイヤー"></div>
+      <h3>上品なツヤ髪・大人の地毛風ピンクブラウン×レイヤー</h3>
+      <div class="tags"><span class="tag">ミディアム</span><span class="tag">レイヤー</span><span class="tag">カラー</span></div>
+    </article>
+    <article class="style-card" data-tags="キッズ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_07.jpg" alt="キッズカット"></div>
+      <h3>キッズカット</h3>
+      <div class="tags"><span class="tag">キッズ</span></div>
+    </article>
+    <article class="style-card" data-tags="キッズ ボブ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_08.jpg" alt="子供カット／キッズカット／オン眉ボブ"></div>
+      <h3>子供カット／キッズカット／オン眉ボブ</h3>
+      <div class="tags"><span class="tag">キッズ</span><span class="tag">ボブ</span></div>
+    </article>
+    <article class="style-card" data-tags="キッズ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_09.jpg" alt="キッズカット／子供カット"></div>
+      <h3>キッズカット／子供カット</h3>
+      <div class="tags"><span class="tag">キッズ</span></div>
+    </article>
+    <article class="style-card" data-tags="ミディアム カラー">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_10.jpg" alt="ツヤ感たっぷり・フォギーベージュ×重めミディアム"></div>
+      <h3>ツヤ感たっぷり・フォギーベージュ×重めミディアム</h3>
+      <div class="tags"><span class="tag">ミディアム</span><span class="tag">カラー</span></div>
+    </article>
+    <article class="style-card" data-tags="髪質改善 ミディアム">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_11.jpg" alt="髪質改善・縮毛矯正×毛先レイヤー"></div>
+      <h3>髪質改善・縮毛矯正×毛先レイヤー</h3>
+      <div class="tags"><span class="tag">髪質改善</span><span class="tag">ミディアム</span></div>
+    </article>
+    <article class="style-card" data-tags="レイヤー ミディアム">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_12.jpg" alt="韓国風レイヤー／ハッシュカット風"></div>
+      <h3>韓国風レイヤー／ハッシュカット風</h3>
+      <div class="tags"><span class="tag">レイヤー</span><span class="tag">ミディアム</span></div>
+    </article>
+    <article class="style-card" data-tags="ボブ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_13.jpg" alt="オリーブベージュ／切りっぱなしボブ"></div>
+      <h3>オリーブベージュ／切りっぱなしボブ</h3>
+      <div class="tags"><span class="tag">ボブ</span></div>
+    </article>
+    <article class="style-card" data-tags="ボブ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_14.jpg" alt="ヘンリーボブ"></div>
+      <h3>ヘンリーボブ</h3>
+      <div class="tags"><span class="tag">ボブ</span></div>
+    </article>
+    <article class="style-card" data-tags="ショート">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_15.jpg" alt="ショートカット"></div>
+      <h3>ショートカット</h3>
+      <div class="tags"><span class="tag">ショート</span></div>
+    </article>
+    <article class="style-card" data-tags="髪質改善 ロング">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_16.jpg" alt="髪質改善トリートメントで艶髪ロング"></div>
+      <h3>髪質改善トリートメントで艶髪ロング</h3>
+      <div class="tags"><span class="tag">髪質改善</span><span class="tag">ロング</span></div>
+    </article>
+    <article class="style-card" data-tags="ロング">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_17.jpg" alt="艶髪ロング"></div>
+      <h3>艶髪ロング</h3>
+      <div class="tags"><span class="tag">ロング</span></div>
+    </article>
+    <article class="style-card" data-tags="ヘアセット">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_18.jpg" alt="パーティーヘア／編み下ろし"></div>
+      <h3>パーティーヘア／編み下ろし</h3>
+      <div class="tags"><span class="tag">ヘアセット</span></div>
+    </article>
+    <article class="style-card" data-tags="ヘアセット">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_19.jpg" alt="ヘアセット／編み下ろし"></div>
+      <h3>ヘアセット／編み下ろし</h3>
+      <div class="tags"><span class="tag">ヘアセット</span></div>
+    </article>
+    <article class="style-card" data-tags="レイヤー ミディアム">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_20.jpg" alt="オリーブベージュ／レイヤーカット"></div>
+      <h3>オリーブベージュ／レイヤーカット</h3>
+      <div class="tags"><span class="tag">レイヤー</span><span class="tag">ミディアム</span></div>
+    </article>
+    <article class="style-card" data-tags="カラー ミディアム">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_21.jpg" alt="フォギーベージュ／グレージュ"></div>
+      <h3>フォギーベージュ／グレージュ</h3>
+      <div class="tags"><span class="tag">カラー</span><span class="tag">ミディアム</span></div>
+    </article>
+    <article class="style-card" data-tags="ボブ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_22.jpg" alt="オリーブベージュ／切りっぱなしボブ"></div>
+      <h3>オリーブベージュ／切りっぱなしボブ</h3>
+      <div class="tags"><span class="tag">ボブ</span></div>
+    </article>
+    <article class="style-card" data-tags="レイヤー ボブ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_23.jpg" alt="オリーブグレージュ／顔まわりレイヤー"></div>
+      <h3>オリーブグレージュ／顔まわりレイヤー</h3>
+      <div class="tags"><span class="tag">レイヤー</span><span class="tag">ボブ</span></div>
+    </article>
+    <article class="style-card" data-tags="カラー ミディアム">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_24.jpg" alt="ラベンダーブラウン"></div>
+      <h3>ラベンダーブラウン</h3>
+      <div class="tags"><span class="tag">カラー</span><span class="tag">ミディアム</span></div>
+    </article>
+    <article class="style-card" data-tags="ボブ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_25.jpg" alt="レイヤーボブ"></div>
+      <h3>レイヤーボブ</h3>
+      <div class="tags"><span class="tag">ボブ</span></div>
+    </article>
+    <article class="style-card" data-tags="ボブ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_26.jpg" alt="オリーブベージュ／まとまりボブ"></div>
+      <h3>オリーブベージュ／まとまりボブ</h3>
+      <div class="tags"><span class="tag">ボブ</span></div>
+    </article>
+    <article class="style-card" data-tags="キッズ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_27.jpg" alt="キッズカット／フロントカット"></div>
+      <h3>キッズカット／フロントカット</h3>
+      <div class="tags"><span class="tag">キッズ</span></div>
+    </article>
+    <article class="style-card" data-tags="キッズ">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_28.jpg" alt="キッズカット／オン眉"></div>
+      <h3>キッズカット／オン眉</h3>
+      <div class="tags"><span class="tag">キッズ</span></div>
+    </article>
+    <article class="style-card" data-tags="ロング カラー">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_29.jpg" alt="ブルーブラック"></div>
+      <h3>ブルーブラック</h3>
+      <div class="tags"><span class="tag">ロング</span><span class="tag">カラー</span></div>
+    </article>
+    <article class="style-card" data-tags="ショート レイヤー">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_30.jpg" alt="ショートくびれボブ／顔まわりレイヤー"></div>
+      <h3>ショートくびれボブ／顔まわりレイヤー</h3>
+      <div class="tags"><span class="tag">ショート</span><span class="tag">レイヤー</span></div>
+    </article>
+    <article class="style-card" data-tags="ミディアム レイヤー">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_31.jpg" alt="ミディアムレイヤー"></div>
+      <h3>ミディアムレイヤー</h3>
+      <div class="tags"><span class="tag">ミディアム</span><span class="tag">レイヤー</span></div>
+    </article>
+    <article class="style-card" data-tags="ロング 髪質改善">
+      <button class="fav" type="button" aria-label="お気に入り">♡</button>
+      <div class="photo-box"><img src="images/style_gallery2/style_32.jpg" alt="艶髪ストレート"></div>
+      <h3>艶髪ストレート</h3>
+      <div class="tags"><span class="tag">ロング</span><span class="tag">髪質改善</span></div>
+    </article>
+</main>
+
+<div class="back"><a href="index.html#reserve">このスタイルを相談して予約する →</a></div>
+<footer>© 2026 HAIRSALON amona. All Rights Reserved.</footer>
+
+<script>
+document.querySelectorAll('.filter').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const f=btn.dataset.filter;
+    document.querySelectorAll('.style-card').forEach(card=>{
+      card.style.display=(f==='all'||card.dataset.tags.includes(f))?'':'none';
+    });
+  });
+});
+document.querySelectorAll('.fav').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    btn.classList.toggle('on');
+    btn.textContent=btn.classList.contains('on')?'♥':'♡';
+  });
+});
+</script>
+</body></html>

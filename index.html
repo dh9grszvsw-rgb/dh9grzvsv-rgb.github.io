@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="description" content="HAIRSALON amona。髪質改善・艶髪・TOKIO・キッズカット。">
 <meta name="robots" content="noindex,nofollow">
+
+<meta name="description" content="大阪府吹田市昭和町のHAIRSALON amona。髪質改善、TOKIO、キッズカット、白髪染めに対応。JR吹田駅東改札・南出口から徒歩8分。">
+<meta name="keywords" content="amona,アモナ,吹田,美容室,髪質改善,TOKIO,キッズカット,白髪染め,JR吹田">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="HAIRSALON amona | 吹田">
+<meta property="og:description" content="髪から、日常をやさしく。大阪府吹田市昭和町のプライベートサロン。">
+<meta property="og:image" content="images/main_complete.png">
+
 <title>amona｜HAIR SALON</title>
 <style>
 :root{--bg:#fbf9f6;--paper:#fff;--text:#292522;--sub:#756d67;--accent:#b48c70;--rose:#e06f89;--line:#e9e2dc;--dark:#2a2522;--soft:#f2ebe5}
@@ -200,21 +209,496 @@ footer{background:#211f1d;color:#fff;text-align:center;padding:46px 0}footer p{f
   }
 }
 
+
+/* ===== RESERVATION / REVIEWS FUNCTION ===== */
+.reserve-status{
+  display:flex;gap:10px;flex-wrap:wrap;margin-top:14px
+}
+.status-chip{
+  font-size:11px;border:1px solid #615852;border-radius:999px;
+  padding:6px 10px;color:#ddd
+}
+.reserve-help{font-size:11px;color:#bbb;margin-top:12px}
+.btn.line-action{background:#fff;color:#222}
+.btn.secondary{background:transparent;border:1px solid #6a615c;color:#fff}
+.review-summary{
+  display:grid;grid-template-columns:230px 1fr;gap:26px;align-items:center;
+  background:#fff;border:1px solid var(--line);padding:28px;margin-bottom:22px
+}
+.review-score{text-align:center}
+.review-score .big{font:400 54px Georgia,serif;line-height:1}
+.stars{color:#d65d79;letter-spacing:.1em;font-size:20px}
+.review-score small{display:block;color:var(--sub);margin-top:8px}
+.review-list{display:grid;gap:14px}
+.review-card{
+  background:#fff;border:1px solid var(--line);padding:22px
+}
+.review-meta{
+  display:flex;justify-content:space-between;gap:12px;align-items:center;
+  margin-bottom:10px;font-size:12px;color:var(--sub)
+}
+.review-name{font-weight:700;color:var(--text);font-size:14px}
+.review-card p{margin:0;color:#5f5751;font-size:13px}
+.review-form{
+  margin-top:22px;background:#fff;border:1px solid var(--line);padding:26px
+}
+.review-form h3{font:400 24px Georgia,"Yu Mincho",serif;margin-bottom:18px}
+.review-form-grid{display:grid;grid-template-columns:1fr 180px;gap:14px}
+.review-form label{font-size:12px;color:var(--sub);display:block;margin-bottom:6px}
+.review-form input,.review-form select,.review-form textarea{
+  width:100%;border:1px solid var(--line);background:#fff;padding:11px;border-radius:3px
+}
+.review-form textarea{min-height:110px;resize:vertical}
+.review-form .full{grid-column:1/-1}
+.review-note{font-size:11px;color:#8b8078;margin-top:12px}
+.review-empty{padding:18px;background:#fff;border:1px dashed var(--line);color:var(--sub);font-size:13px}
+.review-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}
+.review-delete{
+  border:0;background:none;color:#a45b6a;font-size:11px;cursor:pointer;text-decoration:underline
+}
+@media(max-width:760px){
+  .review-summary{grid-template-columns:1fr}
+  .review-form-grid{grid-template-columns:1fr}
+  .review-form .full{grid-column:auto}
+}
+
+
+/* ===== COMMERCIAL RELEASE ADDITIONS ===== */
+.social-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.social-btn{display:inline-flex;align-items:center;justify-content:center;min-width:150px;padding:11px 18px;border:1px solid var(--line);background:#fff;border-radius:999px;font-size:12px;font-weight:700}
+.social-btn:hover{background:var(--soft)}
+.policy{background:#fff;border:1px solid var(--line);padding:30px}
+.policy h3{font:400 24px Georgia,"Yu Mincho",serif;margin:22px 0 8px}
+.policy h3:first-child{margin-top:0}
+.policy p,.policy li{font-size:13px;color:var(--sub)}
+.policy ul{padding-left:1.2em}
+.policy-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.policy-links a{font-size:12px;text-decoration:underline;text-underline-offset:3px}
+.contact-note{margin-top:14px;font-size:11px;color:var(--sub)}
+.map-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.map-actions a{background:#fff;border:1px solid var(--line);padding:9px 14px;border-radius:999px;font-size:12px}
+@media(max-width:760px){.social-links{flex-direction:column}.social-btn{width:100%}}
+
+
+/* ===== HOTPEPPER-INSPIRED ORIGINAL ENHANCEMENTS ===== */
+.quick-book{
+  position:sticky;top:74px;z-index:45;background:#fff;border-bottom:1px solid var(--line);
+  box-shadow:0 7px 22px rgba(30,24,20,.05)
+}
+.quick-book-inner{
+  width:min(1180px,92%);margin:auto;display:flex;align-items:center;justify-content:space-between;
+  gap:18px;padding:10px 0
+}
+.quick-book-copy{font-size:12px;color:var(--sub)}
+.quick-book-copy strong{display:block;color:var(--text);font-size:13px}
+.quick-book-actions{display:flex;gap:9px;flex-wrap:wrap}
+.mini-btn{
+  display:inline-flex;align-items:center;justify-content:center;padding:9px 14px;border-radius:999px;
+  font-size:11px;font-weight:700;border:1px solid var(--line);background:#fff
+}
+.mini-btn.primary{background:var(--dark);color:#fff;border-color:var(--dark)}
+.mini-btn.rose{background:#d65d79;color:#fff;border-color:#d65d79}
+
+.coupon-tools{
+  display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:24px
+}
+.coupon-filter{
+  border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:999px;
+  cursor:pointer;font-size:12px
+}
+.coupon-filter.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+.menu-card{position:relative}
+.coupon-type{
+  position:absolute;top:0;right:0;padding:5px 9px;font-size:9px;font-weight:800;letter-spacing:.08em
+}
+.coupon-type.new{background:#f1dce2;color:#a43c56}
+.coupon-type.all{background:#e7e1d8;color:#66594f}
+.coupon-reserve{
+  display:flex;gap:8px;flex-wrap:wrap;margin-top:14px
+}
+.coupon-reserve a{
+  display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:999px;
+  font-size:10px;font-weight:700;border:1px solid var(--line)
+}
+.coupon-reserve a.hp{background:#d65d79;color:#fff;border-color:#d65d79}
+
+.style-browser{
+  display:grid;grid-template-columns:minmax(0,1.5fr) minmax(220px,.7fr);gap:16px
+}
+.style-main{
+  background:#fff;border:1px solid var(--line);overflow:hidden;position:relative
+}
+.style-main img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.style-main-copy{padding:18px}
+.style-main-copy h3{font:400 25px Georgia,"Yu Mincho",serif;margin:0 0 6px}
+.style-main-copy p{margin:0;color:var(--sub);font-size:12px}
+.style-thumbs{display:grid;gap:10px}
+.style-thumb{
+  display:grid;grid-template-columns:92px 1fr;gap:12px;align-items:center;background:#fff;
+  border:1px solid var(--line);padding:8px;cursor:pointer;text-align:left
+}
+.style-thumb.active{outline:2px solid #c8a38d;outline-offset:-2px}
+.style-thumb img{width:92px;height:78px;object-fit:cover}
+.style-thumb strong{font-size:12px}
+.style-thumb span{display:block;font-size:10px;color:var(--sub);margin-top:3px}
+
+.staff-panel{
+  display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:stretch
+}
+.staff-card,.salon-point-card{background:#fff;border:1px solid var(--line);padding:28px}
+.staff-card h3,.salon-point-card h3{font:400 27px Georgia,"Yu Mincho",serif;margin:10px 0 14px}
+.staff-card p,.salon-point-card p{color:var(--sub);font-size:13px}
+.staff-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:18px}
+.staff-facts div{background:var(--soft);padding:12px;font-size:11px}
+.staff-facts strong{display:block;font-size:14px;color:var(--text)}
+
+.reserve-choices{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:0 0 24px
+}
+.reserve-choice{
+  border:1px solid #5a504a;border-radius:4px;padding:18px;background:#332e2b
+}
+.reserve-choice h3{font-size:15px;margin:0 0 6px}
+.reserve-choice p{font-size:11px;color:#cfc6c0;margin:0 0 12px}
+.reserve-choice a{width:100%}
+
+.faq-list{display:grid;gap:10px}
+.faq-item{background:#fff;border:1px solid var(--line)}
+.faq-item button{
+  width:100%;border:0;background:#fff;text-align:left;padding:16px 18px;cursor:pointer;
+  font-weight:700;color:var(--text);display:flex;justify-content:space-between;gap:16px
+}
+.faq-answer{display:none;padding:0 18px 18px;color:var(--sub);font-size:13px}
+.faq-item.open .faq-answer{display:block}
+.faq-item.open button span:last-child{transform:rotate(45deg)}
+
+@media(max-width:900px){
+  .style-browser,.staff-panel{grid-template-columns:1fr}
+  .style-thumbs{grid-template-columns:repeat(3,1fr)}
+  .style-thumb{grid-template-columns:1fr}
+  .style-thumb img{width:100%;height:auto;aspect-ratio:4/3}
+}
+@media(max-width:760px){
+  .quick-book{top:64px}
+  .quick-book-inner{align-items:flex-start}
+  .quick-book-copy{display:none}
+  .quick-book-actions{width:100%;display:grid;grid-template-columns:1fr 1fr}
+  .mini-btn{width:100%}
+  .style-thumbs{grid-template-columns:1fr}
+  .style-thumb{grid-template-columns:88px 1fr}
+  .style-thumb img{width:88px;height:72px}
+  .reserve-choices{grid-template-columns:1fr}
+  .staff-facts{grid-template-columns:1fr}
+}
+
+
+/* ===== HERO FINAL IMAGE ONLY ===== */
+.hero-photo{
+  position:relative !important;
+  overflow:hidden !important;
+  background:#fff !important;
+}
+.hero-photo img{
+  display:block !important;
+  width:100% !important;
+  height:auto !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+
+
+/* ===== STYLE HD DISPLAY ===== */
+.style-main img{
+  image-rendering:auto;
+  backface-visibility:hidden;
+  transform:translateZ(0);
+}
+
+
+/* ===== FINAL PC HERO LAYOUT FIX ===== */
+@media (min-width: 761px){
+  .hero{
+    width:min(1320px,94%) !important;
+    margin:0 auto !important;
+    display:grid !important;
+    grid-template-columns:minmax(380px, 42%) minmax(0, 58%) !important;
+    align-items:center !important;
+    min-height:0 !important;
+    overflow:visible !important;
+  }
+  .hero-copy{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    min-width:0 !important;
+    width:100% !important;
+    padding:52px 42px !important;
+    box-sizing:border-box !important;
+    overflow:visible !important;
+  }
+  .hero-copy > div{
+    width:100% !important;
+    max-width:470px !important;
+    min-width:0 !important;
+  }
+  .hero-copy .eyebrow{
+    white-space:normal !important;
+  }
+  .hero-copy h1{
+    margin:0 !important;
+    font-size:clamp(38px,4vw,64px) !important;
+    line-height:1.28 !important;
+    letter-spacing:.01em !important;
+    word-break:keep-all !important;
+    overflow:visible !important;
+  }
+  .hero-title-line{
+    display:block !important;
+    white-space:nowrap !important;
+  }
+  .hero-copy p{
+    max-width:440px !important;
+    margin:26px 0 28px !important;
+    font-size:13px !important;
+    line-height:1.85 !important;
+    word-break:normal !important;
+    overflow-wrap:break-word !important;
+  }
+  .hero-photo{
+    width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    overflow:hidden !important;
+    align-self:center !important;
+  }
+  .hero-photo img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    max-width:100% !important;
+    object-fit:contain !important;
+    object-position:center center !important;
+  }
+}
+@media (min-width:761px) and (max-width:1050px){
+  .hero{
+    grid-template-columns:minmax(330px, 40%) minmax(0, 60%) !important;
+  }
+  .hero-copy{
+    padding:38px 28px !important;
+  }
+  .hero-copy h1{
+    font-size:clamp(34px,4.2vw,48px) !important;
+  }
+  .hero-copy p{
+    font-size:12px !important;
+  }
+}
+
+
+/* ===== CONSULT RESERVE BUTTON SPACING ===== */
+.consult-reserve-btn{
+  margin-top:18px !important;
+}
+
+
+/* ===== RESTORED STYLE CATALOG ===== */
+.style-browser{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr);gap:18px;align-items:start}
+.style-main{background:#fff;border:1px solid var(--line);overflow:hidden}
+.style-main img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.style-main-copy{padding:18px}
+.style-main-copy h3{font:400 24px Georgia,"Yu Mincho",serif;margin:0 0 6px}
+.style-main-copy p{margin:0;color:var(--sub);font-size:12px}
+.style-thumbs{display:grid;gap:10px}
+.style-thumb{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:center;width:100%;background:#fff;border:1px solid var(--line);padding:8px;cursor:pointer;text-align:left}
+.style-thumb.active{outline:2px solid #c7a58e;outline-offset:-2px}
+.style-thumb img{width:96px;height:78px;object-fit:cover}
+.style-thumb strong{font-size:12px}
+.style-thumb span{display:block;font-size:10px;color:var(--sub)}
+.style-edit-note{margin-top:16px;padding:12px 14px;border:1px dashed var(--line);background:var(--soft);font-size:11px;line-height:1.7;color:var(--sub)}
+.style-edit-note code{font-size:10px}
+@media(max-width:900px){.style-browser{grid-template-columns:1fr}.style-thumbs{grid-template-columns:1fr}}
+
+
+/* ===== STYLE MAIN SIZE 65% ===== */
+@media (min-width: 901px){
+  #style .style-browser{
+    grid-template-columns:minmax(0,65%) minmax(240px,35%) !important;
+    max-width:980px !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  #style .style-main{
+    width:100% !important;
+  }
+  #style .style-main img{
+    width:100% !important;
+    aspect-ratio:4/3 !important;
+    object-fit:cover !important;
+  }
+}
+
 </style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"HairSalon",
+  "name":"HAIRSALON amona",
+  "address":{
+    "@type":"PostalAddress",
+    "addressRegion":"大阪府",
+    "addressLocality":"吹田市",
+    "streetAddress":"昭和町"
+  },
+  "openingHours":["Mo-Sa 09:00-18:00"],
+  "sameAs":["https://beauty.hotpepper.jp/slnH000794729/"]
+}
+
+document.querySelectorAll('.style-thumb').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.style-thumb').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const main = document.getElementById('styleMainImage');
+    const title = document.getElementById('styleMainTitle');
+    const text = document.getElementById('styleMainText');
+    if (main) main.src = btn.dataset.img;
+    if (title) title.textContent = btn.dataset.title || '';
+    if (text) text.textContent = btn.dataset.text || '';
+  });
+});
+
+</script>
+
+
+<style>
+.amona-feature-section{padding:82px 0;background:#fff}
+.amona-feature-wrap{width:min(1180px,92%);margin:auto}
+.feature-kicker{font-size:11px;letter-spacing:.3em;color:#b58a73;margin-bottom:8px}
+.amona-feature-section h2{font-family:Georgia,"Yu Mincho",serif;font-size:38px;font-weight:400;margin:0 0 12px}
+.feature-lead{max-width:760px;line-height:2;color:#6f655f;font-size:14px;margin:0 0 36px}
+.feature-layout{display:grid;grid-template-columns:1.05fr 1fr;gap:42px;border:1px solid #e4dcd6;padding:24px;background:#fff}
+.feature-main{position:relative;padding:0 0 10px}
+.feature-ribbon{position:absolute;left:-10px;top:-24px;width:18px;height:76px;background:#d66b8a}
+.feature-main h3,.feature-item h3{color:#d35e80;font-size:18px;line-height:1.5;margin:0 0 14px}
+.feature-photo-main{height:390px;margin-bottom:22px}
+.feature-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
+.feature-main p,.feature-item p{font-size:13px;line-height:1.85;color:#625954;margin:0}
+.feature-list{display:flex;flex-direction:column}
+.feature-item{display:grid;grid-template-columns:125px 1fr;gap:18px;padding:16px 0;border-bottom:1px dotted #cfc5be}
+.feature-item:first-child{padding-top:0}
+.feature-item:last-child{border-bottom:0}
+.feature-item .feature-photo{height:105px}
+.feature-item h3{margin:0 0 7px;font-size:16px}
+.feature-style-link{text-align:center;margin-top:28px}
+.feature-style-link a{display:inline-block;padding:13px 30px;border-radius:999px;background:#2d2825;color:#fff;font-size:13px;font-weight:700}
+@media(max-width:800px){
+ .amona-feature-section{padding:58px 0}
+ .amona-feature-section h2{font-size:30px}
+ .feature-layout{grid-template-columns:1fr;padding:15px;gap:25px}
+ .feature-photo-main{height:310px}
+}
+@media(max-width:520px){
+ .feature-item{grid-template-columns:92px 1fr;gap:12px}
+ .feature-item .feature-photo{height:90px}
+ .feature-main h3{font-size:17px;padding-left:18px}
+ .feature-photo-main{height:250px}
+}
+</style>
+
+
+<style>
+/* amona こだわり 4パターン切替 */
+.amona-feature-section{padding:82px 0;background:#fff;overflow:hidden}
+.amona-feature-wrap{width:min(1180px,92%);margin:auto;min-width:0}
+.feature-kicker{font-size:11px;letter-spacing:.3em;color:#b58a73;margin-bottom:8px}
+.amona-feature-section h2{font-family:Georgia,"Yu Mincho",serif;font-size:clamp(30px,3vw,40px);font-weight:400;margin:0 0 12px;line-height:1.35}
+.feature-lead{max-width:800px;line-height:1.9;color:#6f655f;font-size:14px;margin:0 0 34px;overflow-wrap:anywhere}
+.feature-switcher{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(320px,.8fr);gap:26px;align-items:stretch}
+.feature-stage{min-width:0;border:1px solid #e5ddd7;background:#fff}
+.feature-main-photo{height:430px;background:#f6f2ef;overflow:hidden}
+.feature-main-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.feature-main-copy{display:grid;grid-template-columns:48px minmax(0,1fr);gap:15px;padding:22px 24px 25px}
+.feature-main-copy>span{font:italic 25px Georgia,serif;color:#d76c89}
+.feature-main-copy h3{margin:0 0 9px;color:#d35e80;font-size:20px;line-height:1.55;overflow-wrap:anywhere;word-break:auto}
+.feature-main-copy p{margin:0;color:#625954;font-size:13px;line-height:1.9;overflow-wrap:anywhere}
+.feature-tabs{display:grid;grid-template-rows:repeat(4,1fr);min-width:0}
+.feature-tab{appearance:none;width:100%;min-width:0;border:0;border-bottom:1px dotted #cfc5be;background:#fff;padding:13px 10px;display:grid;grid-template-columns:92px minmax(0,1fr);gap:15px;text-align:left;align-items:center;cursor:pointer;color:#322d2a}
+.feature-tab:first-child{border-top:1px dotted #cfc5be}
+.feature-tab img{width:92px;height:76px;object-fit:cover;background:#f5f0ec}
+.feature-tab span{display:block;min-width:0}
+.feature-tab b{display:block;color:#d35e80;font-size:15px;line-height:1.55;overflow-wrap:anywhere;white-space:normal}
+.feature-tab small{display:block;margin-top:5px;color:#766b65;font-size:11px;line-height:1.55;white-space:normal;overflow-wrap:anywhere}
+.feature-tab.active{background:#fcf5f7;box-shadow:inset 5px 0 0 #d76c89}
+.feature-style-link{text-align:center;margin-top:28px}
+.feature-style-link a{display:inline-block;padding:13px 30px;border-radius:999px;background:#2d2825;color:#fff;font-size:13px;font-weight:700}
+@media(max-width:900px){
+ .amona-feature-section{padding:60px 0}
+ .feature-switcher{grid-template-columns:1fr}
+ .feature-main-photo{height:390px}
+ .feature-tabs{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+ .feature-tab{border:1px solid #e5ddd7!important}
+}
+@media(max-width:560px){
+ .amona-feature-wrap{width:92%}
+ .feature-lead{font-size:13px}
+ .feature-main-photo{height:270px}
+ .feature-main-copy{grid-template-columns:34px minmax(0,1fr);gap:9px;padding:17px 15px 20px}
+ .feature-main-copy>span{font-size:19px}
+ .feature-main-copy h3{font-size:17px;line-height:1.55}
+ .feature-main-copy p{font-size:12px;line-height:1.8}
+ .feature-tabs{display:flex;overflow-x:auto;gap:9px;padding:4px 1px 10px;scroll-snap-type:x mandatory}
+ .feature-tab{flex:0 0 76%;grid-template-columns:72px minmax(0,1fr);padding:10px;scroll-snap-align:start;border:1px solid #e5ddd7!important;border-radius:8px}
+ .feature-tab img{width:72px;height:66px}
+ .feature-tab b{font-size:13px}
+ .feature-tab small{font-size:10px}
+}
+</style>
+
+
+<style>
+.feature-main-photo{
+  background:#f7f3ef;
+}
+.feature-main-photo img{
+  image-rendering:auto;
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+.feature-tab img{
+  object-fit:cover;
+  object-position:center;
+}
+</style>
+
 </head>
 <body>
 <header>
 <div class="container nav">
 <a href="#" class="logo">amona<small>HAIR SALON</small></a>
-<nav id="nav"><a href="#concept">CONCEPT</a><a href="#menu">MENU</a><a href="#style">STYLE</a><a href="#kids">KIDS</a><a href="#reserve">RESERVE</a><a href="#access">ACCESS</a></nav>
+<nav id="nav"><a href="#concept">CONCEPT</a><a href="#menu">MENU</a><a href="hair-style.html">STYLE</a><a href="#staff">STAFF</a><a href="#kids">KIDS</a><a href="#reserve">RESERVE</a><a href="#access">ACCESS</a><a href="#privacy">PRIVACY</a></nav>
 <a class="reserve" href="#reserve">ご予約</a>
 <button class="menu-btn" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
 </div>
 </header>
 
+<div class="quick-book">
+  <div class="quick-book-inner">
+    <div class="quick-book-copy">
+      <strong>HAIRSALON amona</strong>
+      JR吹田駅東改札・南出口 徒歩8分
+    </div>
+    <div class="quick-book-actions">
+      <a class="mini-btn primary" href="#reserve">LINE予約</a>
+      <a class="mini-btn rose" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" target="_blank" rel="noopener nofollow">空席確認・ネット予約</a>
+    </div>
+  </div>
+</div>
+
+
 <section class="hero">
 <div class="hero-copy"><div><div class="eyebrow">BEAUTY / STYLE / LIFE</div><h1><span class="hero-title-line">あなたらしさを、</span><span class="hero-title-line">もっと美しく。</span></h1><p>髪質・骨格・ライフスタイルまで考えた、<br>あなただけのヘアデザインをご提案します。</p><a class="btn" href="#reserve">ご予約はこちら →</a></div></div>
-<div class="hero-photo"><img src="images/main.jpg" alt="メインビジュアル"></div>
+<div class="hero-photo"><img src="images/main_complete.png" alt="amona メインビジュアル"></div>
 </section>
 
 <section id="concept" class="section">
@@ -236,28 +720,131 @@ footer{background:#211f1d;color:#fff;text-align:center;padding:46px 0}footer p{f
 </div>
 </section>
 
+
 <section id="menu" class="section">
 <div class="container">
-<div class="section-head"><div class="eyebrow">MENU / COUPON</div><h2>おすすめメニュー</h2><p class="lead"></p></div>
-<div class="menu-grid">
-<article class="menu-card"><div class="menu-body"><span class="tag">人気No.1</span><h3>カット＋髪質改善カラー＋ハホニコトリートメント</h3><div class="price">¥14,000</div><p>女性限定・併用不可・ブリーチなし</p></div></article>
-<article class="menu-card"><div class="menu-body"><span class="tag">当日・前日限定</span><h3>カット＋髪質改善カラー</h3><div class="price">¥11,000</div><p>平日限定／通常 ¥13,000</p></div></article>
-<article class="menu-card"><div class="menu-body"><span class="tag">コスパ◎</span><h3>カット＋髪質改善カラー</h3><div class="price">¥12,000</div><p>柔らかな手触りを目指すカラー</p></div></article>
-<article class="menu-card"><div class="menu-body"><span class="tag">パサつき解消</span><h3>カット＋髪質改善TOKIOトリートメント</h3><div class="price">¥9,000</div><p>まとまりと艶を重視</p></div></article>
-<article class="menu-card"><div class="menu-body"><span class="tag">伸ばし中の方に</span><h3>髪質改善カラー＋ハホニコトリートメント</h3><div class="price">¥12,000</div><p>白髪染め対応</p></div></article>
-<article class="menu-card"><div class="menu-body"><span class="tag">綺麗に伸ばしたい方に</span><h3>髪質改善カラー＋TOKIOトリートメント</h3><div class="price">¥14,000</div><p>艶感のあるロングヘアへ</p></div></article>
-</div>
+  <div class="section-head">
+    <div class="eyebrow">MENU / COUPON</div>
+    <h2>おすすめメニュー</h2>
+  </div>
+
+  <div class="coupon-tools" aria-label="クーポン絞り込み">
+    <button class="coupon-filter active" data-filter="all">すべて</button>
+    <button class="coupon-filter" data-filter="new">新規</button>
+    <button class="coupon-filter" data-filter="allguest">全員</button>
+  </div>
+
+  <div class="menu-grid" id="couponGrid">
+    <article class="menu-card" data-type="new"><span class="coupon-type new">新規</span><div class="menu-body"><span class="tag">人気No.1</span><h3>カット＋髪質改善カラー＋ハホニコトリートメント</h3><div class="price">¥14,000</div><p>女性限定・併用不可・ブリーチなし</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" target="_blank" rel="noopener nofollow">空席確認・予約</a></div></div></article>
+    <article class="menu-card" data-type="new"><span class="coupon-type new">新規</span><div class="menu-body"><span class="tag">当日・前日限定</span><h3>カット＋髪質改善カラー</h3><div class="price">¥11,000</div><p>平日限定／通常 ¥13,000</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" target="_blank" rel="noopener nofollow">空席確認・予約</a></div></div></article>
+    <article class="menu-card" data-type="allguest"><span class="coupon-type all">全員</span><div class="menu-body"><span class="tag">コスパ◎</span><h3>カット＋髪質改善カラー</h3><div class="price">¥12,000</div><p>柔らかな手触りを目指すカラー</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" target="_blank" rel="noopener nofollow">空席確認・予約</a></div></div></article>
+    <article class="menu-card" data-type="allguest"><span class="coupon-type all">全員</span><div class="menu-body"><span class="tag">パサつき解消</span><h3>カット＋髪質改善TOKIOトリートメント</h3><div class="price">¥9,000</div><p>まとまりと艶を重視</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" target="_blank" rel="noopener nofollow">空席確認・予約</a></div></div></article>
+    <article class="menu-card" data-type="allguest"><span class="coupon-type all">全員</span><div class="menu-body"><span class="tag">伸ばし中の方に</span><h3>髪質改善カラー＋ハホニコトリートメント</h3><div class="price">¥12,000</div><p>白髪染め対応</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" target="_blank" rel="noopener nofollow">空席確認・予約</a></div></div></article>
+    <article class="menu-card" data-type="allguest"><span class="coupon-type all">全員</span><div class="menu-body"><span class="tag">綺麗に伸ばしたい方に</span><h3>髪質改善カラー＋TOKIOトリートメント</h3><div class="price">¥14,000</div><p>艶感のあるロングヘアへ</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" target="_blank" rel="noopener nofollow">空席確認・予約</a></div></div></article>
+  </div>
+
+  <div style="text-align:center;margin-top:24px">
+    <a class="btn" href="https://beauty.hotpepper.jp/slnH000794729/" target="_blank" rel="noopener nofollow">Hot Pepper掲載ページを見る →</a>
+  </div>
 </div>
 </section>
 
-<section id="style" class="section">
+
+
+
+
+
+
+
+
+
+<section id="style" class="amona-feature-section">
+ <div class="amona-feature-wrap">
+  <div class="feature-kicker">SALON FEATURES</div>
+  <h2>amonaのこだわり</h2>
+  <p class="feature-lead">大型店が苦手な方にも過ごしやすい、プライベート感のある空間。髪質改善、TOKIO、キッズカットなど、日常に寄り添うメニューを大切にしています。</p>
+
+  <div class="feature-switcher">
+   <div class="feature-stage">
+    <div class="feature-main-photo"><img id="featureMainImg" src="images/feature_hires/onetoone_hires.jpg" alt=""></div>
+    <div class="feature-main-copy">
+     <span id="featureMainNo">01</span>
+     <div>
+      <h3 id="featureMainTitle">一人のスタイリストが仕上げまで担当</h3>
+      <p id="featureMainText">女性スタイリストによるマンツーマン空間。丁寧なカウンセリングで、髪質やライフスタイル、お悩みに寄り添いながら仕上げまで担当します。</p>
+     </div>
+    </div>
+   </div>
+
+   <div class="feature-tabs">
+    <button class="feature-tab active" type="button"
+      data-img="images/feature_hires/onetoone_hires.jpg"
+      data-no="01"
+      data-title="一人のスタイリストが仕上げまで担当"
+      data-text="女性スタイリストによるマンツーマン空間。丁寧なカウンセリングで、髪質やライフスタイル、お悩みに寄り添いながら仕上げまで担当します。">
+      <img src="images/feature_hires/onetoone_hires.jpg" alt="">
+      <span><b>一人のスタイリストが仕上げまで担当</b><small>最初から最後まで、丁寧に。</small></span>
+    </button>
+
+    <button class="feature-tab" type="button"
+      data-img="images/feature_hires/headspa_hires.jpg"
+      data-no="02"
+      data-title="ヘッドスパで、髪も気持ちもリフレッシュ"
+      data-text="忙しい毎日の中で、ほっとひと息つける時間を。髪と頭皮をいたわりながら、リラックスして過ごしていただけるケアをご提案します。">
+      <img src="images/feature_hires/headspa_hires.jpg" alt="">
+      <span><b>ヘッドスパでリフレッシュ</b><small>髪と頭皮をやさしくケア。</small></span>
+    </button>
+
+    <button class="feature-tab" type="button"
+      data-img="images/feature_hires/kids_hires.jpg"
+      data-no="03"
+      data-title="お子様同伴OKのプライベートサロン"
+      data-text="キッズカットにも対応。小さなお子様と一緒でも過ごしやすく、周囲を気にしすぎずにゆったり過ごせるサロンづくりを大切にしています。">
+      <img src="images/feature_hires/kids_hires.jpg" alt="">
+      <span><b>お子様同伴OK</b><small>キッズカットにも対応。</small></span>
+    </button>
+
+    <button class="feature-tab" type="button"
+      data-img="images/feature_hires/haircare_hires.jpg"
+      data-no="04"
+      data-title="髪質改善・TOKIOトリートメント"
+      data-text="艶やまとまりを大切にしたヘアケア。髪の状態に合わせてご提案し、毎日のスタイリングが少し楽になるような美しい髪を目指します。">
+      <img src="images/feature_hires/haircare_hires.jpg" alt="">
+      <span><b>髪質改善・TOKIO</b><small>艶とまとまりのある髪へ。</small></span>
+    </button>
+   </div>
+  </div>
+  <div class="feature-style-link"><a href="hair-style.html">Hair Styleを見る →</a></div>
+ </div>
+</section>
+
+
+
+<section id="staff" class="section">
 <div class="container">
-<div class="section-head"><div class="eyebrow">STYLE / FAMILY</div><h2>Gallery</h2></div>
-<div class="gallery">
-<article class="gallery-item"><img src="images/kids_style.jpg"><div class="caption"><h3>KIDS CUT</h3><p>お子様の「かわいい」を応援します。</p></div></article>
-<article class="gallery-item"><img src="images/hair_care.jpg"><div class="caption"><h3>HEAD SPA</h3><p>日々の疲れを癒す、リラックスタイム。</p></div></article>
-<article class="gallery-item"><img src="images/style_collection.jpg"><div class="caption"><h3>STYLE GALLERY</h3><p>ナチュラルからトレンドまで。</p></div></article>
-</div>
+  <div class="section-head">
+    <div class="eyebrow">STAFF / PRIVATE SALON</div>
+    <h2>一人のスタイリストが担当</h2>
+  </div>
+  <div class="staff-panel">
+    <div class="staff-card">
+      <div class="eyebrow">STYLIST</div>
+      <h3>最初から仕上げまで、丁寧に。</h3>
+      <p>カウンセリングから施術、仕上げまで一人のスタイリストが担当します。髪のお悩みや普段のお手入れ方法まで、気軽にご相談ください。</p>
+      <div class="staff-facts">
+        <div><strong>1名</strong>スタイリスト</div>
+        <div><strong>2席</strong>セット面</div>
+        <div><strong>完全予約制</strong>落ち着いた時間</div>
+        <div><strong>キッズOK</strong>お子様同伴対応</div>
+      </div>
+    </div>
+    <div class="salon-point-card">
+      <div class="eyebrow">SALON POINT</div>
+      <h3>小さなサロンだからできること。</h3>
+      <p>大型店が苦手な方にも過ごしやすい、プライベート感のある空間。髪質改善、TOKIO、白髪染め、キッズカットなど、日常に寄り添うメニューを大切にしています。</p>
+      <a class="btn consult-reserve-btn" href="#reserve">相談して予約する →</a>
+    </div>
+  </div>
 </div>
 </section>
 
@@ -271,28 +858,358 @@ footer{background:#211f1d;color:#fff;text-align:center;padding:46px 0}footer p{f
 <section id="reserve" class="section">
 <div class="container">
 <div class="reserve-panel">
-<div class="section-head"><div class="eyebrow">RESERVATION</div><h2>ご予約</h2><p class="lead">予約内容を作成してコピーし、LINEへ貼り付けて送れます。</p></div>
-<div class="form-grid">
-<div class="field"><label>お名前</label><input id="n" placeholder="例：山田 花子"></div>
-<div class="field"><label>電話番号</label><input id="t" placeholder="例：090-0000-0000"></div>
-<div class="field full"><label>メニュー</label><select id="m"><option>カット＋髪質改善カラー＋ハホニコトリートメント ¥14,000</option><option>【当日・前日限定】カット＋髪質改善カラー ¥11,000</option><option>カット＋髪質改善カラー ¥12,000</option><option>カット＋髪質改善TOKIOトリートメント ¥9,000</option><option>髪質改善カラー＋ハホニコトリートメント ¥12,000</option><option>髪質改善カラー＋TOKIOトリートメント ¥14,000</option><option>キッズカット</option><option>相談して決めたい</option></select></div>
-<div class="field"><label>第1希望日</label><input id="d" type="date"></div><div class="field"><label>希望時間</label><input id="tm" type="time"></div>
-<div class="field full"><label>ご要望</label><textarea id="note" placeholder="髪のお悩み、お子様同伴など"></textarea></div>
+<div class="section-head">
+  <div class="eyebrow">RESERVATION</div>
+  <h2>ご予約</h2>
+  <p class="lead">希望内容を入力して、LINEへ送る予約メッセージを作成できます。</p>
 </div>
-<div class="actions"><button class="btn" onclick="makeMsg()">予約内容を確認・コピー</button><a class="btn alt" href="https://line.me/R/ti/p/@012ykuqw" target="_blank">LINEで連絡する</a></div>
+
+<div class="reserve-choices">
+  <div class="reserve-choice">
+    <h3>LINEで相談しながら予約</h3>
+    <p>メニューや髪のお悩みを相談してから予約したい方におすすめ。</p>
+    <a class="btn line-action" href="#reserve-form">LINE予約フォームへ</a>
+  </div>
+  <div class="reserve-choice">
+    <h3>空席を見てネット予約</h3>
+    <p>Hot Pepper Beautyで空席状況を確認して予約できます。</p>
+    <a class="btn" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" target="_blank" rel="noopener nofollow">空席確認・ネット予約 →</a>
+  </div>
+</div>
+
+<div id="reserve-form" class="form-grid">
+  <div class="field"><label>お名前</label><input id="n" autocomplete="name" placeholder="例：山田 花子"></div>
+  <div class="field"><label>電話番号</label><input id="t" type="tel" autocomplete="tel" placeholder="例：090-0000-0000"></div>
+  <div class="field full"><label>メニュー</label>
+    <select id="m">
+      <option>カット＋髪質改善カラー＋ハホニコトリートメント ¥14,000</option>
+      <option>【当日・前日限定】カット＋髪質改善カラー ¥11,000</option>
+      <option>カット＋髪質改善カラー ¥12,000</option>
+      <option>カット＋髪質改善TOKIOトリートメント ¥9,000</option>
+      <option>髪質改善カラー＋ハホニコトリートメント ¥12,000</option>
+      <option>髪質改善カラー＋TOKIOトリートメント ¥14,000</option>
+      <option>キッズカット</option>
+      <option>相談して決めたい</option>
+    </select>
+  </div>
+  <div class="field"><label>第1希望日</label><input id="d" type="date"></div>
+  <div class="field"><label>希望時間</label><input id="tm" type="time"></div>
+  <div class="field full"><label>ご要望</label><textarea id="note" placeholder="髪のお悩み、お子様同伴など"></textarea></div>
+</div>
+<div class="reserve-actions">
+  <button class="btn" type="button" onclick="previewReservation()">予約内容を確認</button>
+  <button class="btn line-action" type="button" onclick="sendReservationToLine()">LINEで予約する</button>
+  <button class="btn secondary" type="button" onclick="clearReservation()">入力をクリア</button>
+</div>
+<div class="reserve-status">
+  <span class="status-chip">LINE：@012ykuqw</span>
+  <span class="status-chip">この画面では予約未確定</span>
+</div>
 <div id="pv" class="preview"></div>
+<p class="reserve-help">※「LINEで予約する」を押すと予約内容をコピーしてLINEを開きます。店舗からの返信をもって予約確定となります。入力内容はこのページ上ではサーバー保存しません。</p>
 </div>
 </div>
 </section>
 
-<section id="access" class="section"><div class="container"><div class="section-head"><div class="eyebrow">ACCESS</div><h2>Salon Information</h2></div><div class="access"><div class="info"><dl><dt>店名</dt><dd>HAIRSALON amona</dd></dl><dl><dt>LINE</dt><dd>@012ykuqw</dd></dl><dl><dt>メニュー</dt><dd>髪質改善／TOKIO／キッズカット／白髪染め</dd></dl><dl><dt>お子様</dt><dd>同伴OK・キッズスペースあり</dd></dl></div><div class="map">住所・Google Mapは後から設定できます</div></div></div></section>
 
-<footer><div class="logo">amona<small>HAIR SALON</small></div><p>© 2026 HAIRSALON amona. All Rights Reserved.</p></footer>
+
+<section id="access" class="section">
+<div class="container">
+  <div class="section-head">
+    <div class="eyebrow">ACCESS / CONTACT</div>
+    <h2>Salon Information</h2>
+  </div>
+
+  <div class="access">
+    <div class="info">
+      <dl><dt>店名</dt><dd>HAIRSALON amona</dd></dl>
+      <dl><dt>住所</dt><dd>大阪府吹田市昭和町<br><small>※詳細住所はご予約確定後にお伝えします。</small></dd></dl>
+      <dl><dt>アクセス・道案内</dt><dd>JR吹田駅東改札　南出口徒歩8分／自転車駐輪可能</dd></dl>
+      <dl><dt>営業時間</dt><dd>月〜土　9:00〜18:00（カット最終受付17:00）</dd></dl>
+      <dl><dt>定休日</dt><dd>日・祝</dd></dl>
+      <dl><dt>支払い方法</dt><dd>Visa／Mastercard／JCB／American Express／UnionPay（銀聯）／楽天ペイ／PayPay</dd></dl>
+      <dl><dt>カット価格</dt><dd>¥5,500〜</dd></dl>
+      <dl><dt>席数</dt><dd>セット面2席</dd></dl>
+      <dl><dt>スタッフ数</dt><dd>スタイリスト1人</dd></dl>
+      <dl><dt>駐車場</dt><dd>近隣のコインパーキングをご利用ください。</dd></dl>
+      <dl><dt>こだわり条件</dt><dd>4席以下の小型サロン／ロング料金なし／1人のスタイリストが仕上げまで担当／ヘアセット／朝10時前でも受付OK／店頭でのカード支払いOK／女性スタッフが多い／キッズスペースあり／お子さま同伴OK／禁煙／DVDが視聴できる／完全予約制</dd></dl>
+      <dl><dt>備考</dt><dd>一人サロンのため、接客中はお電話に出られないことがございます。LINE @012ykuqw からお問い合わせください。</dd></dl>
+      <dl><dt>その他</dt><dd>スマート支払いOK、ポイント利用OK、即時予約OK</dd></dl>
+
+      <div class="social-links">
+        <a class="social-btn" href="https://line.me/R/ti/p/@012ykuqw" target="_blank" rel="noopener">LINE</a>
+        <a class="social-btn" href="#" aria-label="Instagramリンク（要設定）">Instagram</a>
+        <a class="social-btn" href="#" aria-label="Google口コミリンク（要設定）">Google口コミ</a>
+      </div>
+      <p class="contact-note">※Instagram・Google口コミ・電話番号は、正式情報が決まり次第リンク先を設定してください。</p>
+    </div>
+
+    <div class="map">
+      <div style="text-align:center;padding:24px">
+        <div style="font-weight:700;margin-bottom:8px">大阪府吹田市昭和町</div>
+        <div style="font-size:12px;color:#7d736b">JR吹田駅東改札・南出口から徒歩8分</div>
+        <div class="map-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%90%B9%E7%94%B0%E5%B8%82%E6%98%AD%E5%92%8C%E7%94%BA" target="_blank" rel="noopener">Google Mapを開く</a>
+        </div>
+        <div style="font-size:11px;color:#8b8078;margin-top:12px">※詳細住所はご予約確定後にお伝えします。</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<section id="faq" class="section">
+<div class="container">
+  <div class="section-head">
+    <div class="eyebrow">FAQ</div>
+    <h2>よくあるご質問</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item"><button type="button">子どもと一緒に行けますか？ <span>＋</span></button><div class="faq-answer">はい。キッズスペースがあり、お子様同伴でご来店いただけます。</div></div>
+    <div class="faq-item"><button type="button">予約方法は？ <span>＋</span></button><div class="faq-answer">LINEでご相談いただく方法と、Hot Pepper Beautyで空席を確認してネット予約する方法をご用意しています。</div></div>
+    <div class="faq-item"><button type="button">駐車場はありますか？ <span>＋</span></button><div class="faq-answer">専用駐車場はありません。近隣のコインパーキングをご利用ください。自転車は駐輪可能です。</div></div>
+    <div class="faq-item"><button type="button">支払い方法は？ <span>＋</span></button><div class="faq-answer">Visa、Mastercard、JCB、American Express、UnionPay（銀聯）、楽天ペイ、PayPayに対応しています。</div></div>
+  </div>
+</div>
+</section>
+
+<section id="privacy" class="section">
+<div class="container">
+  <div class="section-head">
+    <div class="eyebrow">PRIVACY POLICY</div>
+    <h2>プライバシーポリシー</h2>
+  </div>
+  <div class="policy">
+    <h3>個人情報の利用目的</h3>
+    <p>当サイトでは、ご予約・お問い合わせの際に、お名前、電話番号、希望日時、施術内容などの情報をご入力いただく場合があります。これらの情報は、予約対応、連絡、サービス提供および必要なご案内のために利用します。</p>
+
+    <h3>個人情報の管理</h3>
+    <p>取得した個人情報は、利用目的の範囲内で適切に取り扱い、法令に基づく場合を除き、ご本人の同意なく第三者へ提供しません。</p>
+
+    <h3>LINE等の外部サービス</h3>
+    <p>当サイトからLINE、Instagram、Google等の外部サービスへ移動した場合、各サービスの利用規約およびプライバシーポリシーが適用されます。</p>
+
+    <h3>口コミについて</h3>
+    <p>口コミは、誹謗中傷、個人情報、虚偽情報、その他不適切な内容を含む場合、掲載を見合わせたり削除したりすることがあります。現在のデモ版口コミは、お使いのブラウザ内に保存されます。</p>
+
+    <h3>免責事項</h3>
+    <p>当サイトに掲載する情報は、内容の正確性・最新性の維持に努めますが、利用により生じた損害について、法令上認められる範囲を超えて責任を負うものではありません。料金・営業時間・予約状況等は変更される場合があります。</p>
+
+    <h3>お問い合わせ</h3>
+    <p>本ポリシーに関するお問い合わせは、店舗LINEまたは正式な連絡先よりお願いいたします。</p>
+  </div>
+</div>
+</section>
+
+<footer><div class="logo">amona<small>HAIR SALON</small></div><p>© 2026 HAIRSALON amona. All Rights Reserved.</p><div class="policy-links"><a href="#privacy">プライバシーポリシー</a><a href="#access">お問い合わせ</a></div></footer>
 <div class="mobile-bar"><a href="#">⌂ HOME</a><a href="#reserve">予約する →</a></div>
 <script>
-function makeMsg(){
-const txt=`【amona 予約希望】\nお名前：${n.value||'未入力'}\n電話番号：${t.value||'未入力'}\nメニュー：${m.value}\n第1希望日：${d.value||'未選択'}\n希望時間：${tm.value||'未選択'}\nご要望：${note.value||'なし'}`;
-pv.style.display='block';pv.textContent=txt;navigator.clipboard?.writeText(txt).then(()=>alert('予約内容をコピーしました。'));
+const LINE_URL = 'https://line.me/R/ti/p/@012ykuqw';
+
+function reservationText(){
+  const name = document.getElementById('n').value.trim();
+  const tel = document.getElementById('t').value.trim();
+  const menu = document.getElementById('m').value;
+  const date = document.getElementById('d').value;
+  const time = document.getElementById('tm').value;
+  const note = document.getElementById('note').value.trim();
+
+  return `【amona 予約希望】
+お名前：${name || '未入力'}
+電話番号：${tel || '未入力'}
+メニュー：${menu}
+第1希望日：${date || '未選択'}
+希望時間：${time || '未選択'}
+ご要望：${note || 'なし'}`;
 }
+
+function validateReservation(){
+  const name = document.getElementById('n').value.trim();
+  const date = document.getElementById('d').value;
+  const time = document.getElementById('tm').value;
+  if(!name || !date || !time){
+    alert('お名前・第1希望日・希望時間を入力してください。');
+    return false;
+  }
+  return true;
+}
+
+function previewReservation(){
+  const pv = document.getElementById('pv');
+  pv.style.display = 'block';
+  pv.textContent = reservationText();
+  pv.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+async function sendReservationToLine(){
+  if(!validateReservation()) return;
+  const text = reservationText();
+  try{
+    await navigator.clipboard.writeText(text);
+    alert('予約内容をコピーしました。LINEが開いたら貼り付けて送信してください。');
+  }catch(e){
+    const pv = document.getElementById('pv');
+    pv.style.display = 'block';
+    pv.textContent = text;
+    alert('予約内容を表示しました。コピーしてLINEへ貼り付けてください。');
+  }
+  window.open(LINE_URL, '_blank', 'noopener');
+}
+
+function clearReservation(){
+  ['n','t','d','tm','note'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('m').selectedIndex = 0;
+  const pv = document.getElementById('pv');
+  pv.style.display = 'none';
+  pv.textContent = '';
+}
+
+const REVIEW_KEY = 'amona_reviews_v1';
+const sampleReview = {name:'きらりさん', rating:5, text:'初めての来店で緊張しましたが、やさしい雰囲気と丁寧な説明でリラックスして過ごせました。仕上がりにも満足し、またお願いしたいと思えるサロンでした。', sample:true};
+
+function loadReviews(){
+  try{
+    return JSON.parse(localStorage.getItem(REVIEW_KEY) || '[]');
+  }catch(e){
+    return [];
+  }
+}
+
+function saveReviews(reviews){
+  localStorage.setItem(REVIEW_KEY, JSON.stringify(reviews));
+}
+
+function stars(n){
+  return '★'.repeat(n) + '☆'.repeat(5-n);
+}
+
+function renderReviews(){
+  const userReviews = loadReviews();
+  const allReviews = [sampleReview, ...userReviews];
+  const list = document.getElementById('reviewList');
+
+  list.innerHTML = allReviews.map((r, idx) => `
+    <article class="review-card">
+      <div class="review-meta">
+        <div><span class="review-name">${escapeHtml(r.name)}</span>${r.sample ? ' <span>（40代）</span>' : ''}</div>
+        <div><span class="stars">${stars(Number(r.rating))}</span> ${Number(r.rating).toFixed(1)}</div>
+      </div>
+      <p>${escapeHtml(r.text)}</p>
+      ${r.sample ? '' : `<button class="review-delete" type="button" onclick="deleteReview(${idx-1})">この端末の投稿を削除</button>`}
+    </article>
+  `).join('');
+
+  const avg = allReviews.reduce((s,r)=>s+Number(r.rating),0)/allReviews.length;
+  document.getElementById('reviewAvg').textContent = avg.toFixed(1);
+  document.getElementById('reviewCount').textContent = allReviews.length;
+  document.getElementById('reviewStars').textContent = stars(Math.round(avg));
+}
+
+function submitReview(e){
+  e.preventDefault();
+  const name = document.getElementById('reviewName').value.trim();
+  const rating = Number(document.getElementById('reviewRating').value);
+  const text = document.getElementById('reviewText').value.trim();
+
+  if(!name || !text){
+    alert('お名前・ニックネームと口コミ内容を入力してください。');
+    return;
+  }
+
+  const reviews = loadReviews();
+  reviews.unshift({name, rating, text, createdAt:new Date().toISOString()});
+  saveReviews(reviews);
+  document.getElementById('reviewName').value = '';
+  document.getElementById('reviewRating').value = '5';
+  document.getElementById('reviewText').value = '';
+  renderReviews();
+  alert('口コミをこのブラウザに保存しました。');
+}
+
+function deleteReview(index){
+  if(!confirm('この口コミを削除しますか？')) return;
+  const reviews = loadReviews();
+  reviews.splice(index,1);
+  saveReviews(reviews);
+  renderReviews();
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+}
+
+
+// Coupon filter
+document.querySelectorAll('.coupon-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.coupon-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('#couponGrid .menu-card').forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.type === filter) ? '' : 'none';
+    });
+  });
+});
+
+// Style image switcher
+document.querySelectorAll('.style-thumb').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.style-thumb').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('styleMainImage').src = btn.dataset.img;
+    document.getElementById('styleMainTitle').textContent = btn.dataset.title;
+    document.getElementById('styleMainText').textContent = btn.dataset.text;
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-item button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.closest('.faq-item').classList.toggle('open');
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const d = document.getElementById('d');
+  if(d){
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth()+1).padStart(2,'0');
+    const dd = String(today.getDate()).padStart(2,'0');
+    d.min = `${yyyy}-${mm}-${dd}`;
+  }
+  renderReviews();
+});
 </script>
+
+<script>
+(function(){
+ const img=document.getElementById('featureMainImg');
+ const no=document.getElementById('featureMainNo');
+ const title=document.getElementById('featureMainTitle');
+ const text=document.getElementById('featureMainText');
+ const tabs=document.querySelectorAll('.feature-tab');
+ if(!img||!tabs.length)return;
+ tabs.forEach(tab=>{
+   tab.addEventListener('click',()=>{
+     tabs.forEach(x=>x.classList.remove('active'));
+     tab.classList.add('active');
+     img.style.opacity='0';
+     setTimeout(()=>{
+       img.src=tab.dataset.img;
+       img.alt=tab.dataset.title;
+       no.textContent=tab.dataset.no;
+       title.textContent=tab.dataset.title;
+       text.textContent=tab.dataset.text;
+       img.style.opacity='1';
+     },120);
+   });
+ });
+ img.style.transition='opacity .2s ease';
+})();
+</script>
+
 </body></html>
