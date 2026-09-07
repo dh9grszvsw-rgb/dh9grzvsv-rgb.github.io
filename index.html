@@ -671,6 +671,110 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 }
 </style>
 
+
+<style>
+.salon-scene-section{padding:84px 0;background:#fff;overflow:hidden}
+.salon-scene-section .feature-kicker{font-size:11px;letter-spacing:.34em;color:#b78a72;margin-bottom:8px}
+.salon-scene-section h2{margin:0 0 12px;font-family:Georgia,"Yu Mincho","Hiragino Mincho ProN",serif;font-size:clamp(30px,3.2vw,42px);line-height:1.35;font-weight:400}
+.salon-scene-section .feature-lead{max-width:820px;margin:0 0 34px;color:#6f655f;font-size:14px;line-height:1.95}
+.salon-scene-section .feature-switcher{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(320px,.78fr);gap:28px;align-items:stretch}
+.salon-scene-section .feature-stage{min-width:0;border:1px solid #e6ddd6;background:#fff}
+.salon-scene-section .feature-main-photo{height:430px;background:#f7f3ef;overflow:hidden}
+.salon-scene-section .feature-main-photo img{width:100%;height:100%;display:block;object-fit:contain;object-position:center}
+.salon-scene-section .feature-main-copy{display:grid;grid-template-columns:48px minmax(0,1fr);gap:15px;padding:22px 24px 26px}
+.salon-scene-section .feature-main-copy>span{font:italic 24px Georgia,serif;color:#d36b88}
+.scene-label{margin-bottom:5px;font-size:10px;letter-spacing:.22em;color:#ae826d;font-weight:700}
+.salon-scene-section .feature-main-copy h3{margin:0 0 9px;color:#302b28;font-size:20px;line-height:1.55;overflow-wrap:anywhere}
+.salon-scene-section .feature-main-copy p{margin:0;color:#625954;font-size:13px;line-height:1.9}
+.salon-scene-section .feature-tabs{display:grid;grid-template-rows:repeat(4,1fr);min-width:0}
+.salon-scene-section .feature-tab{width:100%;min-width:0;border:0;border-bottom:1px dotted #cec3bc;background:#fff;padding:13px 10px;display:grid;grid-template-columns:92px minmax(0,1fr);gap:15px;text-align:left;align-items:center;cursor:pointer;color:#322d2a}
+.salon-scene-section .feature-tab:first-child{border-top:1px dotted #cec3bc}
+.salon-scene-section .feature-tab img{width:92px;height:76px;object-fit:cover;background:#f5f0ec}
+.salon-scene-section .feature-tab b{display:block;color:#d35e80;font-size:15px;letter-spacing:.08em;line-height:1.4}
+.salon-scene-section .feature-tab small{display:block;margin-top:5px;color:#746963;font-size:11px;line-height:1.5}
+.salon-scene-section .feature-tab.active{background:#fcf5f7;box-shadow:inset 5px 0 0 #d76c89}
+.salon-scene-section .feature-style-link{text-align:center;margin-top:28px}
+.salon-scene-section .feature-style-link a{display:inline-block;padding:13px 30px;border-radius:999px;background:#2d2825;color:#fff;font-size:13px;font-weight:700}
+@media(max-width:900px){
+  .salon-scene-section .feature-switcher{grid-template-columns:1fr}
+  .salon-scene-section .feature-main-photo{height:390px}
+  .salon-scene-section .feature-tabs{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+  .salon-scene-section .feature-tab{border:1px solid #e5ddd7!important}
+}
+@media(max-width:560px){
+  .salon-scene-section .feature-main-photo{height:270px}
+  .salon-scene-section .feature-main-copy{grid-template-columns:34px minmax(0,1fr);gap:9px;padding:17px 15px 20px}
+  .salon-scene-section .feature-main-copy h3{font-size:17px}
+  .salon-scene-section .feature-main-copy p{font-size:12px;line-height:1.8}
+  .salon-scene-section .feature-tabs{display:flex;overflow-x:auto;gap:9px;padding:4px 1px 10px}
+  .salon-scene-section .feature-tab{flex:0 0 76%;grid-template-columns:72px minmax(0,1fr);padding:10px;border:1px solid #e5ddd7!important;border-radius:8px}
+  .salon-scene-section .feature-tab img{width:72px;height:66px}
+}
+</style>
+
+
+<style>
+.salon-scene-section .feature-main-photo img{
+  transition:opacity .45s ease !important;
+}
+</style>
+
+
+<style>
+/* ===== MOBILE TYPOGRAPHY FIX ===== */
+@media(max-width:560px){
+
+  /* SALON MOMENTS main title */
+  .salon-scene-section .feature-main-copy h3{
+    font-size:15px !important;
+    line-height:1.5 !important;
+    letter-spacing:0 !important;
+    word-break:normal !important;
+    overflow-wrap:anywhere !important;
+  }
+  .salon-scene-section .feature-main-copy p{
+    font-size:11.5px !important;
+    line-height:1.75 !important;
+  }
+  .scene-label{
+    font-size:9px !important;
+  }
+
+  /* Privacy policy */
+  #privacy .section-head h2{
+    font-size:26px !important;
+    line-height:1.35 !important;
+    word-break:keep-all !important;
+  }
+  #privacy .policy{
+    padding:20px 16px !important;
+  }
+  #privacy .policy h3{
+    font-size:18px !important;
+    line-height:1.45 !important;
+    margin:18px 0 7px !important;
+  }
+  #privacy .policy p,
+  #privacy .policy li{
+    font-size:11.5px !important;
+    line-height:1.8 !important;
+    overflow-wrap:anywhere !important;
+  }
+}
+
+@media(max-width:390px){
+  .salon-scene-section .feature-main-copy h3{
+    font-size:14px !important;
+  }
+  #privacy .section-head h2{
+    font-size:23px !important;
+  }
+  #privacy .policy h3{
+    font-size:17px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -758,65 +862,48 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 
 
 
-<section id="style" class="amona-feature-section">
- <div class="amona-feature-wrap">
-  <div class="feature-kicker">SALON FEATURES</div>
-  <h2>amonaのこだわり</h2>
-  <p class="feature-lead">大型店が苦手な方にも過ごしやすい、プライベート感のある空間。髪質改善、TOKIO、キッズカットなど、日常に寄り添うメニューを大切にしています。</p>
 
-  <div class="feature-switcher">
-   <div class="feature-stage">
-    <div class="feature-main-photo"><img id="featureMainImg" src="images/feature_hires/onetoone_hires.jpg" alt=""></div>
-    <div class="feature-main-copy">
-     <span id="featureMainNo">01</span>
-     <div>
-      <h3 id="featureMainTitle">一人のスタイリストが仕上げまで担当</h3>
-      <p id="featureMainText">女性スタイリストによるマンツーマン空間。丁寧なカウンセリングで、髪質やライフスタイル、お悩みに寄り添いながら仕上げまで担当します。</p>
-     </div>
+<section id="style" class="amona-feature-section salon-scene-section">
+  <div class="amona-feature-wrap">
+    <div class="feature-kicker">SALON MOMENTS</div>
+    <h2>髪も、心も、ほどける場所。</h2>
+    <p class="feature-lead">あなたらしく、心地よく。amonaで過ごす時間を、4つのシーンでご紹介します。</p>
+
+    <div class="feature-switcher">
+      <div class="feature-stage">
+        <div class="feature-main-photo">
+          <img id="featureMainImg" src="images/feature_hires/onetoone_hires.jpg" alt="プライベートサロン">
+        </div>
+        <div class="feature-main-copy">
+          <span id="featureMainNo">01</span>
+          <div>
+            <div class="scene-label" id="featureMainLabel">PRIVATE</div>
+            <h3 id="featureMainTitle">一人のスタイリストが担当</h3>
+            <p id="featureMainText">カウンセリングから仕上げまで、ひとりのスタイリストが丁寧に担当。周囲を気にしすぎず、落ち着いて過ごせる時間を大切にしています。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="feature-tabs">
+        <button class="feature-tab active" type="button" data-img="images/feature_hires/onetoone_hires.jpg" data-no="01" data-label="PRIVATE" data-title="一人のスタイリストが担当" data-text="カウンセリングから仕上げまで、ひとりのスタイリストが丁寧に担当。周囲を気にしすぎず、落ち着いて過ごせる時間を大切にしています。">
+          <img src="images/feature_hires/onetoone_hires.jpg" alt=""><span><b>PRIVATE</b><small>一人のスタイリストが担当</small></span>
+        </button>
+        <button class="feature-tab" type="button" data-img="images/feature_hires/kids_hires.jpg" data-no="02" data-label="KIDS" data-title="お子様と一緒に過ごせる" data-text="キッズカットにも対応。お子様連れでも気兼ねなく過ごしやすい、やさしいプライベート空間をご用意しています。">
+          <img src="images/feature_hires/kids_hires.jpg" alt=""><span><b>KIDS</b><small>お子様と一緒に過ごせる</small></span>
+        </button>
+        <button class="feature-tab" type="button" data-img="images/feature_hires/haircare_hires.jpg" data-no="03" data-label="CARE" data-title="髪質改善・TOKIOで扱いやすい髪へ" data-text="艶やまとまりを大切にしながら、髪の状態に合わせてケアをご提案。毎日のスタイリングが少し楽になる髪を目指します。">
+          <img src="images/feature_hires/haircare_hires.jpg" alt=""><span><b>CARE</b><small>髪質改善・TOKIO</small></span>
+        </button>
+        <button class="feature-tab" type="button" data-img="images/feature_hires/headspa_hires.jpg" data-no="04" data-label="RELAX" data-title="ヘッドスパで、ほっとひと息" data-text="忙しい毎日の中で、自分のための時間を。髪と頭皮をいたわりながら、気持ちまでゆるむようなリラックスタイムをお過ごしください。">
+          <img src="images/feature_hires/headspa_hires.jpg" alt=""><span><b>RELAX</b><small>ヘッドスパ・癒しの時間</small></span>
+        </button>
+      </div>
     </div>
-   </div>
 
-   <div class="feature-tabs">
-    <button class="feature-tab active" type="button"
-      data-img="images/feature_hires/onetoone_hires.jpg"
-      data-no="01"
-      data-title="一人のスタイリストが仕上げまで担当"
-      data-text="女性スタイリストによるマンツーマン空間。丁寧なカウンセリングで、髪質やライフスタイル、お悩みに寄り添いながら仕上げまで担当します。">
-      <img src="images/feature_hires/onetoone_hires.jpg" alt="">
-      <span><b>一人のスタイリストが仕上げまで担当</b><small>最初から最後まで、丁寧に。</small></span>
-    </button>
-
-    <button class="feature-tab" type="button"
-      data-img="images/feature_hires/headspa_hires.jpg"
-      data-no="02"
-      data-title="ヘッドスパで、髪も気持ちもリフレッシュ"
-      data-text="忙しい毎日の中で、ほっとひと息つける時間を。髪と頭皮をいたわりながら、リラックスして過ごしていただけるケアをご提案します。">
-      <img src="images/feature_hires/headspa_hires.jpg" alt="">
-      <span><b>ヘッドスパでリフレッシュ</b><small>髪と頭皮をやさしくケア。</small></span>
-    </button>
-
-    <button class="feature-tab" type="button"
-      data-img="images/feature_hires/kids_hires.jpg"
-      data-no="03"
-      data-title="お子様同伴OKのプライベートサロン"
-      data-text="キッズカットにも対応。小さなお子様と一緒でも過ごしやすく、周囲を気にしすぎずにゆったり過ごせるサロンづくりを大切にしています。">
-      <img src="images/feature_hires/kids_hires.jpg" alt="">
-      <span><b>お子様同伴OK</b><small>キッズカットにも対応。</small></span>
-    </button>
-
-    <button class="feature-tab" type="button"
-      data-img="images/feature_hires/haircare_hires.jpg"
-      data-no="04"
-      data-title="髪質改善・TOKIOトリートメント"
-      data-text="艶やまとまりを大切にしたヘアケア。髪の状態に合わせてご提案し、毎日のスタイリングが少し楽になるような美しい髪を目指します。">
-      <img src="images/feature_hires/haircare_hires.jpg" alt="">
-      <span><b>髪質改善・TOKIO</b><small>艶とまとまりのある髪へ。</small></span>
-    </button>
-   </div>
+    <div class="feature-style-link"><a href="hair-style.html">Hair Styleを見る →</a></div>
   </div>
-  <div class="feature-style-link"><a href="hair-style.html">Hair Styleを見る →</a></div>
- </div>
 </section>
+
 
 
 
@@ -1209,6 +1296,90 @@ document.addEventListener('DOMContentLoaded', () => {
    });
  });
  img.style.transition='opacity .2s ease';
+})();
+</script>
+
+
+<script>
+(function(){
+  const img=document.getElementById('featureMainImg');
+  const no=document.getElementById('featureMainNo');
+  const label=document.getElementById('featureMainLabel');
+  const title=document.getElementById('featureMainTitle');
+  const text=document.getElementById('featureMainText');
+  const tabs=document.querySelectorAll('.salon-scene-section .feature-tab');
+  if(!img || !tabs.length) return;
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(x=>x.classList.remove('active'));
+      tab.classList.add('active');
+      img.style.opacity='0';
+      setTimeout(()=>{
+        img.src=tab.dataset.img;
+        img.alt=tab.dataset.title || '';
+        no.textContent=tab.dataset.no || '';
+        label.textContent=tab.dataset.label || '';
+        title.textContent=tab.dataset.title || '';
+        text.textContent=tab.dataset.text || '';
+        img.style.opacity='1';
+      },120);
+    });
+  });
+  img.style.transition='opacity .2s ease';
+})();
+</script>
+
+
+<script>
+(function(){
+  const root=document.querySelector('.salon-scene-section');
+  if(!root) return;
+
+  const img=document.getElementById('featureMainImg');
+  const no=document.getElementById('featureMainNo');
+  const label=document.getElementById('featureMainLabel');
+  const title=document.getElementById('featureMainTitle');
+  const text=document.getElementById('featureMainText');
+  const tabs=[...root.querySelectorAll('.feature-tab')];
+  if(!img || !tabs.length) return;
+
+  let current=0;
+  let timer=null;
+  const interval=5000;
+
+  function show(index){
+    current=(index+tabs.length)%tabs.length;
+    const tab=tabs[current];
+    tabs.forEach(x=>x.classList.remove('active'));
+    tab.classList.add('active');
+
+    img.style.opacity='0';
+    setTimeout(()=>{
+      img.src=tab.dataset.img;
+      img.alt=tab.dataset.title || '';
+      if(no) no.textContent=tab.dataset.no || '';
+      if(label) label.textContent=tab.dataset.label || '';
+      if(title) title.textContent=tab.dataset.title || '';
+      if(text) text.textContent=tab.dataset.text || '';
+      img.style.opacity='1';
+    },180);
+  }
+
+  function start(){
+    clearInterval(timer);
+    timer=setInterval(()=>show(current+1), interval);
+  }
+
+  tabs.forEach((tab,i)=>{
+    tab.onclick=function(){
+      show(i);
+      start();
+    };
+  });
+
+  root.addEventListener('mouseenter',()=>clearInterval(timer));
+  root.addEventListener('mouseleave',start);
+  start();
 })();
 </script>
 
