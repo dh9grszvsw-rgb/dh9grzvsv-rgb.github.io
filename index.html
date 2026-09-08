@@ -817,6 +817,597 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 }
 </style>
 
+
+<style>
+/* ===== CHECK STYLE ===== */
+.check-style-section{background:#fff}
+.check-style-head{max-width:760px}
+.check-style-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:28px;
+  margin-top:28px
+}
+.check-style-card{
+  display:block;
+  background:#fff;
+  color:inherit;
+  text-decoration:none
+}
+.check-style-card img{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  object-position:center;
+  background:#f6f2ef;
+  display:block
+}
+.check-style-copy{padding:12px 2px 0}
+.check-style-copy h3{
+  margin:0 0 5px;
+  font-size:15px;
+  line-height:1.5;
+  font-weight:500;
+  color:#6c4738
+}
+.check-style-copy p{
+  margin:0;
+  font-size:10px;
+  letter-spacing:.16em;
+  color:#9a8376
+}
+.check-style-more{
+  margin-top:28px;
+  text-align:right
+}
+.check-style-more a{
+  display:inline-block;
+  color:#c75f78;
+  font-size:13px;
+  font-weight:700;
+  border-bottom:1px solid #d9a7b4;
+  padding-bottom:3px
+}
+
+/* ===== PHONE POPUP ===== */
+.phone-popup-btn{font-family:inherit;cursor:pointer}
+.phone-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px
+}
+.phone-modal.open{display:flex}
+.phone-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(25,20,18,.5)
+}
+.phone-modal-dialog{
+  position:relative;
+  z-index:1;
+  width:min(430px,92vw);
+  background:#fff;
+  border-radius:18px;
+  padding:30px 26px 26px;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
+  text-align:center
+}
+.phone-modal-close{
+  position:absolute;
+  top:10px;
+  right:14px;
+  border:0;
+  background:transparent;
+  font-size:28px;
+  cursor:pointer;
+  color:#6f655f
+}
+.phone-modal-dialog h3{
+  margin:8px 0 12px;
+  font-size:22px;
+  line-height:1.4
+}
+.phone-modal-dialog p{
+  margin:0;
+  color:#6f655f;
+  font-size:13px;
+  line-height:1.8
+}
+.phone-number{
+  margin:18px 0;
+  font-size:24px;
+  font-weight:700;
+  letter-spacing:.04em
+}
+.phone-modal-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px
+}
+.phone-cancel{
+  border:1px solid var(--line)!important;
+  background:#fff!important;
+  color:var(--text)!important
+}
+
+@media(max-width:760px){
+  .check-style-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .check-style-copy h3{font-size:12px}
+  .check-style-copy p{font-size:8px}
+  .check-style-more{text-align:center}
+}
+@media(max-width:520px){
+  .check-style-section .section-head h2{font-size:26px!important}
+  .check-style-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .check-style-card img{aspect-ratio:3/4}
+  .check-style-copy{padding-top:8px}
+  .check-style-copy h3{font-size:11px;line-height:1.45}
+  .check-style-copy p{font-size:7px;letter-spacing:.08em}
+  .phone-modal-dialog h3{font-size:18px}
+  .phone-number{font-size:21px}
+}
+</style>
+
+
+<style>
+/* ===== CHECK STYLE COMPACT SIZE ===== */
+.check-style-section{
+  padding-top:52px !important;
+  padding-bottom:52px !important;
+}
+.check-style-grid{
+  grid-template-columns:repeat(3, minmax(0, 220px)) !important;
+  justify-content:center !important;
+  gap:34px !important;
+}
+.check-style-card img{
+  width:100% !important;
+  max-width:220px !important;
+  aspect-ratio:4/5 !important;
+  object-fit:cover !important;
+  margin:0 auto !important;
+}
+.check-style-copy{
+  max-width:220px !important;
+  margin:0 auto !important;
+}
+@media(max-width:760px){
+  .check-style-grid{
+    grid-template-columns:repeat(3, minmax(0, 1fr)) !important;
+    gap:10px !important;
+  }
+  .check-style-card img{
+    max-width:150px !important;
+  }
+  .check-style-copy{
+    max-width:150px !important;
+  }
+}
+@media(max-width:520px){
+  .check-style-section{
+    padding-top:38px !important;
+    padding-bottom:38px !important;
+  }
+  .check-style-grid{
+    gap:7px !important;
+  }
+  .check-style-card img{
+    max-width:110px !important;
+    aspect-ratio:3/4 !important;
+  }
+  .check-style-copy{
+    max-width:110px !important;
+  }
+}
+</style>
+
+
+<style>
+/* CHECK STYLE 見出し・説明・リンクをセクション中央へ統一 */
+.check-style-section .check-style-head{
+  max-width:none !important;
+  width:100% !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-align:center !important;
+}
+.check-style-section .check-style-head .eyebrow,
+.check-style-section .check-style-head h2,
+.check-style-section .check-style-head .lead{
+  width:100% !important;
+  max-width:none !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+  text-align:center !important;
+}
+.check-style-section .check-style-more{
+  width:100% !important;
+  text-align:center !important;
+}
+@media(max-width:760px){
+  .check-style-section .check-style-head,
+  .check-style-section .check-style-head .eyebrow,
+  .check-style-section .check-style-head h2,
+  .check-style-section .check-style-head .lead,
+  .check-style-section .check-style-more{
+    text-align:center !important;
+  }
+}
+</style>
+
+
+<style>
+/* ===== PICK UP STYLIST ===== */
+.pickup-staff-head{
+  max-width:none !important;
+  width:100% !important;
+  text-align:center !important;
+}
+.pickup-staff-head .eyebrow,
+.pickup-staff-head h2{
+  text-align:center !important;
+}
+.pickup-staff-card{
+  max-width:760px;
+  margin:30px auto 0;
+  display:grid;
+  grid-template-columns:240px minmax(0,1fr);
+  gap:38px;
+  align-items:center;
+}
+.pickup-staff-photo img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  display:block;
+}
+.pickup-staff-name{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:24px;
+  color:#3d365d;
+}
+.pickup-staff-name span{color:#d86583}
+.pickup-staff-kana{margin:3px 0 14px 36px;font-size:13px;color:#756c67}
+.pickup-staff-history{
+  border-top:1px dotted #bbb0aa;
+  padding-top:12px;
+  margin-top:8px;
+  font-size:14px;
+}
+.pickup-staff-info p{
+  margin:16px 0 13px;
+  font-size:14px;
+  line-height:1.8;
+}
+.pickup-staff-info a{
+  color:#c85f79;
+  font-size:13px;
+  font-weight:700;
+  border-bottom:1px solid #d9a7b4;
+  padding-bottom:3px;
+}
+
+/* 携帯でCONCEPT末尾とFEATUREの間が広すぎる問題を修正 */
+@media(max-width:560px){
+  #concept.section{
+    padding-bottom:24px !important;
+  }
+  #concept + .section{
+    padding-top:24px !important;
+  }
+  #concept .story-copy p:last-child{
+    margin-bottom:0 !important;
+  }
+
+  .pickup-staff-card{
+    grid-template-columns:1fr;
+    max-width:340px;
+    gap:20px;
+  }
+  .pickup-staff-photo{
+    max-width:220px;
+    margin:0 auto;
+  }
+  .pickup-staff-name{font-size:20px}
+  .pickup-staff-head h2{font-size:26px !important}
+}
+</style>
+
+
+<style>
+.pickup-staff-intro{
+  max-width:760px;
+  margin:18px auto 28px;
+  text-align:center;
+}
+.pickup-staff-intro p{
+  margin:0;
+  line-height:1.9;
+  color:#665c57;
+  font-size:15px;
+}
+.pickup-staff-photo img{
+  image-rendering:auto;
+  object-position:center center;
+}
+@media(max-width:560px){
+  .pickup-staff-intro{
+    margin:12px auto 22px;
+    padding:0 8px;
+  }
+  .pickup-staff-intro p{
+    font-size:14px;
+    line-height:1.8;
+  }
+}
+</style>
+
+
+<style>
+.amona-message-full{
+  margin:28px auto 42px;
+  padding:0;
+}
+.amona-message-title{
+  margin:0 0 28px;
+  font-size:25px;
+  line-height:1.4;
+  color:#594b46;
+  font-weight:700;
+}
+.amona-message-body{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr);
+  gap:34px;
+  align-items:start;
+}
+.amona-message-logo img{
+  width:145px;
+  height:145px;
+  object-fit:contain;
+  display:block;
+}
+.amona-message-copy h4{
+  margin:0 0 2px;
+  font-size:23px;
+  color:#24201e;
+}
+.amona-message-tags{
+  color:#df4f70;
+  font-size:15px;
+  margin-bottom:25px;
+}
+.amona-message-copy p{
+  margin:0;
+  max-width:760px;
+  font-size:17px;
+  line-height:1.75;
+  color:#292321;
+}
+.amona-message-reserve{
+  margin-top:28px;
+  text-align:right;
+}
+.amona-message-reserve a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:245px;
+  min-height:48px;
+  padding:8px 20px;
+  border-radius:6px;
+  background:linear-gradient(#ff9baa,#ff5d72);
+  border:1px solid #ff8a9a;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);
+  color:#fff !important;
+  font-size:18px;
+  font-weight:700;
+  text-decoration:none;
+}
+@media(max-width:560px){
+  .amona-message-full{
+    margin:20px auto 30px;
+  }
+  .amona-message-title{
+    margin-bottom:18px;
+    font-size:20px;
+  }
+  .amona-message-body{
+    grid-template-columns:78px minmax(0,1fr);
+    gap:15px;
+  }
+  .amona-message-logo img{
+    width:78px;
+    height:78px;
+  }
+  .amona-message-copy h4{
+    font-size:18px;
+  }
+  .amona-message-tags{
+    font-size:12px;
+    line-height:1.6;
+    margin-bottom:14px;
+  }
+  .amona-message-copy p{
+    grid-column:1/-1;
+    font-size:14px;
+    line-height:1.8;
+  }
+  .amona-message-reserve{
+    grid-column:1/-1;
+    text-align:center;
+    margin-top:20px;
+  }
+  .amona-message-reserve a{
+    width:100%;
+    min-width:0;
+    font-size:16px;
+  }
+}
+</style>
+
+
+<style>
+.amona-message-logo{
+  display:flex !important;
+  align-items:flex-start !important;
+  justify-content:center !important;
+}
+.amona-message-logo img{
+  display:block !important;
+  width:150px !important;
+  height:150px !important;
+  object-fit:contain !important;
+  opacity:1 !important;
+}
+@media(max-width:560px){
+  .amona-message-logo img{
+    width:82px !important;
+    height:82px !important;
+  }
+}
+</style>
+
+
+<style>
+/* ===== 「amonaからの一言」レイアウト最終調整 ===== */
+.amona-message-full{
+  max-width:1180px !important;
+  margin:28px auto 42px !important;
+  padding:0 28px !important;
+  box-sizing:border-box !important;
+}
+
+/* タイトルを他セクションと同じ雰囲気・中央揃え */
+.amona-message-title{
+  width:100% !important;
+  margin:0 0 34px !important;
+  text-align:center !important;
+  font-family:inherit !important;
+  font-size:clamp(26px,3vw,38px) !important;
+  line-height:1.35 !important;
+  letter-spacing:.02em !important;
+  font-weight:500 !important;
+  color:#2f2926 !important;
+}
+
+/* ロゴ＋文章を中央のひとつのまとまりに */
+.amona-message-body{
+  width:min(100%,980px) !important;
+  margin:0 auto !important;
+  display:grid !important;
+  grid-template-columns:180px minmax(0,1fr) !important;
+  column-gap:52px !important;
+  align-items:center !important;
+}
+
+.amona-message-logo{
+  width:180px !important;
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+}
+.amona-message-logo img{
+  width:170px !important;
+  height:170px !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+
+.amona-message-copy{
+  min-width:0 !important;
+}
+.amona-message-copy h4{
+  margin:0 0 4px !important;
+  font-family:inherit !important;
+  font-size:24px !important;
+  line-height:1.35 !important;
+  font-weight:600 !important;
+}
+.amona-message-tags{
+  margin:0 0 22px !important;
+  font-family:inherit !important;
+  font-size:15px !important;
+  line-height:1.6 !important;
+}
+.amona-message-copy p{
+  max-width:none !important;
+  margin:0 !important;
+  font-family:inherit !important;
+  font-size:16px !important;
+  line-height:1.95 !important;
+  letter-spacing:.01em !important;
+}
+
+/* 携帯はタイトル・本文とも他セクションと揃えて自然に縦積み */
+@media(max-width:560px){
+  .amona-message-full{
+    margin:18px auto 28px !important;
+    padding:0 18px !important;
+  }
+  .amona-message-title{
+    margin-bottom:22px !important;
+    font-size:26px !important;
+    font-weight:500 !important;
+  }
+  .amona-message-body{
+    width:100% !important;
+    grid-template-columns:82px minmax(0,1fr) !important;
+    column-gap:16px !important;
+    align-items:start !important;
+  }
+  .amona-message-logo{
+    width:82px !important;
+  }
+  .amona-message-logo img{
+    width:82px !important;
+    height:82px !important;
+  }
+  .amona-message-copy h4{
+    font-size:18px !important;
+  }
+  .amona-message-tags{
+    margin-bottom:12px !important;
+    font-size:12px !important;
+  }
+  .amona-message-copy p{
+    grid-column:1/-1 !important;
+    font-size:14px !important;
+    line-height:1.85 !important;
+  }
+}
+</style>
+
+
+<style>
+/* 「アモナ(amona)からの一言」を他セクション見出しと完全に同じ字体へ */
+.amona-message-heading{
+  width:100% !important;
+  max-width:none !important;
+  text-align:center !important;
+  margin:0 0 34px !important;
+}
+.amona-message-heading .eyebrow,
+.amona-message-heading h2{
+  text-align:center !important;
+}
+/* 旧タイトル用の独自書体設定は無効化 */
+.amona-message-title{
+  font-family:inherit !important;
+}
+@media(max-width:560px){
+  .amona-message-heading{
+    margin-bottom:22px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -853,7 +1444,6 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 <div class="story-copy"><div class="eyebrow">CONCEPT</div><h3>心をそっと満たす、<br>優しいひとときを。</h3><p>一人ひとりに寄り添い、落ち着いて過ごせるプライベートサロン。髪質改善・艶髪・TOKIO・キッズカットまで、毎日に寄り添うメニューをご用意しています。</p><p>一人のスタイリストが仕上げまで担当。お子様連れでも過ごしやすい空間づくりを大切にしています。</p></div>
 </div>
 </section>
-
 <section class="section">
 <div class="container">
 <div class="section-head"><div class="eyebrow">FEATURE</div><h2>amonaのこだわり</h2></div>
@@ -894,6 +1484,48 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
   </div>
 </div>
 </section>
+
+<section class="section check-style-section">
+  <div class="container">
+    <div class="section-head check-style-head">
+      <div class="eyebrow">CHECK STYLE</div>
+      <h2>amonaのヘアスタイル</h2>
+      <p class="lead">人気のスタイルを少しだけご紹介。もっと見るからHair Styleページへ移動できます。</p>
+    </div>
+
+    <div class="check-style-grid">
+      <a class="check-style-card" href="hair-style.html">
+        <img src="images/style_gallery2/style_02.jpg" alt="オン眉キッズカット">
+        <div class="check-style-copy">
+          <h3>オン眉キッズカット</h3>
+          <p>KIDS CUT</p>
+        </div>
+      </a>
+
+      <a class="check-style-card" href="hair-style.html">
+        <img src="images/style_gallery2/style_04.jpg" alt="レイヤーカット">
+        <div class="check-style-copy">
+          <h3>レイヤーカット × ベージュ</h3>
+          <p>LAYER STYLE</p>
+        </div>
+      </a>
+
+      <a class="check-style-card" href="hair-style.html">
+        <img src="images/style_gallery2/style_06.jpg" alt="大人の艶髪レイヤー">
+        <div class="check-style-copy">
+          <h3>上品な艶髪レイヤー</h3>
+          <p>HAIR CARE / LAYER</p>
+        </div>
+      </a>
+    </div>
+
+    <div class="check-style-more">
+      <a href="hair-style.html">このサロンのHair Styleをすべて見る →</a>
+    </div>
+  </div>
+</section>
+
+
 
 
 
@@ -942,7 +1574,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
       </div>
     </div>
 
-    <div class="feature-style-link"><a href="hair-style.html">Hair Styleを見る →</a></div>
+    
   </div>
 </section>
 
@@ -1041,6 +1673,45 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </section>
 
 
+<section class="section pickup-staff-section" id="pickup-staff">
+  <div class="container">
+    <div class="section-head pickup-staff-head">
+      <div class="eyebrow">PICK UP STYLIST</div>
+      <h2>amonaのPICK UPスタイリスト</h2>
+    </div>
+<div class="pickup-staff-card">
+      <div class="pickup-staff-photo">
+        <img src="images/staff-ogino.jpg" alt="スタイリスト おぎの">
+      </div>
+      <div class="pickup-staff-info">
+        <div class="pickup-staff-name"><span>✂</span><strong>おぎの</strong></div>
+        <div class="pickup-staff-kana">オギノ</div>
+        <div class="pickup-staff-history">（歴12年）</div>
+        <p>Instagram / amona_ogino<br>お子様連れ大歓迎 / まま美容師</p>
+        <a href="https://www.instagram.com/amona_ogino/" target="_blank" rel="noopener">Instagramを見る →</a>
+      </div>
+    </div>
+
+<div class="amona-message-full">
+  <div class="section-head amona-message-heading"><div class="eyebrow">MESSAGE</div><h2>アモナ(amona)からの一言</h2></div>
+  <div class="amona-message-body">
+    <div class="amona-message-logo">
+      <img src="images/amona-logo-hires.jpg" alt="HAIR SALON amona">
+    </div>
+    <div class="amona-message-copy">
+      <h4>HAIRSALON&nbsp; amona</h4>
+      <div class="amona-message-tags">髪質改善/艶髪/TOKIO/キッズカット/白髪ぼかし</div>
+      <p>”心をそっと満たす 優しいひととき”をコンセプトに、お客様一人ひとりが心からリラックスし、忙しい毎日の中でも自分のための時間を過ごしていただけるよう、心を込めておもてなしいたします。ご予約が「×」の場合もお気軽にお問い合わせください。一人サロンのため施術中は電話に出られない場合があります。お手数ですがLINE(@012ykuqw)をいただけますと順番にご返信いたします。</p>
+</div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+
+
+
 
 <section id="access" class="section">
 <div class="container">
@@ -1065,12 +1736,14 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
       <dl><dt>備考</dt><dd>一人サロンのため、接客中はお電話に出られないことがございます。LINE @012ykuqw からお問い合わせください。</dd></dl>
       <dl><dt>その他</dt><dd>スマート支払いOK、ポイント利用OK、即時予約OK</dd></dl>
 
-      <div class="social-links">
-        <a class="social-btn" href="https://line.me/R/ti/p/@012ykuqw" target="_blank" rel="noopener">LINE</a>
-        <a class="social-btn" href="#" aria-label="Instagramリンク（要設定）">Instagram</a>
-        <a class="social-btn" href="#" aria-label="Google口コミリンク（要設定）">Google口コミ</a>
-      </div>
-      <p class="contact-note">※Instagram・Google口コミ・電話番号は、正式情報が決まり次第リンク先を設定してください。</p>
+      
+<div class="social-links">
+  <a class="social-btn" href="https://line.me/R/ti/p/@012ykuqw" target="_blank" rel="noopener">LINE</a>
+  <a class="social-btn" href="https://www.instagram.com/amona_ogino/" target="_blank" rel="noopener">Instagram</a>
+  <button class="social-btn phone-popup-btn" type="button" id="openPhonePopup">電話</button>
+</div>
+<p class="contact-note">Instagram：@amona_ogino</p>
+
     </div>
 
     <div class="map">
@@ -1422,6 +2095,51 @@ document.addEventListener('DOMContentLoaded', () => {
   root.addEventListener('mouseenter',()=>clearInterval(timer));
   root.addEventListener('mouseleave',start);
   start();
+})();
+</script>
+
+
+<div class="phone-modal" id="phoneModal" aria-hidden="true">
+  <div class="phone-modal-backdrop" id="phoneModalBackdrop"></div>
+  <div class="phone-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="phoneModalTitle">
+    <button class="phone-modal-close" id="phoneModalClose" type="button" aria-label="閉じる">×</button>
+    <div class="eyebrow">PHONE</div>
+    <h3 id="phoneModalTitle">お電話でのお問い合わせ</h3>
+    <p>接客中は電話に出られない場合があります。<br>その場合はLINEからお問い合わせください。</p>
+    <div class="phone-number">080-8223-5640</div>
+    <div class="phone-modal-actions">
+      <a href="tel:08082235640" class="btn">電話をかける</a>
+      <button type="button" class="btn phone-cancel" id="phoneModalCancel">キャンセル</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+(function(){
+  const modal=document.getElementById('phoneModal');
+  const open=document.getElementById('openPhonePopup');
+  const close=document.getElementById('phoneModalClose');
+  const cancel=document.getElementById('phoneModalCancel');
+  const backdrop=document.getElementById('phoneModalBackdrop');
+  if(!modal||!open)return;
+
+  function show(){
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function hide(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  open.addEventListener('click',show);
+  if(close) close.addEventListener('click',hide);
+  if(cancel) cancel.addEventListener('click',hide);
+  if(backdrop) backdrop.addEventListener('click',hide);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
 })();
 </script>
 
