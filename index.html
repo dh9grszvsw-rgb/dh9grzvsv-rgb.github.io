@@ -1617,6 +1617,12 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </section>
 
 <section id="reserve" class="section">
+
+<div id="consultStylePreview" style="display:none;margin:18px 0;padding:16px 18px;border:1px solid #eadfd8;border-radius:12px;background:#fffaf9">
+  <strong>Hair Styleで選んだ相談スタイル</strong>
+  <ul id="consultStylePreviewList" style="margin:8px 0 0;padding-left:1.2em"></ul>
+</div>
+
 <div class="container">
 <div class="reserve-panel">
 <div class="section-head">
@@ -1792,9 +1798,6 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 
     <h3>LINE等の外部サービス</h3>
     <p>当サイトからLINE、Instagram、Google等の外部サービスへ移動した場合、各サービスの利用規約およびプライバシーポリシーが適用されます。</p>
-
-    <h3>口コミについて</h3>
-    <p>口コミは、誹謗中傷、個人情報、虚偽情報、その他不適切な内容を含む場合、掲載を見合わせたり削除したりすることがあります。現在のデモ版口コミは、お使いのブラウザ内に保存されます。</p>
 
     <h3>免責事項</h3>
     <p>当サイトに掲載する情報は、内容の正確性・最新性の維持に努めますが、利用により生じた損害について、法令上認められる範囲を超えて責任を負うものではありません。料金・営業時間・予約状況等は変更される場合があります。</p>
@@ -2140,6 +2143,118 @@ document.addEventListener('DOMContentLoaded', () => {
   if(cancel) cancel.addEventListener('click',hide);
   if(backdrop) backdrop.addEventListener('click',hide);
   document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+\n\n
+
+<script id="amona-style-request-clean">
+(function(){
+  const FAV='amona_favorite_styles';
+  const REQ='amona_selected_styles_for_request';
+  const HEADER='【希望スタイル】';
+
+  function readArray(storage,key){
+    try{
+      const a=JSON.parse(storage.getItem(key)||'[]');
+      return Array.isArray(a)?a:[];
+    }catch(e){ return []; }
+  }
+  function styles(){
+    let a=readArray(sessionStorage,REQ);
+    if(!a.length) a=readArray(localStorage,REQ);
+    if(!a.length) a=readArray(localStorage,FAV);
+    return [...new Set(a.filter(Boolean))];
+  }
+  function stripStyleBlock(value, selected){
+    let lines=(value||'').split(/\r?\n/);
+
+    // Remove any previous official style block.
+    const p=lines.findIndex(x=>x.trim()===HEADER);
+    if(p>=0) lines=lines.slice(0,p);
+
+    // Remove old accidental duplicate numbered lines only when they equal a selected style.
+    const names=new Set(selected.map(String));
+    lines=lines.filter(line=>{
+      const m=line.trim().match(/^\d+[\.．]\s*(.+)$/);
+      return !(m && names.has(m[1].trim()));
+    });
+
+    return lines.join('\n').replace(/\n{3,}/g,'\n\n').trim();
+  }
+
+  function render(){
+    const a=styles();
+    const ta=document.getElementById('note');
+    const box=document.getElementById('consultStylePreview');
+    const list=document.getElementById('consultStylePreviewList');
+
+    if(box && list){
+      list.innerHTML='';
+      a.forEach(t=>{
+        const li=document.createElement('li');
+        li.textContent=t;
+        list.appendChild(li);
+      });
+      box.style.display=a.length?'block':'none';
+    }
+
+    if(ta && a.length){
+      const own=stripStyleBlock(ta.value,a);
+      const block=HEADER+'\n'+a.map((t,i)=>(i+1)+'. '+t).join('\n');
+      ta.value=own ? own+'\n\n'+block : block;
+      ta.dispatchEvent(new Event('input',{bubbles:true}));
+    }
+
+    let note=document.getElementById('amona-style-sync-note');
+    if(a.length){
+      if(!note && ta){
+        note=document.createElement('div');
+        note.id='amona-style-sync-note';
+        note.textContent='♡で選んだHair Styleを「ご要望」に反映しました。';
+        note.style.cssText='margin-top:8px;font-size:12px;color:#c85f79;line-height:1.5;';
+        ta.insertAdjacentElement('afterend',note);
+      }
+    }else if(note){
+      note.remove();
+    }
+  }
+
+  function clearSelections(){
+    localStorage.removeItem(FAV);
+    localStorage.removeItem(REQ);
+    sessionStorage.removeItem(REQ);
+
+    const box=document.getElementById('consultStylePreview');
+    const list=document.getElementById('consultStylePreviewList');
+    if(box) box.style.display='none';
+    if(list) list.innerHTML='';
+
+    const note=document.getElementById('amona-style-sync-note');
+    if(note) note.remove();
+  }
+
+  // Extend the site's existing clearReservation without replacing the original form-clearing behavior.
+  const originalClear=window.clearReservation;
+  window.clearReservation=function(){
+    if(typeof originalClear==='function') originalClear();
+    clearSelections();
+  };
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',render);
+  }else{
+    render();
+  }
 })();
 </script>
 

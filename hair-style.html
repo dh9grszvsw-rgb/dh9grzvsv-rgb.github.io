@@ -45,6 +45,63 @@ footer{border-top:1px solid var(--line);padding:25px;text-align:center;color:var
 }
 </style>
 
+
+<style>
+/* ===== Hair Style Favorite / Consultation ===== */
+.style-fav-btn,
+.favorite-btn,
+.fav-btn,
+.bookmark-btn,
+.heart-btn{
+  transition:.2s ease;
+}
+.is-favorite{
+  color:#e86b89 !important;
+  border-color:#e86b89 !important;
+}
+.is-favorite::before{
+  content:none !important;
+  display:none !important;
+}
+.favorite-summary{
+  max-width:980px;
+  margin:26px auto 0;
+  padding:18px 20px;
+  border:1px solid #eadfd8;
+  border-radius:14px;
+  background:#fffaf9;
+  display:none;
+}
+.favorite-summary.show{display:block}
+.favorite-summary h3{
+  margin:0 0 10px;
+  font-size:17px;
+}
+.favorite-summary ul{
+  margin:0;
+  padding-left:1.2em;
+}
+.favorite-summary li{
+  margin:4px 0;
+  font-size:14px;
+}
+.consult-btn.has-selection{
+  background:#2d2825 !important;
+  color:#fff !important;
+}
+@media(max-width:560px){
+  .favorite-summary{
+    margin-top:18px;
+    padding:14px 15px;
+  }
+}
+</style>
+
+
+<style id="amona-heart-single-fix">
+/* 選択中ハートは文字として1個だけ表示。疑似要素による二重表示を禁止 */
+.fav.is-favorite::before,.is-favorite::before{content:none !important;display:none !important;}
+</style>
 </head>
 <body>
 <header><div class="head">
@@ -284,11 +341,84 @@ document.querySelectorAll('.filter').forEach(btn=>{
     });
   });
 });
-document.querySelectorAll('.fav').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    btn.classList.toggle('on');
-    btn.textContent=btn.classList.contains('on')?'♥':'♡';
-  });
-});
+
 </script>
+
+<div id="favoriteSummary" class="favorite-summary" aria-live="polite">
+  <h3>相談したいスタイル</h3>
+  <ul id="favoriteList"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script id="amona-favorite-clean">
+(function(){
+  const KEY='amona_favorite_styles';
+
+  function load(){
+    try{
+      const a=JSON.parse(localStorage.getItem(KEY)||'[]');
+      return Array.isArray(a)?a:[];
+    }catch(e){ return []; }
+  }
+  function save(a){
+    localStorage.setItem(KEY,JSON.stringify([...new Set(a)]));
+  }
+  function card(btn){ return btn.closest('.style-card'); }
+  function title(c){
+    if(!c) return '';
+    const n=c.querySelector('.style-title,h2,h3,h4');
+    if(n && n.textContent.trim()) return n.textContent.trim();
+    const img=c.querySelector('img');
+    return img && img.alt ? img.alt.trim() : '';
+  }
+  function buttons(){
+    return [...document.querySelectorAll('.fav')];
+  }
+  function render(){
+    const favs=load();
+    buttons().forEach(btn=>{
+      const on=favs.includes(title(card(btn)));
+      btn.classList.toggle('on',on);
+      btn.textContent=on?'♥':'♡';
+      btn.setAttribute('aria-pressed',on?'true':'false');
+    });
+  }
+
+  buttons().forEach(btn=>{
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      const t=title(card(btn));
+      if(!t) return;
+      let favs=load();
+      favs=favs.includes(t)?favs.filter(x=>x!==t):[...favs,t];
+      save(favs);
+      render();
+    });
+  });
+
+  const consult=[...document.querySelectorAll('a,button')].find(el =>
+    (el.textContent||'').includes('このスタイルを相談して予約する')
+  );
+  if(consult){
+    consult.addEventListener('click',function(){
+      const favs=load();
+      sessionStorage.setItem('amona_selected_styles_for_request',JSON.stringify(favs));
+      localStorage.setItem('amona_selected_styles_for_request',JSON.stringify(favs));
+    });
+  }
+
+  render();
+})();
+</script>
+
 </body></html>
