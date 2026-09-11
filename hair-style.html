@@ -137,6 +137,7 @@ body.amona-modal-open{overflow:hidden}
 .style-detail-grid{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:28px;align-items:start}
 .style-detail-mainimg{width:100%;max-height:590px;object-fit:contain;background:#f8f6f4;border-radius:8px;display:block}
 .style-detail-mainimg.safe-fit{width:100%;max-height:540px;margin:0 auto;padding:0;object-fit:contain;background:#f8f6f4}
+.style-detail-gallery{position:relative}.style-detail-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;padding-bottom:3px}.style-detail-thumb{flex:0 0 86px;width:86px;height:86px;padding:0;border:2px solid transparent;background:#f7f4f2;border-radius:3px;overflow:hidden;cursor:pointer}.style-detail-thumb.active{border-color:#df4667}.style-detail-thumb img{width:100%;height:100%;object-fit:cover;display:block}.style-detail-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:38px;height:38px;border:0;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 2px 10px rgba(0,0,0,.12);font-size:25px;color:#403936;cursor:pointer}.style-detail-prev{left:8px}.style-detail-next{right:8px}
 .style-detail-panel{min-width:0}
 .style-detail-section{margin-bottom:18px}
 .style-detail-heading{margin:0 0 10px;padding:8px 11px;background:#f7f4f2;color:#df4667;font-size:14px;font-weight:700}
@@ -162,7 +163,7 @@ body.amona-modal-open{overflow:hidden}
 .style-detail-consult{background:#2d2825;color:#fff;border:1px solid #2d2825;box-shadow:0 6px 18px rgba(45,40,37,.16)}
 .style-detail-coupon{background:#fff;color:#d85f7b;border:1px solid #e06f89;box-shadow:0 4px 14px rgba(224,111,137,.10)}
 .style-detail-coupon:hover{background:#fff3f6}.style-detail-consult:hover{opacity:.88}
-@media(max-width:760px){.style-detail-modal{padding:8px}.style-detail-dialog{width:100%;max-height:96vh;border-radius:12px}.style-detail-scroll{padding:16px}.style-detail-grid{grid-template-columns:1fr;gap:18px}.style-detail-mainimg{max-height:54vh}.style-detail-titlebar h2{font-size:18px}.style-detail-actions{flex-direction:column}.style-detail-consult,.style-detail-coupon{width:100%;box-sizing:border-box}.style-detail-close{right:8px;top:8px;width:38px;height:38px;font-size:25px}}
+@media(max-width:760px){.style-detail-thumb{flex-basis:72px;width:72px;height:72px}.style-detail-nav{width:34px;height:34px;font-size:22px}.style-detail-modal{padding:8px}.style-detail-dialog{width:100%;max-height:96vh;border-radius:12px}.style-detail-scroll{padding:16px}.style-detail-grid{grid-template-columns:1fr;gap:18px}.style-detail-mainimg{max-height:54vh}.style-detail-titlebar h2{font-size:18px}.style-detail-actions{flex-direction:column}.style-detail-consult,.style-detail-coupon{width:100%;box-sizing:border-box}.style-detail-close{right:8px;top:8px;width:38px;height:38px;font-size:25px}}
 </style>
 
 <style id="hair-ai-guide-style">
@@ -189,6 +190,83 @@ body.amona-modal-open{overflow:hidden}
   "inLanguage": "ja-JP"
 }
 </script>
+
+<style id="style-detail-safe-gallery-fix">
+.style-detail-nav{
+  display:none !important;
+}
+.style-detail-thumbs{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+  overflow-x:auto;
+  padding:0 0 3px;
+}
+.style-detail-thumb-wrap{
+  flex:0 0 86px;
+  width:86px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+}
+.style-detail-thumb{
+  width:86px !important;
+  height:86px !important;
+  flex:0 0 86px !important;
+  padding:0 !important;
+  border:2px solid transparent !important;
+  border-radius:3px;
+  overflow:hidden;
+  background:#f7f4f2;
+  box-sizing:border-box;
+  cursor:pointer;
+}
+.style-detail-thumb.active{
+  border-color:#df4667 !important;
+}
+.style-detail-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.style-detail-thumb-label{
+  font-size:11px;
+  line-height:1.2;
+  font-weight:700;
+  letter-spacing:.05em;
+  color:#df4667;
+  text-align:center;
+}
+.style-detail-mainimg{
+  touch-action:pan-y;
+  -webkit-user-select:none;
+  user-select:none;
+}
+@media(max-width:760px){
+  .style-detail-thumb-wrap{flex-basis:72px;width:72px}
+  .style-detail-thumb{
+    width:72px !important;
+    height:72px !important;
+    flex-basis:72px !important;
+  }
+  .style-detail-thumb-label{font-size:10px}
+}
+</style>
+
+
+<style id="style01-card-fit-fix">
+/* Style01 list thumbnail: show the selected FRONT image naturally */
+[data-style="1"] .style-img img,
+[data-style="01"] .style-img img,
+[data-idx="1"] .style-img img,
+[data-index="1"] .style-img img{
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -220,7 +298,7 @@ body.amona-modal-open{overflow:hidden}
 <main class="grid" id="styleGrid">
 <article class="style-card" data-style-index="1" data-tags="キッズ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="キッズカット" src="images/style_hq/style_01.jpg"/></div>
+<div class="photo-box"><img alt="キッズカット" src="images/style_gallery2/style_01_card.jpg"/></div>
 <h3>キッズカット</h3>
 <div class="tags"><span class="tag">キッズ</span></div>
 </article>
@@ -418,7 +496,7 @@ body.amona-modal-open{overflow:hidden}
 <div class="style-detail-scroll" id="styleDetailScroll">
 <div class="style-detail-titlebar"><div class="style-detail-no" id="styleDetailNo"></div><h2 id="styleDetailTitle"></h2></div>
 <div class="style-detail-grid">
-<div><img alt="" class="style-detail-mainimg" id="styleDetailPhoto"/></div>
+<div><div class="style-detail-gallery"><img alt="" class="style-detail-mainimg" id="styleDetailPhoto"/><button aria-label="前の画像" class="style-detail-nav style-detail-prev" id="styleDetailPrev" type="button">‹</button><button aria-label="次の画像" class="style-detail-nav style-detail-next" id="styleDetailNext" type="button">›</button></div><div class="style-detail-thumbs" id="styleDetailThumbs"></div></div>
 <div class="style-detail-panel">
 <section class="style-detail-section"><h3 class="style-detail-heading">スタイリストコメント</h3><p class="style-detail-comment" id="styleDetailComment"></p>
 <div class="style-detail-staff"><img alt="スタイリスト おぎの" src="images/staff-ogino.jpg"/><div><b>おぎの</b><p>上新庄・吹田・千里丘<br/>HAIRSALON amona</p></div></div>
@@ -463,6 +541,9 @@ document.querySelectorAll('.filter').forEach(btn=>{
   const modal=document.getElementById('styleDetailModal');
   const closeBtn=document.getElementById('styleDetailClose');
   const photo=document.getElementById('styleDetailPhoto');
+  const thumbs=document.getElementById('styleDetailThumbs');
+  const prevBtn=document.getElementById('styleDetailPrev');
+  const nextBtn=document.getElementById('styleDetailNext');
   const modalNo=document.getElementById('styleDetailNo');
   const modalTitle=document.getElementById('styleDetailTitle');
   const commentEl=document.getElementById('styleDetailComment');
@@ -477,6 +558,52 @@ document.querySelectorAll('.filter').forEach(btn=>{
   let currentTitle='';
   let currentIndex=0;
   let suppressOpenUntil=0;
+  let galleryImages=[];
+  let galleryPos=0;
+  const galleryExtras={1:['images/style_gallery2/style_01_front2.jpg']};
+  function showGallery(pos){
+    if(!galleryImages.length)return;
+    galleryPos=(pos+galleryImages.length)%galleryImages.length;
+    photo.src=galleryImages[galleryPos];
+    [...thumbs.querySelectorAll('.style-detail-thumb')].forEach((b,i)=>b.classList.toggle('active',i===galleryPos));
+  }
+  function buildGallery(idx,mainSrc,t){
+    if(idx===1){ mainSrc='images/style_gallery2/style_01.jpg'; }
+    galleryImages=[mainSrc,...(galleryExtras[idx]||[])].filter(Boolean);
+    galleryPos=0;
+    thumbs.innerHTML='';
+    const labels=(idx===1?['FRONT','FRONT']:['FRONT','SIDE','BACK']);
+
+    galleryImages.forEach((src,i)=>{
+      const wrap=document.createElement('div');
+      wrap.className='style-detail-thumb-wrap';
+
+      const b=document.createElement('button');
+      b.type='button';
+      b.className='style-detail-thumb'+(i===0?' active':'');
+      b.setAttribute('aria-label',(labels[i]||('VIEW '+(i+1)))+'画像を表示');
+
+      const im=document.createElement('img');
+      im.src=src;
+      im.alt=t+' '+(labels[i]||('VIEW '+(i+1)));
+      b.appendChild(im);
+      b.addEventListener('click',()=>showGallery(i));
+
+      const lab=document.createElement('div');
+      lab.className='style-detail-thumb-label';
+      lab.textContent=labels[i]||('VIEW '+(i+1));
+
+      wrap.appendChild(b);
+      wrap.appendChild(lab);
+      thumbs.appendChild(wrap);
+    });
+
+    const multi=galleryImages.length>1;
+    prevBtn.style.display='none';
+    nextBtn.style.display='none';
+    thumbs.style.display=multi?'flex':'none';
+    showGallery(0);
+  }
 
   const coupons={
     kids3300:{name:'【平日限定】小学生以下キッズカット / 子供カット',price:'¥3,300',tags:['カット'],menu:'キッズカット / 子供カット'},
@@ -550,7 +677,7 @@ document.querySelectorAll('.filter').forEach(btn=>{
     couponTagsEl.innerHTML=cp.tags.map(v=>'<span>'+v+'</span>').join('');
     modelEl.innerHTML=tags.length?tags.map(v=>'<span>'+v+'</span>').join(''):'<span>おすすめスタイル</span>';
     photo.classList.toggle('safe-fit',[19,20,23,24,32].includes(idx));
-    if(img){photo.src=img.getAttribute('src');photo.alt=t;}
+    if(img){photo.alt=t;buildGallery(idx,img.getAttribute('src'),t);}else{galleryImages=[];thumbs.innerHTML='';prevBtn.style.display='none';nextBtn.style.display='none';}
     couponBtn.textContent='おすすめクーポンを使う '+cp.price;
     scroll.scrollTop=0;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.classList.add('amona-modal-open');setTimeout(()=>closeBtn&&closeBtn.focus(),0);
   }
@@ -591,6 +718,28 @@ document.querySelectorAll('.filter').forEach(btn=>{
     if(wasSelected)return;
     openDetail(c);
   }));
+  prevBtn&&prevBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();showGallery(galleryPos-1)});
+  nextBtn&&nextBtn.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();showGallery(galleryPos+1)});
+
+  let styleSwipeStartX=0;
+  let styleSwipeStartY=0;
+  photo.addEventListener('touchstart',function(e){
+    if(!e.touches || !e.touches[0])return;
+    styleSwipeStartX=e.touches[0].clientX;
+    styleSwipeStartY=e.touches[0].clientY;
+  },{passive:true});
+
+  photo.addEventListener('touchend',function(e){
+    if(galleryImages.length<2)return;
+    const touch=e.changedTouches && e.changedTouches[0];
+    if(!touch)return;
+    const dx=touch.clientX-styleSwipeStartX;
+    const dy=touch.clientY-styleSwipeStartY;
+    if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)){
+      showGallery(galleryPos+(dx<0?1:-1));
+    }
+  },{passive:true});
+
   if(closeBtn){
     closeBtn.addEventListener('pointerdown',function(e){
       suppressOpenUntil=Date.now()+900;
