@@ -1,0 +1,21 @@
+# SALON amona
+
+> SALON amonaは、吹田市・JR吹田駅周辺のヘアサロンです。
+
+## Official pages
+- Home: https://amona-hair.com/
+- Hair Style: https://amona-hair.com/hair-style.html
+
+## Services
+- カット
+- カラー
+- トリートメント
+- 髪質改善
+- ヘッドスパ
+- キッズカット
+
+## Hair Style
+Hair StyleページではStyle 01〜32を掲載しています。気になるスタイルをブックマークし、詳細画面のおすすめクーポンやスタイル情報を予約時の相談内容として利用できます。
+
+## Notes
+店舗情報・サービス内容については公式サイトの最新表示を優先してください。
