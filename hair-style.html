@@ -267,6 +267,59 @@ body.amona-modal-open{overflow:hidden}
 }
 </style>
 
+
+<style id="style-detail-mobile-size-fix">
+@media(max-width:760px){
+  .style-detail-dialog{
+    max-height:96vh !important;
+  }
+  .style-detail-scroll{
+    padding:14px 14px 10px !important;
+  }
+  .style-detail-titlebar{
+    margin-bottom:12px !important;
+    padding-bottom:9px !important;
+  }
+  .style-detail-grid{
+    gap:12px !important;
+  }
+  .style-detail-gallery{
+    text-align:center !important;
+  }
+  .style-detail-mainimg,
+  .style-detail-mainimg.safe-fit{
+    width:auto !important;
+    max-width:100% !important;
+    max-height:42vh !important;
+    margin:0 auto !important;
+    object-fit:contain !important;
+  }
+  .style-detail-thumbs{
+    margin-top:7px !important;
+    justify-content:flex-start;
+  }
+  .style-detail-thumb-wrap{
+    flex-basis:62px !important;
+    width:62px !important;
+  }
+  .style-detail-thumb{
+    width:62px !important;
+    height:62px !important;
+    flex-basis:62px !important;
+  }
+  .style-detail-actions{
+    padding:10px 12px 12px !important;
+    gap:8px !important;
+  }
+  .style-detail-consult,
+  .style-detail-coupon{
+    min-height:44px !important;
+    padding:10px 14px !important;
+    font-size:13px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
