@@ -320,6 +320,37 @@ body.amona-modal-open{overflow:hidden}
 }
 </style>
 
+
+<style id="mobile-actionbar-safearea-fix">
+@media(max-width:760px){
+  .style-detail-actions{
+    position:sticky !important;
+    bottom:0 !important;
+    z-index:20 !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+    padding:10px 12px calc(12px + env(safe-area-inset-bottom)) !important;
+    background:rgba(255,255,255,.98) !important;
+    border-top:1px solid #eadfd9 !important;
+    box-shadow:0 -4px 14px rgba(0,0,0,.05) !important;
+  }
+  .style-detail-coupon,
+  .style-detail-consult{
+    width:100% !important;
+    min-height:44px !important;
+    padding:10px 14px !important;
+    margin:0 !important;
+    font-size:13px !important;
+    line-height:1.35 !important;
+    white-space:normal !important;
+  }
+  .style-detail-scroll{
+    padding-bottom:150px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
