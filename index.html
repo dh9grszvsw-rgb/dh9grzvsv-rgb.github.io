@@ -1652,6 +1652,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 <div class="field"><label>電話番号</label><input autocomplete="tel" id="t" placeholder="例：090-0000-0000" type="tel"/></div>
 <div class="field full"><label>メニュー</label>
 <select id="m">
+<option value="" selected>メニューを選択してください</option>
 <option>カット＋髪質改善カラー＋ハホニコトリートメント ¥14,000</option>
 <option>【当日・前日限定】カット＋髪質改善カラー ¥11,000</option>
 <option>カット＋髪質改善カラー ¥12,000</option>
@@ -1662,6 +1663,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
       <option>キッズカット</option>
 <option>相談して決めたい</option>
 </select>
+<div id="selectedCouponNotice" style="display:none;margin-top:8px;padding:9px 11px;border-radius:8px;background:#fff4f7;color:#b94e6b;font-size:12px;line-height:1.55;border:1px solid #f0d6de"></div>
 </div>
 <div class="field"><label>第1希望日</label><input id="d" type="date"/></div>
 <div class="field"><label>希望時間</label><input id="tm" type="time"/></div>
@@ -2146,8 +2148,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function styles(){
     let a=readArray(sessionStorage,REQ);
     if(!a.length) a=readArray(localStorage,REQ);
-    if(!a.length) a=readArray(localStorage,FAV);
-    return [...new Set(a.filter(Boolean))];
+    return [...new Set(a.filter(v=>typeof v==='string' && v.trim()).map(v=>v.trim()))];
   }
   function coupon(){
     for(const storage of [sessionStorage,localStorage]){
@@ -2156,6 +2157,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if(c && c.name) return c;
       }catch(e){}
     }
+    // URL fallback makes the transfer reliable even when browser storage is blocked or cleared.
+    try{
+      const q=new URLSearchParams(location.search);
+      const name=q.get('couponName');
+      if(name){
+        return {
+          name,
+          price:q.get('couponPrice')||'',
+          menu:q.get('couponMenu')||name,
+          style:q.get('style')||''
+        };
+      }
+    }catch(e){}
     return null;
   }
   function stripStyleBlock(value, selected){
@@ -2183,15 +2197,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const box=document.getElementById('consultStylePreview');
     const list=document.getElementById('consultStylePreviewList');
 
-    if(cp && menu){
-      const label=(cp.name+' '+(cp.price||'')).trim();
-      let opt=[...menu.options].find(o=>o.value===label || o.textContent.trim()===label);
-      if(!opt){
-        opt=document.createElement('option');
-        opt.value=label; opt.textContent=label;
-        menu.insertBefore(opt,menu.firstChild);
+    if(menu){
+      // Remove any previously injected Hair Style coupon option.
+      [...menu.options].forEach(o=>{if(o.dataset && o.dataset.styleCoupon==='1')o.remove();});
+      if(cp){
+        const baseMenu=(cp.menu||cp.name||'おすすめクーポン').trim();
+        const label=('おすすめクーポン：'+baseMenu+(cp.price?' '+cp.price:'')).trim();
+        const opt=document.createElement('option');
+        opt.value=label;
+        opt.textContent=label;
+        opt.dataset.styleCoupon='1';
+        // Insert as the first real choice and select by index/value reliably.
+        try{ menu.add(opt,Math.min(1,menu.options.length)); }
+        catch(e){ menu.appendChild(opt); }
+        opt.selected=true;
+        menu.value=label;
+        if(menu.value!==label){
+          const found=[...menu.options].findIndex(o=>o.value===label);
+          if(found>=0) menu.selectedIndex=found;
+        }
+        menu.dispatchEvent(new Event('change',{bubbles:true}));
+      }else if(!menu.value){
+        menu.selectedIndex=0;
       }
-      menu.value=label;
+    }
+
+    const couponNotice=document.getElementById('selectedCouponNotice');
+    if(couponNotice){
+      if(cp){
+        couponNotice.style.display='block';
+        couponNotice.textContent='Hair Styleで選んだおすすめクーポンをメニューに反映しました：'+cp.name+(cp.price?' '+cp.price:'');
+      }else{
+        couponNotice.style.display='none';
+        couponNotice.textContent='';
+      }
     }
 
     if(box && list){
@@ -2246,6 +2285,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const note=document.getElementById('amona-style-sync-note');
     if(note) note.remove();
+
+    const menu=document.getElementById('m');
+    if(menu){
+      [...menu.options].forEach(o=>{if(o.dataset && o.dataset.styleCoupon==='1')o.remove();});
+      menu.selectedIndex=0;
+    }
+    const couponNotice=document.getElementById('selectedCouponNotice');
+    if(couponNotice){couponNotice.style.display='none';couponNotice.textContent='';}
   }
 
   // Extend the site's existing clearReservation without replacing the original form-clearing behavior.

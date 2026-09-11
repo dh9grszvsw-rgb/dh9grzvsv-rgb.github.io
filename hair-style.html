@@ -489,14 +489,25 @@ document.querySelectorAll('.filter').forEach(btn=>{
     20:'上品にまとまる編み下ろしヘアセット。特別な日にもおすすめです。'
   };
 
-  function load(){try{const a=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}}
+  function styleId(c){const n=Number(c&&c.dataset?c.dataset.styleIndex:0);return n?'style-'+String(n).padStart(2,'0'):''}
+  function load(){
+    try{
+      const a=JSON.parse(localStorage.getItem(KEY)||'[]');
+      if(!Array.isArray(a)) return [];
+      // Old versions stored titles. They caused duplicate selections when two styles had the same title.
+      // Keep only the new unique style IDs and silently discard legacy title entries.
+      const clean=[...new Set(a.filter(v=>/^style-\d{2}$/.test(String(v))))];
+      if(clean.length!==a.length) localStorage.setItem(KEY,JSON.stringify(clean));
+      return clean;
+    }catch(e){return[]}
+  }
   function save(a){localStorage.setItem(KEY,JSON.stringify([...new Set(a)]))}
   function card(btn){return btn.closest('.style-card')}
   function title(c){if(!c)return'';const n=c.querySelector('.style-title,h2,h3,h4');if(n&&n.textContent.trim())return n.textContent.trim();const img=c.querySelector('img');return img&&img.alt?img.alt.trim():''}
   function buttons(){return[...document.querySelectorAll('.fav')]}
-  function render(){const favs=load();buttons().forEach(btn=>{const on=favs.includes(title(card(btn)));btn.classList.toggle('on',on);btn.classList.toggle('is-favorite',on);btn.textContent=on?'♥':'♡';btn.setAttribute('aria-pressed',on?'true':'false');btn.setAttribute('aria-label',on?'ブックマークを解除':'ブックマークする')})}
-  function selectStyle(t){if(!t)return;const favs=load();if(!favs.includes(t))save([...favs,t]);render()}
-  function toggleStyle(t){if(!t)return false;const favs=load(),on=favs.includes(t);save(on?favs.filter(x=>x!==t):[...favs,t]);render();return !on}
+  function render(){const favs=load();buttons().forEach(btn=>{const c=card(btn),id=styleId(c),on=favs.includes(id);btn.classList.toggle('on',on);btn.classList.toggle('is-favorite',on);btn.textContent=on?'♥':'♡';btn.setAttribute('aria-pressed',on?'true':'false');btn.setAttribute('aria-label',on?'ブックマークを解除':'ブックマークする')})}
+  function selectStyle(c){if(!c)return;const id=styleId(c);if(!id)return;const favs=load();if(!favs.includes(id))save([...favs,id]);render()}
+  function toggleStyle(c){if(!c)return false;const id=styleId(c);if(!id)return false;const favs=load(),on=favs.includes(id);save(on?favs.filter(x=>x!==id):[...favs,id]);render();return !on}
   function autoComment(t,tags){if(comments[currentIndex])return comments[currentIndex];if(tags.includes('キッズ'))return 'お子さまの髪質・毛流れ・普段のお手入れに合わせて、可愛く扱いやすいスタイルに整えます。';if(tags.includes('カラー'))return t+'。透明感とツヤを大切に、肌なじみと扱いやすさを考えてご提案します。';if(tags.includes('ショート')||tags.includes('ボブ'))return t+'。骨格と毛流れに合わせ、まとまりと再現性を大切にしたスタイルです。';return t+'。髪質やライフスタイルに合わせて、扱いやすく似合うバランスをご提案します。'}
   function openDetail(c){
     if(!c||!modal)return;
@@ -524,7 +535,16 @@ document.querySelectorAll('.filter').forEach(btn=>{
     modal.setAttribute('aria-hidden','true');
     document.body.classList.remove('amona-modal-open');
   }
-  function storeRequest(){const favs=load();sessionStorage.setItem(REQ,JSON.stringify(favs));localStorage.setItem(REQ,JSON.stringify(favs))}
+  function storeRequest(){
+    const favs=load();
+    const selected=[...document.querySelectorAll('.style-card')]
+      .filter(c=>favs.includes(styleId(c)))
+      .map(c=>title(c))
+      .filter(Boolean);
+    const unique=[...new Set(selected)];
+    sessionStorage.setItem(REQ,JSON.stringify(unique));
+    localStorage.setItem(REQ,JSON.stringify(unique));
+  }
   // Close protection: block any click-through to a heart immediately after the modal closes.
   document.addEventListener('click',function(e){
     if(Date.now()<suppressOpenUntil && e.target.closest && e.target.closest('.fav')){
@@ -537,9 +557,9 @@ document.querySelectorAll('.filter').forEach(btn=>{
   buttons().forEach(btn=>btn.addEventListener('click',function(e){
     e.preventDefault();e.stopPropagation();
     if(Date.now()<suppressOpenUntil)return;
-    const c=card(btn),t=title(c);
-    const wasSelected=load().includes(t);
-    toggleStyle(t);
+    const c=card(btn);
+    const wasSelected=load().includes(styleId(c));
+    toggleStyle(c);
     // Second heart press = deselect only. Do not reopen the popup.
     if(wasSelected)return;
     openDetail(c);
@@ -555,8 +575,30 @@ document.querySelectorAll('.filter').forEach(btn=>{
   }
   modal&&modal.addEventListener('click',e=>{if(e.target===modal)closeDetail(e)});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal&&modal.classList.contains('open'))closeDetail(e)});
-  consultBtn&&consultBtn.addEventListener('click',function(){if(currentTitle)selectStyle(currentTitle);storeRequest()});
-  couponBtn&&couponBtn.addEventListener('click',function(){const cp=coupons[couponKey[currentIndex]]||coupons.treatment9000;if(currentTitle)selectStyle(currentTitle);storeRequest();const data={style:currentTitle,index:currentIndex,name:cp.name,price:cp.price};sessionStorage.setItem(COUPON,JSON.stringify(data));localStorage.setItem(COUPON,JSON.stringify(data));location.href='index.html#reserve-form'});
+  consultBtn&&consultBtn.addEventListener('click',function(){
+    const currentCard=document.querySelector('.style-card[data-style-index="'+currentIndex+'"]');
+    if(currentCard)selectStyle(currentCard);
+    storeRequest();
+    sessionStorage.removeItem(COUPON);
+    localStorage.removeItem(COUPON);
+  });
+  couponBtn&&couponBtn.addEventListener('click',function(){
+    const cp=coupons[couponKey[currentIndex]]||coupons.treatment9000;
+    const currentCard=document.querySelector('.style-card[data-style-index="'+currentIndex+'"]');
+    if(currentCard)selectStyle(currentCard);
+    storeRequest();
+    const data={style:currentTitle,index:currentIndex,name:cp.name,price:cp.price,menu:cp.menu||'',tags:cp.tags||[]};
+    sessionStorage.setItem(COUPON,JSON.stringify(data));
+    localStorage.setItem(COUPON,JSON.stringify(data));
+    const qs=new URLSearchParams({
+      coupon:'1',
+      style:currentTitle||'',
+      couponName:cp.name||'',
+      couponPrice:cp.price||'',
+      couponMenu:cp.menu||''
+    });
+    location.href='index.html?'+qs.toString()+'#reserve-form';
+  });
   render();
 })();
 </script>
