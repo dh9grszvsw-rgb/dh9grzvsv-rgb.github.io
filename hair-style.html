@@ -321,35 +321,7 @@ body.amona-modal-open{overflow:hidden}
 </style>
 
 
-<style id="mobile-actionbar-safearea-fix">
-@media(max-width:760px){
-  .style-detail-actions{
-    position:sticky !important;
-    bottom:0 !important;
-    z-index:20 !important;
-    display:grid !important;
-    grid-template-columns:1fr !important;
-    gap:8px !important;
-    padding:10px 12px calc(12px + env(safe-area-inset-bottom)) !important;
-    background:rgba(255,255,255,.98) !important;
-    border-top:1px solid #eadfd9 !important;
-    box-shadow:0 -4px 14px rgba(0,0,0,.05) !important;
-  }
-  .style-detail-coupon,
-  .style-detail-consult{
-    width:100% !important;
-    min-height:44px !important;
-    padding:10px 14px !important;
-    margin:0 !important;
-    font-size:13px !important;
-    line-height:1.35 !important;
-    white-space:normal !important;
-  }
-  .style-detail-scroll{
-    padding-bottom:150px !important;
-  }
-}
-</style>
+
 
 
 <style id="single-thumb-visible-fix">
@@ -362,6 +334,108 @@ body.amona-modal-open{overflow:hidden}
 @media(max-width:760px){
   .style-detail-thumbs{
     min-height:78px;
+  }
+}
+</style>
+
+
+<style id="mobile-popup-all32-viewport-fix">
+@media(max-width:760px){
+
+  /* Safari/Chromeの下部バーを含む「実際に見える高さ」に合わせる */
+  .style-detail-modal{
+    padding:4px !important;
+    align-items:center !important;
+    overflow:hidden !important;
+  }
+
+  .style-detail-dialog{
+    width:100% !important;
+    height:calc(100svh - 8px) !important;
+    max-height:calc(100svh - 8px) !important;
+    height:calc(100dvh - 8px) !important;
+    max-height:calc(100dvh - 8px) !important;
+    min-height:0 !important;
+    border-radius:12px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    overflow:hidden !important;
+  }
+
+  /* 中身だけをスクロール。下部ボタン領域は常に画面内に残す */
+  .style-detail-scroll{
+    flex:1 1 auto !important;
+    min-height:0 !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+    -webkit-overflow-scrolling:touch !important;
+    padding:14px 14px 18px !important;
+  }
+
+  /* 下部2ボタンはスクロール領域の外側で固定サイズ */
+  .style-detail-actions{
+    position:relative !important;
+    inset:auto !important;
+    bottom:auto !important;
+    flex:0 0 auto !important;
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    gap:7px !important;
+    width:100% !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    padding:8px 12px calc(10px + env(safe-area-inset-bottom)) !important;
+    background:#fffaf8 !important;
+    border-top:1px solid #eadfd9 !important;
+    box-shadow:0 -3px 12px rgba(0,0,0,.045) !important;
+    z-index:30 !important;
+  }
+
+  .style-detail-coupon,
+  .style-detail-consult{
+    display:flex !important;
+    width:100% !important;
+    min-width:0 !important;
+    min-height:42px !important;
+    height:auto !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    padding:9px 12px !important;
+    align-items:center !important;
+    justify-content:center !important;
+    font-size:12.5px !important;
+    line-height:1.3 !important;
+    white-space:normal !important;
+    text-align:center !important;
+  }
+
+  /* 本文が長いStyleでも画像が必要以上に縦を取らない */
+  .style-detail-mainimg,
+  .style-detail-mainimg.safe-fit{
+    width:auto !important;
+    max-width:100% !important;
+    max-height:38dvh !important;
+    margin:0 auto !important;
+    object-fit:contain !important;
+  }
+
+  .style-detail-thumbs{
+    margin-top:7px !important;
+    min-height:0 !important;
+  }
+
+  .style-detail-titlebar{
+    margin-bottom:10px !important;
+    padding-bottom:8px !important;
+  }
+
+  .style-detail-grid{
+    gap:12px !important;
+  }
+
+  .style-detail-close{
+    top:7px !important;
+    right:7px !important;
   }
 }
 </style>
