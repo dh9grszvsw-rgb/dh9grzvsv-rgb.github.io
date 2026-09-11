@@ -5,18 +5,17 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>ヘアスタイル｜吹田市の美容室 HAIRSALON amona</title>
-<meta name="description" content="吹田市昭和町の美容室 HAIRSALON amona（アモナ）のヘアスタイル集。キッズカット、ボブ、レイヤー、ショート、髪質改善、艶髪、ヘアセットなどのスタイルをご覧いただけます。">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="https://amona-hair.com/hair-style.html">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="ja_JP">
-<meta property="og:site_name" content="HAIRSALON amona">
-<meta property="og:title" content="ヘアスタイル｜吹田市の美容室 HAIRSALON amona">
-<meta property="og:description" content="キッズカット、ボブ、レイヤー、ショート、髪質改善、艶髪など、amonaのヘアスタイル集。">
-<meta property="og:url" content="https://amona-hair.com/hair-style.html">
-<meta property="og:image" content="https://amona-hair.com/images/style_gallery2/style_01.jpg">
-<meta name="twitter:card" content="summary_large_image">
-
+<meta content="吹田市昭和町の美容室 HAIRSALON amona（アモナ）のヘアスタイル集。キッズカット、ボブ、レイヤー、ショート、髪質改善、艶髪、ヘアセットなどのスタイルをご覧いただけます。" name="description"/>
+<meta content="index,follow,max-image-preview:large" name="robots"/>
+<link href="https://amona-hair.com/hair-style.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="ja_JP" property="og:locale"/>
+<meta content="HAIRSALON amona" property="og:site_name"/>
+<meta content="ヘアスタイル｜吹田市の美容室 HAIRSALON amona" property="og:title"/>
+<meta content="キッズカット、ボブ、レイヤー、ショート、髪質改善、艶髪など、amonaのヘアスタイル集。" property="og:description"/>
+<meta content="https://amona-hair.com/hair-style.html" property="og:url"/>
+<meta content="https://amona-hair.com/images/style_hq/style_01.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
 <style>
 :root{--bg:#fbf8f4;--paper:#fff;--text:#292421;--sub:#776d66;--line:#ddd4cc;--accent:#96715e}
 *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif}
@@ -34,7 +33,8 @@ h1{font:400 clamp(48px,6vw,76px) Georgia,serif;margin:8px 0} .lead{color:var(--s
 .grid{width:min(1180px,92%);margin:0 auto 56px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
 .style-card{position:relative;background:#fff;border:1px solid #ebe2dc;border-radius:10px;padding:10px;overflow:hidden;min-width:0}
 .photo-box{height:310px;background:#f5f0ec;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.photo-box img{width:100%;height:100%;object-fit:contain;object-position:center}
+.photo-box img{width:100%;height:100%;object-fit:contain;object-position:center;transition:transform .2s ease}
+.photo-box img{image-rendering:auto;backface-visibility:hidden;-webkit-font-smoothing:antialiased}
 .style-card h3{font-size:14px;line-height:1.45;margin:10px 0 8px;min-height:41px;font-weight:500}
 .tags{display:flex;gap:5px;flex-wrap:wrap;min-height:24px} .tag{font-size:10px;color:var(--sub);border:1px solid var(--line);border-radius:5px;padding:3px 7px}
 .fav{position:absolute;right:15px;top:15px;z-index:3;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;font-size:21px;cursor:pointer}
@@ -110,8 +110,7 @@ footer{border-top:1px solid var(--line);padding:25px;text-align:center;color:var
 /* 選択中ハートは文字として1個だけ表示。疑似要素による二重表示を禁止 */
 .fav.is-favorite::before,.is-favorite::before{content:none !important;display:none !important;}
 </style>
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "HAIRSALON amona ヘアスタイル",
@@ -120,10 +119,51 @@ footer{border-top:1px solid var(--line);padding:25px;text-align:center;color:var
   "isPartOf": {
     "@type": "WebSite",
     "name": "HAIRSALON amona",
-    "url": "https://amona-hair.com/"
+    "url": "https://amona-hair.com/",
+    "description": "吹田市昭和町の美容室 HAIRSALON amona。髪質改善、トリートメント、ヘッドスパ、キッズカットなどに対応。"
   }
-}
-</script>
+}</script>
+<style id="amona-style-detail-modal-css">
+/* ===== Style detail popup 01-32 ===== */
+body.amona-modal-open{overflow:hidden}
+.style-detail-modal{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(28,24,22,.68);backdrop-filter:blur(3px)}
+.style-detail-modal.open{display:flex}
+.style-detail-dialog{position:relative;width:min(980px,96vw);max-height:94vh;background:#fff;border-radius:16px;box-shadow:0 24px 70px rgba(0,0,0,.28);overflow:hidden;display:flex;flex-direction:column}
+.style-detail-close{position:absolute;right:12px;top:10px;z-index:4;width:42px;height:42px;border-radius:50%;border:0;background:rgba(32,28,26,.86);color:#fff;font-size:28px;line-height:1;cursor:pointer}
+.style-detail-scroll{overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;padding:26px}
+.style-detail-titlebar{padding:0 54px 12px 0;border-bottom:3px solid #eeeae6;margin-bottom:20px}
+.style-detail-titlebar h2{margin:0;font-size:22px;line-height:1.45;color:#4a403b}
+.style-detail-no{font-size:12px;color:#d05a77;font-weight:700;letter-spacing:.08em;margin-bottom:5px}
+.style-detail-grid{display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:28px;align-items:start}
+.style-detail-mainimg{width:100%;max-height:590px;object-fit:contain;background:#f8f6f4;border-radius:8px;display:block}
+.style-detail-mainimg.safe-fit{width:100%;max-height:540px;margin:0 auto;padding:0;object-fit:contain;background:#f8f6f4}
+.style-detail-panel{min-width:0}
+.style-detail-section{margin-bottom:18px}
+.style-detail-heading{margin:0 0 10px;padding:8px 11px;background:#f7f4f2;color:#df4667;font-size:14px;font-weight:700}
+.style-detail-comment{margin:0;line-height:1.8;color:#403936;font-size:14px}
+.style-detail-staff{display:flex;align-items:center;gap:12px;margin-top:12px}
+.style-detail-staff img{width:78px;height:78px;object-fit:cover;border-radius:3px}
+.style-detail-staff b{display:block;color:#765a46;margin-bottom:4px}
+.style-detail-staff p{margin:0;font-size:13px;line-height:1.55;color:#5b514b}
+.style-detail-menu{font-size:14px;line-height:1.7;color:#3d3734;white-space:pre-line}
+.style-detail-coupon-card{border:1px solid #ead9de;background:#fff;display:grid;grid-template-columns:24px 1fr;min-height:150px}
+.style-detail-coupon-side{display:flex;align-items:center;justify-content:center;background:#d66d8d;color:#fff;font-weight:700;font-size:12px;writing-mode:vertical-rl;letter-spacing:.12em}
+.style-detail-coupon-body{padding:13px 15px}
+.style-detail-coupon-top{display:flex;gap:8px;justify-content:space-between;align-items:flex-start}
+.style-detail-coupon-tags{display:flex;gap:5px;flex-wrap:wrap}
+.style-detail-coupon-tags span{background:#f88399;color:#fff;padding:3px 10px;font-size:11px;font-weight:700}
+.style-detail-price{color:#d63253;font-weight:700;white-space:nowrap}
+.style-detail-coupon-name{font-weight:700;color:#4e4540;font-size:15px;line-height:1.55;margin:9px 0 8px}
+.style-detail-conditions{font-size:12px;line-height:1.55;color:#cf3352}
+.style-detail-model{display:flex;gap:6px;flex-wrap:wrap}
+.style-detail-model span{background:#f2f0ef;color:#5d5550;padding:6px 10px;border-radius:999px;font-size:12px}
+.style-detail-actions{flex:0 0 auto;padding:14px 18px 16px;border-top:1px solid #eee3de;background:#fffaf8;display:flex;gap:10px;justify-content:center}
+.style-detail-consult,.style-detail-coupon{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 24px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer;text-decoration:none}
+.style-detail-consult{background:#2d2825;color:#fff;border:1px solid #2d2825;box-shadow:0 6px 18px rgba(45,40,37,.16)}
+.style-detail-coupon{background:#fff;color:#d85f7b;border:1px solid #e06f89;box-shadow:0 4px 14px rgba(224,111,137,.10)}
+.style-detail-coupon:hover{background:#fff3f6}.style-detail-consult:hover{opacity:.88}
+@media(max-width:760px){.style-detail-modal{padding:8px}.style-detail-dialog{width:100%;max-height:96vh;border-radius:12px}.style-detail-scroll{padding:16px}.style-detail-grid{grid-template-columns:1fr;gap:18px}.style-detail-mainimg{max-height:54vh}.style-detail-titlebar h2{font-size:18px}.style-detail-actions{flex-direction:column}.style-detail-consult,.style-detail-coupon{width:100%;box-sizing:border-box}.style-detail-close{right:8px;top:8px;width:38px;height:38px;font-size:25px}}
+</style>
 </head>
 <body>
 <header><div class="head">
@@ -151,200 +191,225 @@ footer{border-top:1px solid var(--line);padding:25px;text-align:center;color:var
 <div class="row"><span class="label">キッズ</span><button class="filter" data-filter="キッズ">キッズカット</button></div>
 </section>
 <main class="grid" id="styleGrid">
-<article class="style-card" data-tags="キッズ">
+<article class="style-card" data-style-index="1" data-tags="キッズ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="キッズカット" src="images/style_gallery2/style_01.jpg"/></div>
+<div class="photo-box"><img alt="キッズカット" src="images/style_hq/style_01.jpg"/></div>
 <h3>キッズカット</h3>
 <div class="tags"><span class="tag">キッズ</span></div>
 </article>
-<article class="style-card" data-tags="キッズ">
+<article class="style-card" data-style-index="2" data-tags="キッズ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="オン眉キッズカット" src="images/style_gallery2/style_02.jpg"/></div>
+<div class="photo-box"><img alt="オン眉キッズカット" src="images/style_hq/style_02.jpg"/></div>
 <h3>オン眉キッズカット</h3>
 <div class="tags"><span class="tag">キッズ</span></div>
 </article>
-<article class="style-card" data-tags="キッズ">
+<article class="style-card" data-style-index="3" data-tags="キッズ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="キッズカット/子供カット" src="images/style_gallery2/style_03.jpg"/></div>
+<div class="photo-box"><img alt="キッズカット/子供カット" src="images/style_hq/style_03.jpg"/></div>
 <h3>キッズカット/子供カット</h3>
 <div class="tags"><span class="tag">キッズ</span></div>
 </article>
-<article class="style-card" data-tags="ミディアム レイヤー カラー">
+<article class="style-card" data-style-index="4" data-tags="ミディアム レイヤー カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="レイヤーカット×アプリコットベージュ" src="images/style_gallery2/style_04.jpg"/></div>
+<div class="photo-box"><img alt="レイヤーカット×アプリコットベージュ" src="images/style_hq/style_04.jpg"/></div>
 <h3>レイヤーカット×アプリコットベージュ</h3>
 <div class="tags"><span class="tag">ミディアム</span><span class="tag">レイヤー</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="ショート">
+<article class="style-card" data-style-index="5" data-tags="ショート">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="ネオウルフ　20代　30代" src="images/style_gallery2/style_05.jpg"/></div>
+<div class="photo-box"><img alt="ネオウルフ　20代　30代" src="images/style_hq/style_05.jpg"/></div>
 <h3>ネオウルフ　20代　30代</h3>
 <div class="tags"><span class="tag">ショート</span></div>
 </article>
-<article class="style-card" data-tags="ミディアム レイヤー カラー">
+<article class="style-card" data-style-index="6" data-tags="ミディアム レイヤー カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="上品なツヤ髪を叶える、大人の地毛風ピンクブラウン×レイヤー" src="images/style_gallery2/style_06.jpg"/></div>
+<div class="photo-box"><img alt="上品なツヤ髪を叶える、大人の地毛風ピンクブラウン×レイヤー" src="images/style_hq/style_06.jpg"/></div>
 <h3>上品なツヤ髪を叶える、大人の地毛風ピンクブラウン×レイヤー</h3>
 <div class="tags"><span class="tag">ミディアム</span><span class="tag">レイヤー</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="キッズ">
+<article class="style-card" data-style-index="7" data-tags="キッズ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="キッズカット" src="images/style_gallery2/style_07.jpg"/></div>
+<div class="photo-box"><img alt="キッズカット" src="images/style_hq/style_07.jpg"/></div>
 <h3>キッズカット</h3>
 <div class="tags"><span class="tag">キッズ</span></div>
 </article>
-<article class="style-card" data-tags="キッズ ボブ">
+<article class="style-card" data-style-index="8" data-tags="キッズ ボブ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="子供カット/キッズカット/オン眉ボブ" src="images/style_gallery2/style_08.jpg"/></div>
+<div class="photo-box"><img alt="子供カット/キッズカット/オン眉ボブ" src="images/style_hq/style_08.jpg"/></div>
 <h3>子供カット/キッズカット/オン眉ボブ</h3>
 <div class="tags"><span class="tag">キッズ</span><span class="tag">ボブ</span></div>
 </article>
-<article class="style-card" data-tags="キッズ">
+<article class="style-card" data-style-index="9" data-tags="キッズ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="キッズカット/子供カット" src="images/style_gallery2/style_09.jpg"/></div>
+<div class="photo-box"><img alt="キッズカット/子供カット" src="images/style_hq/style_09.jpg"/></div>
 <h3>キッズカット/子供カット</h3>
 <div class="tags"><span class="tag">キッズ</span></div>
 </article>
-<article class="style-card" data-tags="ミディアム カラー">
+<article class="style-card" data-style-index="10" data-tags="ミディアム カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="ツヤ感たっぷり・フォギーベージュ×重めミディアム" src="images/style_gallery2/style_10.jpg"/></div>
+<div class="photo-box"><img alt="ツヤ感たっぷり・フォギーベージュ×重めミディアム" src="images/style_hq/style_10.jpg"/></div>
 <h3>ツヤ感たっぷり・フォギーベージュ×重めミディアム</h3>
 <div class="tags"><span class="tag">ミディアム</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="ミディアム 髪質改善">
+<article class="style-card" data-style-index="11" data-tags="ミディアム 髪質改善">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="地毛のような柔らかさ！髪質改善・縮毛矯正×毛先レイヤー" src="images/style_gallery2/style_11.jpg"/></div>
+<div class="photo-box"><img alt="地毛のような柔らかさ！髪質改善・縮毛矯正×毛先レイヤー" src="images/style_hq/style_11.jpg"/></div>
 <h3>地毛のような柔らかさ！髪質改善・縮毛矯正×毛先レイヤー</h3>
 <div class="tags"><span class="tag">ミディアム</span><span class="tag">髪質改善</span></div>
 </article>
-<article class="style-card" data-tags="ミディアム レイヤー">
+<article class="style-card" data-style-index="12" data-tags="ミディアム レイヤー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="韓国風レイヤー/ハッシュカット風" src="images/style_gallery2/style_12.jpg"/></div>
+<div class="photo-box"><img alt="韓国風レイヤー/ハッシュカット風" src="images/style_hq/style_12.jpg"/></div>
 <h3>韓国風レイヤー/ハッシュカット風</h3>
 <div class="tags"><span class="tag">ミディアム</span><span class="tag">レイヤー</span></div>
 </article>
-<article class="style-card" data-tags="ボブ カラー">
+<article class="style-card" data-style-index="13" data-tags="ボブ カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="オリーブベージュ/切りっぱなしカット/ボブ　20代　30代　40代" src="images/style_gallery2/style_13.jpg"/></div>
+<div class="photo-box"><img alt="オリーブベージュ/切りっぱなしカット/ボブ　20代　30代　40代" src="images/style_hq/style_13.jpg"/></div>
 <h3>オリーブベージュ/切りっぱなしカット/ボブ　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ボブ</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="ボブ">
+<article class="style-card" data-style-index="14" data-tags="ボブ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="ヘンリーボブ　20代　30代　40代" src="images/style_gallery2/style_14.jpg"/></div>
+<div class="photo-box"><img alt="ヘンリーボブ　20代　30代　40代" src="images/style_hq/style_14.jpg"/></div>
 <h3>ヘンリーボブ　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ボブ</span></div>
 </article>
-<article class="style-card" data-tags="ショート">
+<article class="style-card" data-style-index="15" data-tags="ショート">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="ショートカット　20代　30代　40代" src="images/style_gallery2/style_15.jpg"/></div>
+<div class="photo-box"><img alt="ショートカット　20代　30代　40代" src="images/style_hq/style_15.jpg"/></div>
 <h3>ショートカット　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ショート</span></div>
 </article>
-<article class="style-card" data-tags="ロング 髪質改善">
+<article class="style-card" data-style-index="16" data-tags="ロング 髪質改善">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="髪質改善トリートメントで艶髪ロング　20代　30代　40代" src="images/style_gallery2/style_16.jpg"/></div>
+<div class="photo-box"><img alt="髪質改善トリートメントで艶髪ロング　20代　30代　40代" src="images/style_hq/style_16.jpg"/></div>
 <h3>髪質改善トリートメントで艶髪ロング　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ロング</span><span class="tag">髪質改善</span></div>
 </article>
-<article class="style-card" data-tags="ロング">
+<article class="style-card" data-style-index="17" data-tags="ロング">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="艶髪ロング　20代　30代　40代" src="images/style_gallery2/style_17.jpg"/></div>
+<div class="photo-box"><img alt="艶髪ロング　20代　30代　40代" src="images/style_hq/style_17.jpg"/></div>
 <h3>艶髪ロング　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ロング</span></div>
 </article>
-<article class="style-card" data-tags="ロング 髪質改善">
+<article class="style-card" data-style-index="18" data-tags="ロング 髪質改善">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="髪質改善トリートメントで艶髪ロング　20代　30代　40代" src="images/style_gallery2/style_18.jpg"/></div>
+<div class="photo-box"><img alt="髪質改善トリートメントで艶髪ロング　20代　30代　40代" src="images/style_hq/style_18.jpg"/></div>
 <h3>髪質改善トリートメントで艶髪ロング　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ロング</span><span class="tag">髪質改善</span></div>
 </article>
-<article class="style-card" data-tags="ヘアセット">
+<article class="style-card" data-style-index="19" data-tags="ヘアセット">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="パーティーヘア/編み下ろし" src="images/style_gallery2/style_19.jpg"/></div>
+<div class="photo-box"><img alt="パーティーヘア/編み下ろし" src="images/style_hq/style_19.jpg"/></div>
 <h3>パーティーヘア/編み下ろし</h3>
 <div class="tags"><span class="tag">ヘアセット</span></div>
 </article>
-<article class="style-card" data-tags="ヘアセット">
+<article class="style-card" data-style-index="20" data-tags="ヘアセット">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="ヘアセット/編み下ろし" src="images/style_gallery2/style_20.jpg"/></div>
+<div class="photo-box"><img alt="ヘアセット/編み下ろし" src="images/style_hq/style_20.jpg"/></div>
 <h3>ヘアセット/編み下ろし</h3>
 <div class="tags"><span class="tag">ヘアセット</span></div>
 </article>
-<article class="style-card" data-tags="ミディアム レイヤー カラー">
+<article class="style-card" data-style-index="21" data-tags="ミディアム レイヤー カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="オリーブベージュ/レイヤーカット　20代　30代　40代" src="images/style_gallery2/style_21.jpg"/></div>
+<div class="photo-box"><img alt="オリーブベージュ/レイヤーカット　20代　30代　40代" src="images/style_hq/style_21.jpg"/></div>
 <h3>オリーブベージュ/レイヤーカット　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ミディアム</span><span class="tag">レイヤー</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="ボブ カラー">
+<article class="style-card" data-style-index="22" data-tags="ボブ カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="フォギーベージュ/グレージュ　20代　30代　40代" src="images/style_gallery2/style_22.jpg"/></div>
+<div class="photo-box"><img alt="フォギーベージュ/グレージュ　20代　30代　40代" src="images/style_hq/style_22.jpg"/></div>
 <h3>フォギーベージュ/グレージュ　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ボブ</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="ボブ カラー">
+<article class="style-card" data-style-index="23" data-tags="ボブ カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="オリーブベージュ/切りっぱなしカット/ボブ　20代　30代　40代" src="images/style_gallery2/style_23.jpg"/></div>
+<div class="photo-box"><img alt="オリーブベージュ/切りっぱなしカット/ボブ　20代　30代　40代" src="images/style_hq/style_23.jpg"/></div>
 <h3>オリーブベージュ/切りっぱなしカット/ボブ　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ボブ</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="ミディアム レイヤー カラー">
+<article class="style-card" data-style-index="24" data-tags="ミディアム レイヤー カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="オリーブグレージュ/切りっぱなし顔まわりレイヤー　20代　30代" src="images/style_gallery2/style_24.jpg"/></div>
+<div class="photo-box"><img alt="オリーブグレージュ/切りっぱなし顔まわりレイヤー　20代　30代" src="images/style_hq/style_24.jpg"/></div>
 <h3>オリーブグレージュ/切りっぱなし顔まわりレイヤー　20代　30代</h3>
 <div class="tags"><span class="tag">ミディアム</span><span class="tag">レイヤー</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="ボブ カラー">
+<article class="style-card" data-style-index="25" data-tags="ボブ カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="ラベンダーブラウン　20代　30代　40代" src="images/style_gallery2/style_25.jpg"/></div>
+<div class="photo-box"><img alt="ラベンダーブラウン　20代　30代　40代" src="images/style_hq/style_25.jpg"/></div>
 <h3>ラベンダーブラウン　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ボブ</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="ボブ レイヤー">
+<article class="style-card" data-style-index="26" data-tags="ボブ レイヤー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="レイヤーボブ　20代　30代　40代" src="images/style_gallery2/style_26.jpg"/></div>
+<div class="photo-box"><img alt="レイヤーボブ　20代　30代　40代" src="images/style_hq/style_26.jpg"/></div>
 <h3>レイヤーボブ　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ボブ</span><span class="tag">レイヤー</span></div>
 </article>
-<article class="style-card" data-tags="ボブ レイヤー カラー">
+<article class="style-card" data-style-index="27" data-tags="ボブ レイヤー カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="オリーブベージュ/レイヤーボブでふんわりまとまる　20代　30代" src="images/style_gallery2/style_27.jpg"/></div>
+<div class="photo-box"><img alt="オリーブベージュ/レイヤーボブでふんわりまとまる　20代　30代" src="images/style_hq/style_27.jpg"/></div>
 <h3>オリーブベージュ/レイヤーボブでふんわりまとまる　20代　30代</h3>
 <div class="tags"><span class="tag">ボブ</span><span class="tag">レイヤー</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="キッズ ボブ">
+<article class="style-card" data-style-index="28" data-tags="キッズ ボブ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="キッズカット/子供カット/オン眉" src="images/style_gallery2/style_28.jpg"/></div>
+<div class="photo-box"><img alt="キッズカット/子供カット/オン眉" src="images/style_hq/style_28.jpg"/></div>
 <h3>キッズカット/子供カット/オン眉</h3>
 <div class="tags"><span class="tag">キッズ</span><span class="tag">ボブ</span></div>
 </article>
-<article class="style-card" data-tags="キッズ">
+<article class="style-card" data-style-index="29" data-tags="キッズ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="キッズカット/子供カット/前髪カット/フロントカット" src="images/style_gallery2/style_29.jpg"/></div>
+<div class="photo-box"><img alt="キッズカット/子供カット/前髪カット/フロントカット" src="images/style_hq/style_29.jpg"/></div>
 <h3>キッズカット/子供カット/前髪カット/フロントカット</h3>
 <div class="tags"><span class="tag">キッズ</span></div>
 </article>
-<article class="style-card" data-tags="キッズ">
+<article class="style-card" data-style-index="30" data-tags="キッズ">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="キッズカット/子供カット/オン眉/前髪カット/フロントカット" src="images/style_gallery2/style_30.jpg"/></div>
+<div class="photo-box"><img alt="キッズカット/子供カット/オン眉/前髪カット/フロントカット" src="images/style_hq/style_30.jpg"/></div>
 <h3>キッズカット/子供カット/オン眉/前髪カット/フロントカット</h3>
 <div class="tags"><span class="tag">キッズ</span></div>
 </article>
-<article class="style-card" data-tags="ロング カラー">
+<article class="style-card" data-style-index="31" data-tags="ロング カラー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="ブルーブラック　20代　30代　40代" src="images/style_gallery2/style_31.jpg"/></div>
+<div class="photo-box"><img alt="ブルーブラック　20代　30代　40代" src="images/style_hq/style_31.jpg"/></div>
 <h3>ブルーブラック　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ロング</span><span class="tag">カラー</span></div>
 </article>
-<article class="style-card" data-tags="ショート ボブ レイヤー">
+<article class="style-card" data-style-index="32" data-tags="ショート ボブ レイヤー">
 <button aria-label="お気に入り" class="fav" type="button">♡</button>
-<div class="photo-box"><img alt="ショートくびれボブ/レイヤー/顔周りレイヤー　20代　30代　40代" src="images/style_gallery2/style_32.jpg"/></div>
+<div class="photo-box"><img alt="ショートくびれボブ/レイヤー/顔周りレイヤー　20代　30代　40代" src="images/style_hq/style_32.jpg"/></div>
 <h3>ショートくびれボブ/レイヤー/顔周りレイヤー　20代　30代　40代</h3>
 <div class="tags"><span class="tag">ショート</span><span class="tag">ボブ</span><span class="tag">レイヤー</span></div>
 </article>
 </main>
 <div class="back"><a href="index.html#reserve">このスタイルを相談して予約する →</a></div>
+<div aria-hidden="true" aria-labelledby="styleDetailTitle" aria-modal="true" class="style-detail-modal" id="styleDetailModal" role="dialog">
+<div class="style-detail-dialog" role="document">
+<button aria-label="閉じる" class="style-detail-close" id="styleDetailClose" type="button">×</button>
+<div class="style-detail-scroll" id="styleDetailScroll">
+<div class="style-detail-titlebar"><div class="style-detail-no" id="styleDetailNo"></div><h2 id="styleDetailTitle"></h2></div>
+<div class="style-detail-grid">
+<div><img alt="" class="style-detail-mainimg" id="styleDetailPhoto"/></div>
+<div class="style-detail-panel">
+<section class="style-detail-section"><h3 class="style-detail-heading">スタイリストコメント</h3><p class="style-detail-comment" id="styleDetailComment"></p>
+<div class="style-detail-staff"><img alt="スタイリスト おぎの" src="images/staff-ogino.jpg"/><div><b>おぎの</b><p>上新庄・吹田・千里丘<br/>HAIRSALON amona</p></div></div>
+</section>
+<section class="style-detail-section"><h3 class="style-detail-heading">メニュー内容</h3><div class="style-detail-menu" id="styleDetailMenu"></div></section>
+<section class="style-detail-section"><h3 class="style-detail-heading">おすすめクーポン</h3>
+<div class="style-detail-coupon-card"><div class="style-detail-coupon-side">おすすめ</div><div class="style-detail-coupon-body"><div class="style-detail-coupon-top"><div class="style-detail-coupon-tags" id="styleDetailCouponTags"></div><div class="style-detail-price" id="styleDetailPrice"></div></div><div class="style-detail-coupon-name" id="styleDetailCouponName"></div><div class="style-detail-conditions">来店日条件：指定なし<br/>対象スタイリスト：全員<br/>その他条件：クーポン内容に準ずる</div></div></div>
+</section>
+<section class="style-detail-section"><h3 class="style-detail-heading">モデル情報</h3><div class="style-detail-model" id="styleDetailModel"></div></section>
+</div>
+</div>
+</div>
+<div class="style-detail-actions">
+<button class="style-detail-coupon" id="styleDetailCoupon" type="button">おすすめクーポンを使う</button>
+<a class="style-detail-consult" href="index.html#reserve-form" id="styleDetailConsult">このスタイルを相談して予約する →</a>
+</div>
+</div>
+</div>
 <footer>© 2026 HAIRSALON amona. All Rights Reserved.</footer>
 <script>
 document.querySelectorAll('.filter').forEach(btn=>{
@@ -366,61 +431,132 @@ document.querySelectorAll('.filter').forEach(btn=>{
 <script id="amona-favorite-clean">
 (function(){
   const KEY='amona_favorite_styles';
+  const REQ='amona_selected_styles_for_request';
+  const COUPON='amona_selected_coupon';
+  const modal=document.getElementById('styleDetailModal');
+  const closeBtn=document.getElementById('styleDetailClose');
+  const photo=document.getElementById('styleDetailPhoto');
+  const modalNo=document.getElementById('styleDetailNo');
+  const modalTitle=document.getElementById('styleDetailTitle');
+  const commentEl=document.getElementById('styleDetailComment');
+  const menuEl=document.getElementById('styleDetailMenu');
+  const couponBtn=document.getElementById('styleDetailCoupon');
+  const couponNameEl=document.getElementById('styleDetailCouponName');
+  const priceEl=document.getElementById('styleDetailPrice');
+  const couponTagsEl=document.getElementById('styleDetailCouponTags');
+  const modelEl=document.getElementById('styleDetailModel');
+  const consultBtn=document.getElementById('styleDetailConsult');
+  const scroll=document.getElementById('styleDetailScroll');
+  let currentTitle='';
+  let currentIndex=0;
+  let suppressOpenUntil=0;
 
-  function load(){
-    try{
-      const a=JSON.parse(localStorage.getItem(KEY)||'[]');
-      return Array.isArray(a)?a:[];
-    }catch(e){ return []; }
-  }
-  function save(a){
-    localStorage.setItem(KEY,JSON.stringify([...new Set(a)]));
-  }
-  function card(btn){ return btn.closest('.style-card'); }
-  function title(c){
-    if(!c) return '';
-    const n=c.querySelector('.style-title,h2,h3,h4');
-    if(n && n.textContent.trim()) return n.textContent.trim();
-    const img=c.querySelector('img');
-    return img && img.alt ? img.alt.trim() : '';
-  }
-  function buttons(){
-    return [...document.querySelectorAll('.fav')];
-  }
-  function render(){
-    const favs=load();
-    buttons().forEach(btn=>{
-      const on=favs.includes(title(card(btn)));
-      btn.classList.toggle('on',on);
-      btn.textContent=on?'♥':'♡';
-      btn.setAttribute('aria-pressed',on?'true':'false');
-    });
-  }
+  const coupons={
+    kids3300:{name:'【平日限定】小学生以下キッズカット / 子供カット',price:'¥3,300',tags:['カット'],menu:'キッズカット / 子供カット'},
+    kids0:{name:'【LINE予約限定】¥13,000以上のクーポン選択でキッズカット無料☆',price:'¥0',tags:['カット'],menu:'キッズカット'},
+    color14000:{name:'【人気No1】カット＋髪質改善カラー＋ハホニコトリートメント',price:'¥14,000',tags:['カット','カラー','トリートメント'],menu:'カット＋髪質改善カラー＋ハホニコトリートメント'},
+    treatment9000:{name:'【パサつき解消】カット＋髪質改善トリートメント',price:'¥9,000',tags:['カット','トリートメント'],menu:'カット＋髪質改善トリートメント'},
+    damage16000:{name:'【ダメージ改善ケア】カット＋髪質改善カラー＋トリートメント',price:'¥16,000',tags:['カット','カラー','トリートメント'],menu:'髪質改善カラー＋カット＋トリートメント'},
+    straight18500:{name:'【柔らか質感】カット＋髪質改善縮毛矯正（Core配合でダメージ最小限）',price:'¥18,500',tags:['カット','縮毛矯正'],menu:'ストレートパーマ・縮毛矯正\n髪質改善縮毛矯正カット＋トリートメント'},
+    straight23000:{name:'【広がり改善】カット＋髪質改善縮毛矯正＋極上トリートメント',price:'¥23,000',tags:['カット','縮毛矯正','トリートメント'],menu:'ストレートパーマ・縮毛矯正\nトリートメント'},
+    spa9000:{name:'頭皮スッキリ×髪サラツヤ　スパ30分＋トリートメント',price:'¥9,000',tags:['トリートメント','ヘッドスパ'],menu:'トリートメント＋カット'},
+    set5500:{name:'【崩れにくい】ヘアセット',price:'¥5,500',tags:['ヘアセット'],menu:'ヘアセット'}
+  };
+  const couponKey={
+    1:'kids3300',2:'kids0',3:'kids0',4:'color14000',5:'treatment9000',6:'damage16000',7:'kids3300',8:'kids0',9:'kids3300',10:'color14000',11:'straight18500',12:'spa9000',13:'color14000',14:'color14000',15:'treatment9000',16:'straight18500',17:'straight18500',18:'straight23000',19:'set5500',20:'set5500',
+    21:'color14000',22:'color14000',23:'color14000',24:'color14000',25:'color14000',26:'treatment9000',27:'treatment9000',28:'kids3300',29:'kids3300',30:'kids0',31:'color14000',32:'treatment9000'
+  };
+  const comments={
+    1:'キッズカットでやっぱり人気な、すっきり扱いやすいスタイルです。お子さまの雰囲気や髪質に合わせてご提案します。',
+    2:'オン眉で表情が明るく見えるキッズスタイル。毎日のお手入れがしやすいバランスに整えます。',
+    3:'お子さまの可愛らしさを活かしたナチュラルなキッズカットです。',
+    4:'顔周りのレイヤーとアプリコットベージュで、柔らかさと抜け感を出したスタイルです。',
+    5:'表面にレイヤーを入れすぎず、スタイリングしやすい軽さを出したネオウルフです。',
+    6:'顔周りを包み込むレイヤーと地毛風ピンクブラウンで、上品なツヤと柔らかさを叶えます。',
+    7:'元気なお子さまにも扱いやすい、すっきりキッズカットです。',
+    8:'オン眉ボブで可愛らしく、まとまりやすいキッズスタイルです。',
+    9:'お子さまの骨格や毛流れに合わせた、自然なキッズカットです。',
+    10:'光に透けるフォギーベージュと重めミディアムで、ツヤと柔らかさを演出します。',
+    11:'クセや広がりを自然に整え、地毛のような柔らかさを目指す髪質改善・縮毛矯正スタイルです。',
+    12:'顔周りをさりげなく包み込む韓国風レイヤー。ストレートでも動きが出やすいデザインです。',
+    13:'オリーブベージュと切りっぱなしボブで、透明感と扱いやすさを両立したスタイルです。',
+    14:'暖色カラーでツヤを引き立てた、まとまりの良いヘンリーボブです。',
+    15:'持ちの良いショートカットで、日々のお手入れが楽になるように整えます。',
+    16:'髪質改善トリートメントと定期的なメンテナンスで、きれいな艶髪ロングへ。',
+    17:'柔らかく自然なツヤを大切にしたロングスタイルです。',
+    18:'髪質改善縮毛矯正とトリートメントで、まとまりと艶をしっかり整えます。',
+    19:'崩れにくさと華やかさを両立した、パーティー向け編み下ろしヘアセットです。',
+    20:'上品にまとまる編み下ろしヘアセット。特別な日にもおすすめです。'
+  };
 
-  buttons().forEach(btn=>{
-    btn.addEventListener('click',function(e){
+  function load(){try{const a=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}}
+  function save(a){localStorage.setItem(KEY,JSON.stringify([...new Set(a)]))}
+  function card(btn){return btn.closest('.style-card')}
+  function title(c){if(!c)return'';const n=c.querySelector('.style-title,h2,h3,h4');if(n&&n.textContent.trim())return n.textContent.trim();const img=c.querySelector('img');return img&&img.alt?img.alt.trim():''}
+  function buttons(){return[...document.querySelectorAll('.fav')]}
+  function render(){const favs=load();buttons().forEach(btn=>{const on=favs.includes(title(card(btn)));btn.classList.toggle('on',on);btn.classList.toggle('is-favorite',on);btn.textContent=on?'♥':'♡';btn.setAttribute('aria-pressed',on?'true':'false');btn.setAttribute('aria-label',on?'ブックマークを解除':'ブックマークする')})}
+  function selectStyle(t){if(!t)return;const favs=load();if(!favs.includes(t))save([...favs,t]);render()}
+  function toggleStyle(t){if(!t)return false;const favs=load(),on=favs.includes(t);save(on?favs.filter(x=>x!==t):[...favs,t]);render();return !on}
+  function autoComment(t,tags){if(comments[currentIndex])return comments[currentIndex];if(tags.includes('キッズ'))return 'お子さまの髪質・毛流れ・普段のお手入れに合わせて、可愛く扱いやすいスタイルに整えます。';if(tags.includes('カラー'))return t+'。透明感とツヤを大切に、肌なじみと扱いやすさを考えてご提案します。';if(tags.includes('ショート')||tags.includes('ボブ'))return t+'。骨格と毛流れに合わせ、まとまりと再現性を大切にしたスタイルです。';return t+'。髪質やライフスタイルに合わせて、扱いやすく似合うバランスをご提案します。'}
+  function openDetail(c){
+    if(!c||!modal)return;
+    const idx=Number(c.dataset.styleIndex||0),t=title(c),img=c.querySelector('.photo-box img');
+    currentTitle=t;currentIndex=idx;
+    const tags=[...c.querySelectorAll('.tag')].map(x=>x.textContent.trim()).filter(Boolean);
+    const cp=coupons[couponKey[idx]]||coupons.treatment9000;
+    // Always clear previous style before applying current style, preventing stale images.
+    photo.removeAttribute('src');photo.alt='';
+    modalNo.textContent='STYLE '+String(idx).padStart(2,'0');modalTitle.textContent=t;
+    commentEl.textContent=autoComment(t,tags);menuEl.textContent=cp.menu;
+    couponNameEl.textContent=cp.name;priceEl.textContent=cp.price;
+    couponTagsEl.innerHTML=cp.tags.map(v=>'<span>'+v+'</span>').join('');
+    modelEl.innerHTML=tags.length?tags.map(v=>'<span>'+v+'</span>').join(''):'<span>おすすめスタイル</span>';
+    photo.classList.toggle('safe-fit',[19,20,23,24,32].includes(idx));
+    if(img){photo.src=img.getAttribute('src');photo.alt=t;}
+    couponBtn.textContent='おすすめクーポンを使う '+cp.price;
+    scroll.scrollTop=0;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.classList.add('amona-modal-open');setTimeout(()=>closeBtn&&closeBtn.focus(),0);
+  }
+  function closeDetail(e){
+    if(e){e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();}
+    if(!modal)return;
+    suppressOpenUntil=Date.now()+900;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('amona-modal-open');
+  }
+  function storeRequest(){const favs=load();sessionStorage.setItem(REQ,JSON.stringify(favs));localStorage.setItem(REQ,JSON.stringify(favs))}
+  // Close protection: block any click-through to a heart immediately after the modal closes.
+  document.addEventListener('click',function(e){
+    if(Date.now()<suppressOpenUntil && e.target.closest && e.target.closest('.fav')){
       e.preventDefault();
       e.stopPropagation();
-      const t=title(card(btn));
-      if(!t) return;
-      let favs=load();
-      favs=favs.includes(t)?favs.filter(x=>x!==t):[...favs,t];
-      save(favs);
-      render();
-    });
-  });
+      if(e.stopImmediatePropagation)e.stopImmediatePropagation();
+    }
+  },true);
 
-  const consult=[...document.querySelectorAll('a,button')].find(el =>
-    (el.textContent||'').includes('このスタイルを相談して予約する')
-  );
-  if(consult){
-    consult.addEventListener('click',function(){
-      const favs=load();
-      sessionStorage.setItem('amona_selected_styles_for_request',JSON.stringify(favs));
-      localStorage.setItem('amona_selected_styles_for_request',JSON.stringify(favs));
+  buttons().forEach(btn=>btn.addEventListener('click',function(e){
+    e.preventDefault();e.stopPropagation();
+    if(Date.now()<suppressOpenUntil)return;
+    const c=card(btn),t=title(c);
+    const wasSelected=load().includes(t);
+    toggleStyle(t);
+    // Second heart press = deselect only. Do not reopen the popup.
+    if(wasSelected)return;
+    openDetail(c);
+  }));
+  if(closeBtn){
+    closeBtn.addEventListener('pointerdown',function(e){
+      suppressOpenUntil=Date.now()+900;
+      e.preventDefault();
+      e.stopPropagation();
+      if(e.stopImmediatePropagation)e.stopImmediatePropagation();
     });
+    closeBtn.addEventListener('click',closeDetail);
   }
-
+  modal&&modal.addEventListener('click',e=>{if(e.target===modal)closeDetail(e)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal&&modal.classList.contains('open'))closeDetail(e)});
+  consultBtn&&consultBtn.addEventListener('click',function(){if(currentTitle)selectStyle(currentTitle);storeRequest()});
+  couponBtn&&couponBtn.addEventListener('click',function(){const cp=coupons[couponKey[currentIndex]]||coupons.treatment9000;if(currentTitle)selectStyle(currentTitle);storeRequest();const data={style:currentTitle,index:currentIndex,name:cp.name,price:cp.price};sessionStorage.setItem(COUPON,JSON.stringify(data));localStorage.setItem(COUPON,JSON.stringify(data));location.href='index.html#reserve-form'});
   render();
 })();
 </script>
