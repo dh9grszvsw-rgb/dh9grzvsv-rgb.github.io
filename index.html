@@ -1622,6 +1622,125 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 }
 </script>
 <meta name="description" content="HAIRSALON amonaは大阪府吹田市昭和町、JR吹田駅から徒歩約8分の完全予約制プライベートサロン。髪質改善、TOKIOトリートメント、ヘッドスパ、キッズカットなどをご相談いただけます。詳細住所は予約確定後にご案内します。">
+
+
+
+
+<style id="hair-style-guide-design-fix">
+/* 「このサロンのHair Styleをすべて見る」ボタン */
+.check-style-more{
+  margin-top:34px !important;
+  text-align:center !important;
+}
+.check-style-more > a{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  min-width:360px;
+  padding:15px 34px !important;
+  border:1px solid #b98a7a !important;
+  border-radius:999px !important;
+  background:#b98278 !important;
+  color:#fff !important;
+  text-decoration:none !important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif !important;
+  font-size:17px !important;
+  font-weight:500 !important;
+  letter-spacing:.05em !important;
+  line-height:1.5 !important;
+  box-shadow:none !important;
+  transition:opacity .2s ease,transform .2s ease !important;
+}
+.check-style-more > a:hover{
+  opacity:.88;
+  transform:translateY(-1px);
+}
+
+/* Hair Style説明ブロック */
+.hair-consult-guide{
+  max-width:1040px !important;
+  margin:30px auto 54px !important;
+  padding:0 24px !important;
+}
+.hair-consult-guide__inner{
+  max-width:860px;
+  margin:0 auto;
+  padding:34px 38px 30px !important;
+  background:transparent !important;
+  border-top:1px solid #e5d9d3;
+  border-bottom:1px solid #e5d9d3;
+}
+.hair-consult-guide h2{
+  position:relative;
+  margin:0 0 22px !important;
+  padding-bottom:14px;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif !important;
+  font-size:27px !important;
+  font-weight:500 !important;
+  line-height:1.55 !important;
+  letter-spacing:.06em !important;
+  text-align:left !important;
+  color:#3f3531 !important;
+}
+.hair-consult-guide h2::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:44px;
+  height:1px;
+  background:#c99b90;
+}
+.hair-consult-guide p{
+  margin:0 !important;
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif !important;
+  font-size:15px !important;
+  font-weight:400 !important;
+  line-height:2.05 !important;
+  letter-spacing:.035em !important;
+  text-align:left !important;
+  color:#514640 !important;
+}
+
+@media(max-width:767px){
+  .check-style-more{
+    margin-top:25px !important;
+    padding:0 18px;
+  }
+  .check-style-more > a{
+    width:100%;
+    min-width:0;
+    padding:14px 16px !important;
+    font-size:15px !important;
+    letter-spacing:.025em !important;
+  }
+  .hair-consult-guide{
+    margin:24px auto 38px !important;
+    padding:0 18px !important;
+  }
+  .hair-consult-guide__inner{
+    padding:26px 4px 24px !important;
+  }
+  .hair-consult-guide h2{
+    margin-bottom:18px !important;
+    padding-bottom:12px;
+    font-size:21px !important;
+    line-height:1.55 !important;
+    letter-spacing:.035em !important;
+    text-align:left !important;
+  }
+  .hair-consult-guide p{
+    font-size:14px !important;
+    line-height:1.95 !important;
+    letter-spacing:.01em !important;
+    text-align:left !important;
+  }
+  .hair-consult-guide .pc-only{
+    display:none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -1721,6 +1840,23 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 <div class="check-style-more">
 <a href="hair-style.html">このサロンのHair Styleをすべて見る →</a>
+<section class="hair-consult-guide" aria-labelledby="hair-consult-title">
+<div class="hair-consult-guide__inner">
+<h2 id="hair-consult-title">ヘアスタイルから相談できます</h2>
+<p>Hair StyleではStyle 01〜32から気になる髪型を選べます。<br class="pc-only">ブックマークしたスタイルやおすすめクーポンは、そのまま予約時のご相談内容に反映できます。<br class="pc-only">カット、カラー、髪質改善、ヘッドスパ、キッズカットなどもお気軽にご相談ください。</p>
+</div></section>
+<style>
+.hair-consult-guide{max-width:1100px;margin:18px auto 42px;padding:0 24px}
+.hair-consult-guide__inner{padding:24px 28px;background:#fbf8f5}
+.hair-consult-guide h2{margin:0 0 12px;font-size:24px;font-weight:500;line-height:1.5;letter-spacing:.04em;text-align:left}
+.hair-consult-guide p{margin:0;font-size:15px;line-height:2;letter-spacing:.02em;text-align:left}
+@media(max-width:767px){
+.hair-consult-guide{margin:12px auto 30px;padding:0 18px}
+.hair-consult-guide__inner{padding:20px 18px}
+.hair-consult-guide h2{margin-bottom:10px;font-size:20px;line-height:1.45;letter-spacing:.02em}
+.hair-consult-guide p{font-size:14px;line-height:1.85;letter-spacing:0}
+.hair-consult-guide .pc-only{display:none}}
+</style>
 </div>
 </div>
 </section>
