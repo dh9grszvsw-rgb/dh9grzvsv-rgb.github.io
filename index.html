@@ -1740,13 +1740,20 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </style>
 
 <style id="hair-diagnosis-entry-style">
-.hero-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.diagnosis-btn{background:#fff!important;color:#a84f65!important;border:1px solid #d98aa0!important;box-shadow:0 5px 18px rgba(201,111,130,.13)}
-.diagnosis-btn:hover{background:#fff4f7!important;transform:translateY(-1px)}
+.diagnosis-entry{padding:32px 0;background:#fff7f8;border-top:1px solid #f0dfe3;border-bottom:1px solid #f0dfe3}
+.diagnosis-entry-inner{width:min(920px,92%);margin:auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:28px}
+.diagnosis-entry-copy .eyebrow{margin-bottom:6px;color:#bd667b}
+.diagnosis-entry-copy h2{font:400 25px/1.5 Georgia,"Yu Mincho",serif;margin:0 0 5px}
+.diagnosis-entry-copy p{margin:0;color:var(--sub);font-size:13px}
+.diagnosis-btn{white-space:nowrap;background:#fff!important;color:#a84f65!important;border:1px solid #d98aa0!important;box-shadow:0 5px 18px rgba(201,111,130,.13)}
+.diagnosis-btn:hover{background:#fff!important;transform:translateY(-1px)}
 .diagnosis-btn .free-label{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:999px;background:#f7dfe5;color:#a84f65;font-size:10px;line-height:1.5}
 @media(max-width:760px){
-  .hero-actions{display:grid;grid-template-columns:1fr;max-width:310px}
-  .hero-actions .btn{width:100%}
+  .diagnosis-entry{padding:28px 0}
+  .diagnosis-entry-inner{grid-template-columns:1fr;text-align:center;gap:17px}
+  .diagnosis-entry-copy h2{font-size:22px}
+  .diagnosis-entry-copy p{font-size:13px}
+  .diagnosis-entry .diagnosis-btn{width:min(310px,100%);margin:auto}
 }
 </style>
 
@@ -1773,8 +1780,14 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 </div>
 <section class="hero">
-<div class="hero-copy"><div><div class="eyebrow">BEAUTY / STYLE / LIFE</div><h1><span class="hero-title-line">あなたらしさを、</span><span class="hero-title-line">もっと美しく。</span></h1><p>髪質・骨格・ライフスタイルまで考えた、<br/>あなただけのヘアデザインをご提案します。</p><div class="hero-actions"><a class="btn" href="#reserve">ご予約はこちら →</a><a class="btn diagnosis-btn" href="hair-diagnosis.html">髪のお悩み診断<span class="free-label">無料・約1分</span></a></div></div></div>
+<div class="hero-copy"><div><div class="eyebrow">BEAUTY / STYLE / LIFE</div><h1><span class="hero-title-line">あなたらしさを、</span><span class="hero-title-line">もっと美しく。</span></h1><p>髪質・骨格・ライフスタイルまで考えた、<br/>あなただけのヘアデザインをご提案します。</p><a class="btn" href="#reserve">ご予約はこちら →</a></div></div>
 <div class="hero-photo"><img alt="amona メインビジュアル" src="images/main_complete_20260913.png"/></div>
+</section>
+<section class="diagnosis-entry" aria-labelledby="diagnosis-entry-title">
+<div class="diagnosis-entry-inner">
+<div class="diagnosis-entry-copy"><div class="eyebrow">HAIR COUNSELING</div><h2 id="diagnosis-entry-title">メニュー選びに迷った方へ</h2><p>5つの質問から、今のお悩みに合う施術と参考スタイルをご案内します。</p></div>
+<a class="btn diagnosis-btn" href="hair-diagnosis.html">髪のお悩み診断をする<span class="free-label">無料・約1分</span></a>
+</div>
 </section>
 <section class="section" id="concept">
 <div class="container story-grid">
