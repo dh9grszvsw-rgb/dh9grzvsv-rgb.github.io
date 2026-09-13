@@ -1583,12 +1583,10 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
           }
         ]
       }
-    }]
     }
   ]
 }
 </script>
-<meta name="description" content="HAIRSALON amonaは大阪府吹田市昭和町、JR吹田駅から徒歩約8分の完全予約制プライベートサロン。髪質改善、TOKIOトリートメント、ヘッドスパ、キッズカットなどをご相談いただけます。詳細住所は予約確定後にご案内します。">
 
 
 
@@ -1724,6 +1722,22 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 
 
 
+
+<style id="reservation-mobile-compact">
+@media(max-width:760px){
+  #reserve .form-grid,
+  #reserve .reserve-actions,
+  #reserve .reserve-status,
+  #reserve .preview,
+  #reserve .reserve-help{display:none}
+  #reserve.form-open .form-grid{display:grid}
+  #reserve.form-open .reserve-actions{display:flex}
+  #reserve.form-open .reserve-status{display:flex}
+  #reserve.form-open .preview[style*="block"]{display:block !important}
+  #reserve.form-open .reserve-help{display:block}
+  #reserve.form-open .reserve-choices{margin-bottom:20px}
+}
+</style>
 
 </head>
 <body>
@@ -1945,9 +1959,9 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 </div>
 <div class="form-grid" id="reserve-form">
-<div class="field"><label>お名前</label><input autocomplete="name" id="n" placeholder="例：山田 花子"/></div>
-<div class="field"><label>電話番号</label><input autocomplete="tel" id="t" placeholder="例：090-0000-0000" type="tel"/></div>
-<div class="field full"><label>メニュー</label>
+<div class="field"><label for="n">お名前</label><input autocomplete="name" id="n" placeholder="例：山田 花子"/></div>
+<div class="field"><label for="t">電話番号</label><input autocomplete="tel" id="t" placeholder="例：090-0000-0000" type="tel"/></div>
+<div class="field full"><label for="m">メニュー</label>
 <select id="m">
 <option value="" selected>メニューを選択してください</option>
 <option>カット＋髪質改善カラー＋ハホニコトリートメント ¥14,000</option>
@@ -1962,9 +1976,9 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </select>
 <div id="selectedCouponNotice" style="display:none;margin-top:8px;padding:9px 11px;border-radius:8px;background:#fff4f7;color:#b94e6b;font-size:12px;line-height:1.55;border:1px solid #f0d6de"></div>
 </div>
-<div class="field"><label>第1希望日</label><input id="d" type="date"/></div>
-<div class="field"><label>希望時間</label><input id="tm" type="time"/></div>
-<div class="field full"><label>ご要望</label><textarea id="note" placeholder="髪のお悩み、お子様同伴など"></textarea></div>
+<div class="field"><label for="d">第1希望日</label><input id="d" type="date"/></div>
+<div class="field"><label for="tm">希望時間</label><input id="tm" type="time"/></div>
+<div class="field full"><label for="note">ご要望</label><textarea id="note" placeholder="髪のお悩み、お子様同伴など"></textarea></div>
 </div>
 <div class="reserve-actions">
 <button class="btn" onclick="previewReservation()" type="button">予約内容を確認</button>
@@ -2218,6 +2232,7 @@ function renderReviews(){
   const userReviews = loadReviews();
   const allReviews = [sampleReview, ...userReviews];
   const list = document.getElementById('reviewList');
+  if(!list) return;
 
   list.innerHTML = allReviews.map((r, idx) => `
     <article class="review-card">
@@ -2316,6 +2331,18 @@ document.addEventListener('DOMContentLoaded', () => {
     d.min = `${yyyy}-${mm}-${dd}`;
   }
   renderReviews();
+
+  const reserve = document.getElementById('reserve');
+  const form = document.getElementById('reserve-form');
+  const openForm = () => {
+    if(!reserve) return;
+    reserve.classList.add('form-open');
+    window.setTimeout(() => form && form.scrollIntoView({behavior:'smooth', block:'start'}), 30);
+  };
+  document.querySelectorAll('a.line-action[href="#reserve-form"]').forEach(link => {
+    link.addEventListener('click', openForm);
+  });
+  if(location.hash === '#reserve-form' || new URLSearchParams(location.search).has('coupon')) openForm();
 });
 </script>
 <script>
