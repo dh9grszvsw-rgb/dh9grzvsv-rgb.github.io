@@ -1739,6 +1739,17 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 }
 </style>
 
+<style id="hair-diagnosis-entry-style">
+.hero-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.diagnosis-btn{background:#fff!important;color:#a84f65!important;border:1px solid #d98aa0!important;box-shadow:0 5px 18px rgba(201,111,130,.13)}
+.diagnosis-btn:hover{background:#fff4f7!important;transform:translateY(-1px)}
+.diagnosis-btn .free-label{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:999px;background:#f7dfe5;color:#a84f65;font-size:10px;line-height:1.5}
+@media(max-width:760px){
+  .hero-actions{display:grid;grid-template-columns:1fr;max-width:310px}
+  .hero-actions .btn{width:100%}
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -1762,7 +1773,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 </div>
 <section class="hero">
-<div class="hero-copy"><div><div class="eyebrow">BEAUTY / STYLE / LIFE</div><h1><span class="hero-title-line">あなたらしさを、</span><span class="hero-title-line">もっと美しく。</span></h1><p>髪質・骨格・ライフスタイルまで考えた、<br/>あなただけのヘアデザインをご提案します。</p><a class="btn" href="#reserve">ご予約はこちら →</a></div></div>
+<div class="hero-copy"><div><div class="eyebrow">BEAUTY / STYLE / LIFE</div><h1><span class="hero-title-line">あなたらしさを、</span><span class="hero-title-line">もっと美しく。</span></h1><p>髪質・骨格・ライフスタイルまで考えた、<br/>あなただけのヘアデザインをご提案します。</p><div class="hero-actions"><a class="btn" href="#reserve">ご予約はこちら →</a><a class="btn diagnosis-btn" href="hair-diagnosis.html">髪のお悩み診断<span class="free-label">無料・約1分</span></a></div></div></div>
 <div class="hero-photo"><img alt="amona メインビジュアル" src="images/main_complete_20260913.png"/></div>
 </section>
 <section class="section" id="concept">

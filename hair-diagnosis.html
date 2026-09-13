@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <title>髪のお悩み診断｜HAIRSALON amona</title>
+  <meta name="description" content="簡単な質問に答えて、あなたに合うamonaの施術メニューとヘアスタイルを見つける試験版診断です。">
+  <style>
+    :root{--ink:#342d29;--muted:#766a63;--line:#e9dfd9;--paper:#fff;--base:#fbf8f5;--rose:#c96f82;--rose2:#a95167;--sand:#b58c73;--shadow:0 18px 48px rgba(65,48,39,.10)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(150deg,#fff 0,#fbf8f5 42%,#f6eee9 100%);color:var(--ink);font-family:"Noto Sans JP","Yu Gothic",sans-serif;line-height:1.75;min-height:100vh}
+    button,a{font:inherit} button{cursor:pointer} img{display:block;max-width:100%}
+    header{height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 max(5vw,24px);background:rgba(255,255,255,.9);border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+    .logo{font:24px Georgia,serif;letter-spacing:.13em}.logo small{display:block;font:8px sans-serif;letter-spacing:.34em;color:var(--sand);margin-top:-7px}
+    .back{font-size:13px;color:var(--muted);text-decoration:none}
+    main{width:min(1040px,92%);margin:auto;padding:42px 0 72px}
+    .intro{text-align:center;margin:0 auto 30px;max-width:670px}.eyebrow{font-size:11px;letter-spacing:.28em;color:var(--sand);font-weight:700}.intro h1{font:400 clamp(29px,5vw,47px)/1.35 Georgia,"Yu Mincho",serif;margin:10px 0}.intro p{margin:0;color:var(--muted);font-size:15px}
+    .progress{max-width:760px;margin:0 auto 15px;display:flex;align-items:center;gap:12px}.progress-track{height:7px;background:#eadfda;border-radius:99px;overflow:hidden;flex:1}.progress-bar{height:100%;width:20%;background:linear-gradient(90deg,var(--sand),var(--rose));transition:width .28s ease}.progress-text{font-size:12px;color:var(--muted);min-width:44px;text-align:right}
+    .card{max-width:760px;margin:auto;background:rgba(255,255,255,.96);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+    .question{display:none;padding:38px 42px 34px}.question.active{display:block;animation:fade .3s ease}.q-no{font:13px Georgia,serif;color:var(--rose);letter-spacing:.12em}.question h2{font:400 clamp(22px,4vw,31px)/1.5 Georgia,"Yu Mincho",serif;margin:6px 0 24px}.answers{display:grid;gap:11px}
+    .answer{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;text-align:left;padding:16px 18px;color:var(--ink);transition:.16s ease;display:flex;align-items:center;gap:12px}.answer::before{content:"";width:17px;height:17px;border:1px solid #ccb9af;border-radius:50%;flex:none}.answer:hover,.answer.selected{border-color:var(--rose);background:#fff6f8;transform:translateY(-1px)}.answer.selected::before{border:5px solid var(--rose)}
+    .nav-actions{display:flex;justify-content:space-between;gap:12px;padding:0 42px 34px}.nav-actions button{border:0;border-radius:999px;padding:12px 24px;font-weight:700}.prev{background:#eee7e3;color:#655b55}.next{background:var(--ink);color:#fff;margin-left:auto}.next:disabled{opacity:.35;cursor:not-allowed}
+    .result{display:none}.result.show{display:block;animation:fade .4s ease}.result-hero{display:grid;grid-template-columns:1fr 1.1fr;background:#fff}.result-photo{min-height:360px;background:#eee}.result-photo img{width:100%;height:100%;object-fit:cover}.result-copy{padding:38px}.result-label{display:inline-block;background:#f7e3e8;color:var(--rose2);font-size:12px;font-weight:700;padding:4px 10px}.result-copy h2{font:400 clamp(25px,4vw,38px)/1.45 Georgia,"Yu Mincho",serif;margin:13px 0 8px}.price{font-size:26px;color:var(--rose2);font-weight:800;margin:6px 0 16px}.reason{color:var(--muted);font-size:14px}.result-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.meta{background:var(--base);padding:12px;border-radius:8px;font-size:13px}.meta b{display:block;font-size:11px;color:var(--muted)}
+    .result-actions{display:grid;gap:10px}.result-actions button,.result-actions a{border-radius:999px;padding:13px 18px;text-align:center;text-decoration:none;font-weight:700;font-size:14px}.line{border:0;background:var(--rose);color:#fff}.styles{border:1px solid var(--rose);color:var(--rose2);background:#fff}.restart{border:0;background:none!important;color:var(--muted);text-decoration:underline!important;font-weight:400!important}
+    .notice{max-width:760px;margin:18px auto 0;color:var(--muted);font-size:12px;text-align:center}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#2f2926;color:#fff;padding:12px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:.2s;z-index:10;font-size:13px}.toast.show{opacity:1;transform:translate(-50%,0)}
+    @keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+    @media(max-width:680px){header{padding:0 18px}.back{font-size:12px}main{padding-top:28px}.intro{padding:0 8px}.intro p{font-size:14px}.question{padding:28px 20px 25px}.nav-actions{padding:0 20px 25px}.answer{padding:14px;font-size:15px}.result-hero{grid-template-columns:1fr}.result-photo{min-height:260px;max-height:360px}.result-copy{padding:27px 20px}.result-meta{grid-template-columns:1fr}.notice{text-align:left;padding:0 8px}}
+  </style>
+</head>
+<body>
+  <header><div class="logo">amona<small>HAIR SALON</small></div><a class="back" href="index.html">公式サイトへ戻る</a></header>
+  <main>
+    <section class="intro">
+      <div class="eyebrow">HAIR COUNSELING</div>
+      <h1>あなたに合うメニュー診断</h1>
+      <p>5つの質問から、今のお悩みに合う施術と参考スタイルをご案内します。</p>
+    </section>
+    <div id="quizWrap">
+      <div class="progress"><div class="progress-track"><div class="progress-bar" id="bar"></div></div><div class="progress-text" id="stepText">1 / 5</div></div>
+      <section class="card" aria-live="polite">
+        <div id="questions"></div>
+        <div class="nav-actions"><button class="prev" id="prev" type="button">戻る</button><button class="next" id="next" type="button" disabled>次へ</button></div>
+      </section>
+    </div>
+    <section class="card result" id="result" aria-live="polite">
+      <div class="result-hero">
+        <div class="result-photo"><img id="resultImg" alt="診断結果の参考ヘアスタイル"></div>
+        <div class="result-copy">
+          <span class="result-label">診断結果</span>
+          <h2 id="resultTitle"></h2><div class="price" id="resultPrice"></div>
+          <p class="reason" id="resultReason"></p>
+          <div class="result-meta"><div class="meta"><b>参考スタイル</b><span id="resultStyle"></span></div><div class="meta"><b>相談ポイント</b><span id="resultPoint"></span></div></div>
+          <div class="result-actions"><button class="line" id="lineBtn" type="button">結果をコピーしてLINEで相談</button><a class="styles" href="hair-style.html">Hair Styleをもっと見る</a><button class="restart" id="restart" type="button">もう一度診断する</button></div>
+        </div>
+      </div>
+    </section>
+    <p class="notice">※この診断はメニュー選びの参考です。髪の状態を確認したうえで、最適な施術をご提案します。料金・施術内容はカウンセリングにより変わる場合があります。</p>
+  </main>
+  <div class="toast" id="toast">診断結果をコピーしました</div>
+  <script>
+    const questions=[
+      {title:'今、一番気になることは？',answers:[['広がり・うねり','straight'],['パサつき・ダメージ','care'],['白髪・カラーの持ち','color'],['頭皮の疲れ・リフレッシュ','spa'],['似合う髪型が分からない','design']]},
+      {title:'朝のスタイリングは？',answers:[['できるだけ短くしたい','straight'],['乾かすだけでまとまりたい','care'],['少し巻いたり整えたりできる','design'],['今のスタイルを活かしたい','color']]},
+      {title:'仕上がりの希望は？',answers:[['自然なストレート','straight'],['ツヤと柔らかさ','care'],['透明感のあるカラー','color'],['軽さ・動きがほしい','design'],['髪も頭皮もすっきり','spa']]},
+      {title:'サロンで重視したいことは？',answers:[['悩みをしっかり改善したい','straight'],['ダメージを抑えたい','care'],['印象を変えたい','design'],['ゆっくりリラックスしたい','spa'],['きれいな色を長く楽しみたい','color']]},
+      {title:'今回の相談に近いものは？',answers:[['クセや広がりを整えたい','straight'],['傷んだ髪をきれいに見せたい','care'],['カラーと一緒にきれいにしたい','color'],['長さや形を相談したい','design'],['自分へのご褒美にしたい','spa']]}
+    ];
+    const results={
+      straight:{title:'カット＋髪質改善縮毛矯正',price:'¥18,500',style:'Style 11・18',point:'クセ・広がり・毎朝のお手入れ',img:'images/style_hq/style_11.jpg',reason:'自然な柔らかさを残しながら、広がりやうねりを扱いやすく整えるプランがおすすめです。髪の状態に合わせて薬剤を調整します。'},
+      care:{title:'カット＋髪質改善TOKIOトリートメント',price:'¥9,000',style:'Style 16・32',point:'パサつき・手触り・ツヤ',img:'images/style_hq/style_16.jpg',reason:'髪の内部を補修し、芯からしなやかでまとまりやすい髪を目指すプランがおすすめです。ダメージが気になる方にも向いています。'},
+      color:{title:'カット＋髪質改善カラー＋トリートメント',price:'¥14,000〜',style:'Style 04・13・22',point:'色味・白髪・ダメージ',img:'images/style_hq/style_13.jpg',reason:'透明感のある色味とツヤを両立しながら、カラーによる負担もケアするプランがおすすめです。白髪染めもご相談いただけます。'},
+      spa:{title:'カット＋ヘッドスパ30分',price:'¥8,800',style:'Style 05・15',point:'頭皮・疲れ・リラックス',img:'images/style_hq/style_15.jpg',reason:'炭酸クレンジングで頭皮をすっきり整え、髪と気持ちをリフレッシュするプランがおすすめです。'},
+      design:{title:'似合わせカット＋カウンセリング',price:'ご相談',style:'Style 05・12・26',point:'骨格・髪質・普段のお手入れ',img:'images/style_hq/style_26.jpg',reason:'骨格や毛流れ、普段のお手入れ時間まで確認し、無理なく続けられるスタイルを一緒に見つけましょう。'}
+    };
+    const answers=Array(questions.length).fill(null);let current=0;let selectedResult=null;
+    const root=document.getElementById('questions'),next=document.getElementById('next'),prev=document.getElementById('prev');
+    questions.forEach((q,i)=>{const el=document.createElement('div');el.className='question'+(i===0?' active':'');el.innerHTML=`<div class="q-no">QUESTION ${String(i+1).padStart(2,'0')}</div><h2>${q.title}</h2><div class="answers">${q.answers.map((a,j)=>`<button class="answer" type="button" data-q="${i}" data-i="${j}" data-score="${a[1]}">${a[0]}</button>`).join('')}</div>`;root.appendChild(el)});
+    function draw(){document.querySelectorAll('.question').forEach((el,i)=>el.classList.toggle('active',i===current));document.getElementById('bar').style.width=((current+1)/questions.length*100)+'%';document.getElementById('stepText').textContent=(current+1)+' / '+questions.length;prev.style.visibility=current?'visible':'hidden';next.textContent=current===questions.length-1?'診断結果を見る':'次へ';next.disabled=!answers[current]}
+    root.addEventListener('click',e=>{const b=e.target.closest('.answer');if(!b)return;const q=Number(b.dataset.q);answers[q]=b.dataset.score;b.parentElement.querySelectorAll('.answer').forEach(x=>x.classList.toggle('selected',x===b));next.disabled=false});
+    next.addEventListener('click',()=>{if(!answers[current])return;if(current<questions.length-1){current++;draw()}else showResult()});prev.addEventListener('click',()=>{if(current){current--;draw()}});
+    function showResult(){const count={};answers.forEach(x=>count[x]=(count[x]||0)+1);selectedResult=Object.keys(results).sort((a,b)=>(count[b]||0)-(count[a]||0))[0];const r=results[selectedResult];document.getElementById('quizWrap').style.display='none';document.getElementById('result').classList.add('show');document.getElementById('resultTitle').textContent=r.title;document.getElementById('resultPrice').textContent=r.price;document.getElementById('resultReason').textContent=r.reason;document.getElementById('resultStyle').textContent=r.style;document.getElementById('resultPoint').textContent=r.point;document.getElementById('resultImg').src=r.img;document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'})}
+    document.getElementById('restart').addEventListener('click',()=>{answers.fill(null);current=0;selectedResult=null;document.querySelectorAll('.answer').forEach(x=>x.classList.remove('selected'));document.getElementById('result').classList.remove('show');document.getElementById('quizWrap').style.display='block';draw();scrollTo({top:0,behavior:'smooth'})});
+    document.getElementById('lineBtn').addEventListener('click',async()=>{const r=results[selectedResult];const text=`【amona 髪のお悩み診断】\nおすすめ：${r.title} ${r.price}\n参考スタイル：${r.style}\n相談したいこと：${r.point}\n\nこの診断結果について相談したいです。`;try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const toast=document.getElementById('toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800);setTimeout(()=>window.open('https://line.me/R/ti/p/@012ykuqw','_blank','noopener'),250)});
+    draw();
+  </script>
+</body>
+</html>
