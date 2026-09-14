@@ -2,6 +2,7 @@ HAIRSALON amona SEO強化版（2026-09-11）
 
 実施内容
 ・吹田市昭和町／JR吹田駅の地域SEOを維持・強化
+・主要検索語「吹田市 美容室」をTOPのtitle・description・h1へ自然に配置
 ・髪質改善／トリートメント／ヘッドスパ／艶髪／白髪ぼかし／キッズカットを自然な文脈で反映
 ・HairSalon構造化データにサービスカタログを追加
 ・title／meta description／OGPを最適化
