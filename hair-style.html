@@ -440,6 +440,90 @@ body.amona-modal-open{overflow:hidden}
 }
 </style>
 
+
+<style id="style-diagnosis-guide-css">
+.style-diagnosis-guide{
+  width:min(1180px,92%);
+  margin:0 auto 60px;
+  padding:0;
+}
+.style-diagnosis-guide__inner{
+  max-width:920px;
+  margin:0 auto;
+  padding:42px 28px;
+  text-align:center;
+  border:1px solid #eadfd8;
+  border-radius:18px;
+  background:linear-gradient(135deg,#fffaf9 0%,#fbf3f1 100%);
+  box-shadow:0 12px 34px rgba(88,65,54,.06);
+}
+.style-diagnosis-guide__accent{
+  margin-bottom:8px;
+  color:#d36d89;
+  font-family:Georgia,serif;
+  font-size:22px;
+  font-style:italic;
+}
+.style-diagnosis-guide h2{
+  margin:0 0 14px;
+  font-size:clamp(21px,3vw,28px);
+  font-weight:500;
+  letter-spacing:.04em;
+}
+.style-diagnosis-guide__lead{
+  margin:0 auto 8px;
+  max-width:720px;
+  font-size:15px;
+  line-height:1.9;
+}
+.style-diagnosis-guide__sub{
+  margin:0 auto 24px;
+  color:var(--sub);
+  font-size:13px;
+  line-height:1.8;
+}
+.style-diagnosis-guide__diagnosis,
+.style-diagnosis-guide__top{
+  display:flex;
+  width:min(520px,100%);
+  min-height:52px;
+  margin:0 auto;
+  padding:12px 20px;
+  border-radius:999px;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  box-sizing:border-box;
+}
+.style-diagnosis-guide__diagnosis{
+  gap:10px;
+  color:#b95370;
+  background:#fff;
+  border:1px solid #df8da4;
+}
+.style-diagnosis-guide__diagnosis span{
+  padding:3px 8px;
+  border-radius:999px;
+  background:#f8e7ec;
+  font-size:10px;
+  white-space:nowrap;
+}
+.style-diagnosis-guide__top{
+  margin-top:12px;
+  color:#fff;
+  background:#2d2825;
+  border:1px solid #2d2825;
+}
+@media(max-width:560px){
+  .style-diagnosis-guide{margin-bottom:42px}
+  .style-diagnosis-guide__inner{padding:30px 16px;border-radius:14px}
+  .style-diagnosis-guide__lead{font-size:13px}
+  .style-diagnosis-guide__sub{font-size:12px}
+  .style-diagnosis-guide__diagnosis,
+  .style-diagnosis-guide__top{min-height:48px;font-size:13px;padding:10px 12px}
+}
+</style>
+
 </head>
 <body>
 
@@ -662,7 +746,20 @@ body.amona-modal-open{overflow:hidden}
 <div class="tags"><span class="tag">ショート</span><span class="tag">ボブ</span><span class="tag">レイヤー</span></div>
 </article>
 </main>
-<div class="back"><a href="index.html#reserve">このスタイルを相談して予約する →</a></div>
+
+<section class="style-diagnosis-guide" aria-labelledby="style-diagnosis-title">
+  <div class="style-diagnosis-guide__inner">
+    <div class="style-diagnosis-guide__accent">Check!</div>
+    <h2 id="style-diagnosis-title">スタイル選択にお悩みの方へ</h2>
+    <p class="style-diagnosis-guide__lead">髪の長さ・髪質・なりたいイメージから、あなたにぴったりのスタイルをご提案します。</p>
+    <p class="style-diagnosis-guide__sub">まずは、かんたんな質問に答えて髪のお悩みを診断してみませんか？</p>
+    <a class="style-diagnosis-guide__diagnosis" href="hair-diagnosis.html">
+      髪のお悩み診断をする <span>無料・約1分</span>
+    </a>
+    <a class="style-diagnosis-guide__top" href="index.html">TOPページへ戻る →</a>
+  </div>
+</section>
+
 <div aria-hidden="true" aria-labelledby="styleDetailTitle" aria-modal="true" class="style-detail-modal" id="styleDetailModal" role="dialog">
 <div class="style-detail-dialog" role="document">
 <button aria-label="閉じる" class="style-detail-close" id="styleDetailClose" type="button">×</button>
@@ -683,8 +780,7 @@ body.amona-modal-open{overflow:hidden}
 </div>
 </div>
 <div class="style-detail-actions">
-<button class="style-detail-coupon" id="styleDetailCoupon" type="button">おすすめクーポンを使う</button>
-<a class="style-detail-consult" href="index.html#reserve-form" id="styleDetailConsult">このスタイルを相談して予約する →</a>
+<button class="style-detail-coupon" id="styleDetailCoupon" type="button">おすすめクーポンを使う</button><a id="styleDetailConsult" href="index.html#reserve-form" hidden aria-hidden="true"></a>
 </div>
 </div>
 </div>
