@@ -8,5 +8,15 @@
     "summary": "サロンからのお知らせや、髪のお手入れ情報をこちらでお届けします。",
     "image": "/images/salon.jpg",
     "body": "amonaのブログをご覧いただきありがとうございます。\n\n今後こちらでは、営業日のお知らせ、季節のヘアケア、おすすめスタイルなどをご紹介していきます。"
+  },
+  {
+    "id": "blog-start2",
+    "published": true,
+    "date": "2026-09-16",
+    "category": "お知らせ",
+    "title": "amonaブログを開設しました",
+    "summary": "ブログ開設に伴いテスト投稿です。",
+    "image": "/images/blog/file-1.jpeg",
+    "body": "ブログ開設に伴いテスト投稿です。"
   }
 ]
