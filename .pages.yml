@@ -1,0 +1,27 @@
+media:
+  input: images/blog
+  output: /images/blog
+  rename: safe
+  categories: [image]
+
+content:
+  - name: blog
+    label: お知らせ・ブログ
+    type: file
+    path: blog-data.json
+    format: json
+    list: true
+    fields:
+      - { name: id, label: 記事ID（半角英数字）, type: string, required: true }
+      - { name: published, label: 公開する, type: boolean, default: true }
+      - { name: date, label: 公開日, type: date, required: true }
+      - name: category
+        label: カテゴリー
+        type: select
+        options:
+          values: [お知らせ, ヘアケア, スタイル, キャンペーン]
+        required: true
+      - { name: title, label: タイトル, type: string, required: true }
+      - { name: summary, label: 一覧用の短い説明, type: text, required: true }
+      - { name: image, label: メイン写真, type: image, required: true }
+      - { name: body, label: 本文, type: text, required: true }

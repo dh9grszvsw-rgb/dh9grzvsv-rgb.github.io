@@ -1132,6 +1132,21 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
   object-fit:cover;
   display:block;
 }
+
+/* ===== BLOG & NEWS ===== */
+.blog-top{background:#f6f1ec}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.blog-card{display:block;background:#fff;border:1px solid var(--line);transition:transform .2s ease,box-shadow .2s ease}
+.blog-card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(63,48,39,.08)}
+.blog-card img{aspect-ratio:4/3;object-fit:cover;background:#eee}
+.blog-card-body{padding:18px 19px 22px}
+.blog-meta{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--sub);margin-bottom:9px}
+.blog-category{background:#ead5d1;color:#9c625e;padding:2px 8px}
+.blog-card h3{font:400 21px/1.55 Georgia,"Yu Mincho",serif;margin-bottom:8px}
+.blog-card p{font-size:12px;color:var(--sub);line-height:1.75}
+.blog-more{text-align:center;margin-top:30px}
+.blog-empty{text-align:center;color:var(--sub);grid-column:1/-1;padding:30px}
+@media(max-width:760px){.blog-grid{grid-template-columns:1fr}.blog-card{display:grid;grid-template-columns:120px 1fr}.blog-card img{height:100%;aspect-ratio:auto}.blog-card-body{padding:14px}.blog-card h3{font-size:17px}.blog-card p{display:none}}
 .pickup-staff-name{
   display:flex;
   align-items:center;
@@ -2023,6 +2038,13 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 </div>
 </section>
+<section class="section blog-top" id="blog-news">
+<div class="container">
+<div class="section-head"><div class="eyebrow">BLOG &amp; NEWS</div><h2>お知らせ・ブログ</h2><p class="lead">amonaからのお知らせや、髪をきれいに保つための情報をお届けします。</p></div>
+<div class="blog-grid" id="topBlogGrid"><div class="blog-empty">記事を読み込んでいます…</div></div>
+<div class="blog-more"><a class="btn" href="blog.html">ブログをもっと見る →</a></div>
+</div>
+</section>
 <section class="section pickup-staff-section" id="pickup-staff">
 <div class="container">
 <div class="section-head pickup-staff-head">
@@ -2031,7 +2053,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 <div class="pickup-staff-card">
 <div class="pickup-staff-photo">
-<img alt="スタイリスト おぎの" src="images/staff-ogino.jpg"/>
+<img alt="スタイリスト おぎの" src="images/staff-ogino-top.jpg"/>
 </div>
 <div class="pickup-staff-info">
 <div class="pickup-staff-name"><span>✂</span><strong>おぎの</strong></div>
@@ -2711,4 +2733,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 })();
 </script>
+<script src="blog.js"></script>
 </body></html>
