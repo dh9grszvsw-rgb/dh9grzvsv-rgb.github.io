@@ -25,3 +25,4 @@ content:
       - { name: summary, label: 一覧用の短い説明, type: text, required: true }
       - { name: image, label: メイン写真, type: image, required: true }
       - { name: body, label: 本文, type: text, required: true }
+      - { name: instagram_url, label: Instagram投稿URL（任意）, type: string, required: false, description: Instagramの投稿またはリールのURLを貼り付けてください }
