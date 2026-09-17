@@ -1777,6 +1777,19 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<style>
+.salon-scene-section .feature-main-photo > [hidden]{display:none!important}
+.salon-scene-section .feature-photo-grid{width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;display:grid;gap:0}
+.salon-scene-section .feature-main-photo .feature-photo-grid{width:auto;max-width:100%;height:100%;aspect-ratio:4/3;margin-inline:auto}
+.salon-scene-section .feature-photo-grid--two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.salon-scene-section .feature-photo-grid img,
+.salon-scene-section .feature-main-photo .feature-photo-grid img{
+  display:block;width:100%;height:100%;min-width:0;min-height:0;object-fit:cover!important;object-position:center!important
+}
+.salon-scene-section .feature-tab .feature-thumb-grid{display:grid;width:92px;height:76px;background:#f5f0ec}
+.salon-scene-section .feature-tab .feature-thumb-grid img{width:100%;height:100%}
+@media(max-width:560px){.salon-scene-section .feature-tab .feature-thumb-grid{width:72px;height:66px}}
+</style>
 </head>
 <body>
 <header>
@@ -1866,21 +1879,21 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 <div class="check-style-grid">
 <a class="check-style-card" href="hair-style.html">
-<img alt="オン眉キッズカット" src="images/style_gallery2/style_02.jpg"/>
+<img alt="オン眉キッズカット" src="images/updates/style_kids.jpeg"/>
 <div class="check-style-copy">
 <h3>オン眉キッズカット</h3>
 <p>KIDS CUT</p>
 </div>
 </a>
 <a class="check-style-card" href="hair-style.html">
-<img alt="レイヤーカット" src="images/style_gallery2/style_04.jpg"/>
+<img alt="レイヤーカット" src="images/updates/style_layer_beige_final.png"/>
 <div class="check-style-copy">
 <h3>レイヤーカット × ベージュ</h3>
 <p>LAYER STYLE</p>
 </div>
 </a>
 <a class="check-style-card" href="hair-style.html">
-<img alt="大人の艶髪レイヤー" src="images/style_gallery2/style_06.jpg"/>
+<img alt="大人の艶髪レイヤー" src="images/updates/style_layer_gloss_final.png"/>
 <div class="check-style-copy">
 <h3>上品な艶髪レイヤー</h3>
 <p>HAIR CARE / LAYER</p>
@@ -1918,6 +1931,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 <div class="feature-stage">
 <div class="feature-main-photo">
 <img alt="プライベートサロン" id="featureMainImg" src="images/feature_hires/onetoone_20260913.jpg"/>
+<div class="feature-photo-grid" id="featureMainGrid" hidden></div>
 </div>
 <div class="feature-main-copy">
 <span id="featureMainNo">01</span>
@@ -1932,11 +1946,11 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 <button class="feature-tab active" data-img="images/feature_hires/onetoone_20260913.jpg" data-label="PRIVATE" data-no="01" data-text="カウンセリングから仕上げまで、ひとりのスタイリストが丁寧に担当。周囲を気にしすぎず、落ち着いて過ごせる時間を大切にしています。" data-title="一人のスタイリストが担当" type="button">
 <img alt="一人のスタイリストが仕上げまで担当するプライベートサロン" src="images/feature_hires/onetoone_20260913.jpg"/><span><b>PRIVATE</b><small>一人のスタイリストが担当</small></span>
 </button>
-<button class="feature-tab" data-img="images/feature_hires/kids_20260914.jpg" data-label="KIDS" data-no="02" data-text="【柵付きキッズスペース完備】お子様連れでも安心！忙しいママがリラックスできる特別な空間をご用意しています。" data-title="お子様同伴OKのサロン" type="button">
-<img alt="お子様同伴OK・柵付きキッズスペース完備" src="images/feature_hires/kids_20260914.jpg"/><span><b>KIDS</b><small>お子様同伴OKのサロン</small></span>
+<button class="feature-tab" data-label="KIDS" data-no="02" data-text="【柵付きキッズスペース完備】お子様連れでも安心！忙しいママがリラックスできる特別な空間をご用意しています。" data-title="お子様同伴OKのサロン" type="button">
+<span class="feature-photo-grid feature-photo-grid--two feature-thumb-grid"><img alt="キッズカットの写真 1" src="images/updates/kids_01.jpeg"/><img alt="キッズカットの写真 2" src="images/updates/kids_02.jpeg"/></span><span><b>KIDS</b><small>お子様同伴OKのサロン</small></span>
 </button>
-<button class="feature-tab" data-img="images/feature_hires/haircare_20260914.jpg" data-label="CARE" data-no="03" data-text="【TOKIOトリートメント取扱店】髪の芯から潤う！見違えるほどのうるツヤ髪へ導き、感動の手触りを持続。" data-title="うるツヤになれる厳選トリートメントが自慢のサロン" type="button">
-<img alt="TOKIOトリートメント・うるツヤ髪" src="images/feature_hires/haircare_20260914.jpg"/><span><b>CARE</b><small>厳選トリートメント・うるツヤ髪</small></span>
+<button class="feature-tab" data-img="images/updates/care_collage.png" data-label="CARE" data-no="03" data-text="【TOKIOトリートメント取扱店】髪の芯から潤う！見違えるほどのうるツヤ髪へ導き、感動の手触りを持続。" data-title="うるツヤになれる厳選トリートメントが自慢のサロン" type="button">
+<img alt="艶髪スタイルの4枚組" src="images/updates/care_collage.png"/><span><b>CARE</b><small>厳選トリートメント・うるツヤ髪</small></span>
 </button>
 <button class="feature-tab" data-img="images/feature_hires/headspa_20260913.jpg" data-label="RELAX" data-no="04" data-text="忙しい毎日の中で、自分のための時間を。髪と頭皮をいたわりながら、気持ちまでゆるむようなリラックスタイムをお過ごしください。" data-title="ヘッドスパで、ほっとひと息" type="button">
 <img alt="リラックスできるヘッドスパ" src="images/feature_hires/headspa_20260913.jpg"/><span><b>RELAX</b><small>ヘッドスパ・癒しの時間</small></span>
@@ -2398,108 +2412,52 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 <script>
 (function(){
- const img=document.getElementById('featureMainImg');
- const no=document.getElementById('featureMainNo');
- const title=document.getElementById('featureMainTitle');
- const text=document.getElementById('featureMainText');
- const tabs=document.querySelectorAll('.feature-tab');
- if(!img||!tabs.length)return;
- tabs.forEach(tab=>{
-   tab.addEventListener('click',()=>{
-     tabs.forEach(x=>x.classList.remove('active'));
-     tab.classList.add('active');
-     img.style.opacity='0';
-     setTimeout(()=>{
-       img.src=tab.dataset.img;
-       img.alt=tab.dataset.title;
-       no.textContent=tab.dataset.no;
-       title.textContent=tab.dataset.title;
-       text.textContent=tab.dataset.text;
-       img.style.opacity='1';
-     },120);
-   });
- });
- img.style.transition='opacity .2s ease';
-})();
-</script>
-<script>
-(function(){
-  const img=document.getElementById('featureMainImg');
-  const no=document.getElementById('featureMainNo');
-  const label=document.getElementById('featureMainLabel');
-  const title=document.getElementById('featureMainTitle');
-  const text=document.getElementById('featureMainText');
-  const tabs=document.querySelectorAll('.salon-scene-section .feature-tab');
-  if(!img || !tabs.length) return;
-  tabs.forEach(tab=>{
-    tab.addEventListener('click',()=>{
-      tabs.forEach(x=>x.classList.remove('active'));
-      tab.classList.add('active');
-      img.style.opacity='0';
-      setTimeout(()=>{
-        img.src=tab.dataset.img;
-        img.alt=tab.dataset.title || '';
-        no.textContent=tab.dataset.no || '';
-        label.textContent=tab.dataset.label || '';
-        title.textContent=tab.dataset.title || '';
-        text.textContent=tab.dataset.text || '';
-        img.style.opacity='1';
-      },120);
+  const root = document.querySelector('.salon-scene-section');
+  if (!root) return;
+  const img = document.getElementById('featureMainImg');
+  const grid = document.getElementById('featureMainGrid');
+  const no = document.getElementById('featureMainNo');
+  const label = document.getElementById('featureMainLabel');
+  const title = document.getElementById('featureMainTitle');
+  const text = document.getElementById('featureMainText');
+  const tabs = [...root.querySelectorAll('.feature-tab')];
+  const photoSets = {
+    KIDS: ['images/updates/kids_01.jpeg', 'images/updates/kids_02.jpeg'],
+  };
+  if (!img || !grid || !tabs.length) return;
+
+  function show(tab) {
+    tabs.forEach(item => {
+      const selected = item === tab;
+      item.classList.toggle('active', selected);
+      item.setAttribute('aria-pressed', String(selected));
     });
-  });
-  img.style.transition='opacity .2s ease';
-})();
-</script>
-<script>
-(function(){
-  const root=document.querySelector('.salon-scene-section');
-  if(!root) return;
-
-  const img=document.getElementById('featureMainImg');
-  const no=document.getElementById('featureMainNo');
-  const label=document.getElementById('featureMainLabel');
-  const title=document.getElementById('featureMainTitle');
-  const text=document.getElementById('featureMainText');
-  const tabs=[...root.querySelectorAll('.feature-tab')];
-  if(!img || !tabs.length) return;
-
-  let current=0;
-  let timer=null;
-  const interval=5000;
-
-  function show(index){
-    current=(index+tabs.length)%tabs.length;
-    const tab=tabs[current];
-    tabs.forEach(x=>x.classList.remove('active'));
-    tab.classList.add('active');
-
-    img.style.opacity='0';
-    setTimeout(()=>{
-      img.src=tab.dataset.img;
-      img.alt=tab.dataset.title || '';
-      if(no) no.textContent=tab.dataset.no || '';
-      if(label) label.textContent=tab.dataset.label || '';
-      if(title) title.textContent=tab.dataset.title || '';
-      if(text) text.textContent=tab.dataset.text || '';
-      img.style.opacity='1';
-    },180);
+    const photos = photoSets[tab.dataset.label];
+    if (photos) {
+      grid.className = 'feature-photo-grid feature-photo-grid--' + (photos.length === 2 ? 'two' : 'four');
+      grid.replaceChildren(...photos.map((src, index) => {
+        const photo = new Image();
+        photo.src = src;
+        photo.alt = tab.dataset.label + ' 写真 ' + (index + 1);
+        return photo;
+      }));
+      grid.hidden = false;
+      img.hidden = true;
+    } else {
+      img.src = tab.dataset.img;
+      img.alt = tab.dataset.title || '';
+      img.hidden = false;
+      grid.hidden = true;
+      grid.replaceChildren();
+    }
+    no.textContent = tab.dataset.no || '';
+    label.textContent = tab.dataset.label || '';
+    title.textContent = tab.dataset.title || '';
+    text.textContent = tab.dataset.text || '';
   }
 
-  function start(){
-    clearInterval(timer);
-    timer=setInterval(()=>show(current+1), interval);
-  }
-
-  tabs.forEach((tab,i)=>{
-    tab.onclick=function(){
-      show(i);
-      start();
-    };
-  });
-
-  root.addEventListener('mouseenter',()=>clearInterval(timer));
-  root.addEventListener('mouseleave',start);
-  start();
+  tabs.forEach(tab => tab.addEventListener('click', () => show(tab)));
+  show(tabs.find(tab => tab.classList.contains('active')) || tabs[0]);
 })();
 </script>
 <div aria-hidden="true" class="phone-modal" id="phoneModal">
