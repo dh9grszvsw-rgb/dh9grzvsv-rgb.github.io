@@ -2456,8 +2456,23 @@ document.addEventListener('DOMContentLoaded', () => {
     text.textContent = tab.dataset.text || '';
   }
 
-  tabs.forEach(tab => tab.addEventListener('click', () => show(tab)));
+  const intervalMs = 6000;
+  let timer;
+  function startRotation() {
+    clearInterval(timer);
+    timer = setInterval(() => {
+      if (document.hidden) return;
+      const current = tabs.findIndex(tab => tab.classList.contains('active'));
+      show(tabs[(current + 1) % tabs.length]);
+    }, intervalMs);
+  }
+
+  tabs.forEach(tab => tab.addEventListener('click', () => {
+    show(tab);
+    startRotation();
+  }));
   show(tabs.find(tab => tab.classList.contains('active')) || tabs[0]);
+  startRotation();
 })();
 </script>
 <div aria-hidden="true" class="phone-modal" id="phoneModal">
