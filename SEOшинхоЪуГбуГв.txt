@@ -1,0 +1,18 @@
+HAIRSALON amona SEO対策版
+
+実施内容
+・noindex,nofollow を解除（index,followへ変更）
+・title / meta description 最適化
+・canonical URL設定
+・OGP / Twitter Card設定
+・HairSalon構造化データ修正（JSON-LD）
+・Hair StyleページにCollectionPage構造化データ追加
+・トップページ画像alt補完
+・robots.txt追加
+・sitemap.xml追加
+
+公開後に推奨する作業
+1. Google Search Consoleで https://amona-hair.com/ を登録
+2. sitemap.xml を送信
+3. URL検査からトップページとhair-style.htmlのインデックス登録をリクエスト
+4. Googleビジネスプロフィールのウェブサイト欄を https://amona-hair.com/ に統一
