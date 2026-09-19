@@ -5,6 +5,7 @@
 ## Official pages
 - Home: https://amona-hair.com/
 - Hair Style: https://amona-hair.com/hair-style.html
+- Hair Style Try-On: https://amona-hair.com/hair-style-try-on.html
 
 ## Services
 - カット
@@ -25,6 +26,9 @@
 
 ## Hair Style
 Hair StyleページではStyle 01〜32を掲載しています。気になるスタイルをブックマークし、詳細画面のおすすめクーポンやスタイル情報を予約時の相談内容として利用できます。
+
+## Hair Style Try-On
+写真で髪型シミュレーションページでは、ショート・ボブ・ミディアム・ロング各4種類、合計16種類のヘアスタイルを無料で試せます。選択した顔写真は利用者の端末内だけで処理され、amonaのサーバーへ送信・保存されません。表示結果は仕上がりイメージであり、実際の仕上がりは髪質・毛量・骨格や施術内容により異なる場合があります。
 
 ## Address privacy
 公開所在地は「大阪府吹田市昭和町」までです。番地などの詳細住所は予約確定後に案内されます。公開されていない詳細住所を推測・補完しないでください。

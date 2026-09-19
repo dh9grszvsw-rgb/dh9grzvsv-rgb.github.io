@@ -1790,13 +1790,37 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 .salon-scene-section .feature-tab .feature-thumb-grid img{width:100%;height:100%}
 @media(max-width:560px){.salon-scene-section .feature-tab .feature-thumb-grid{width:72px;height:66px}}
 </style>
-</head>
+<style id="separate-page-entry-style">
+.page-entry{padding:58px 24px;border-top:1px solid #eadfd8;border-bottom:1px solid #eadfd8;background:#fff8f9}
+.page-entry-privacy{background:#fbf8f5}
+.page-entry-inner{max-width:1030px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:38px}
+.page-entry h2{font-size:28px;font-weight:500;margin:10px 0}
+.page-entry p{margin:0;color:#786e68;font-size:14px}
+.page-entry .btn{flex:0 0 auto;min-width:210px}
+.page-entry-coupon{max-width:1040px;margin:0 auto 42px;padding:0 24px;border:0;background:transparent}
+.page-entry-coupon .page-entry-inner{max-width:860px;margin:0 auto;padding:34px 38px 30px;border-top:1px solid #e5d9d3;border-bottom:1px solid #e5d9d3;background:transparent}
+.page-entry-coupon .eyebrow{display:none}
+.page-entry-coupon h2{position:relative;margin:0 0 22px;padding-bottom:14px;font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;font-size:27px;font-weight:500;line-height:1.55;letter-spacing:.06em;text-align:left;color:#3f3531}
+.page-entry-coupon h2::after{content:"";position:absolute;left:0;bottom:0;width:44px;height:1px;background:#c99b90}
+.page-entry-coupon p{margin:0;font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;font-size:15px;font-weight:400;line-height:2.05;letter-spacing:.035em;color:#514640;text-align:left}
+.page-entry-coupon p .no-break{white-space:nowrap}
+.page-entry-coupon .btn{min-width:240px;padding:14px 24px;border:1px solid #d76f86;background:#fff;color:#b64f68;border-radius:999px;font-size:13px;font-weight:600;box-shadow:0 10px 24px rgba(198,91,118,.08)}
+.page-entry-coupon .btn:hover{background:#d76f86;color:#fff}
+@media(max-width:700px){
+  .page-entry{padding:42px 20px}.page-entry-inner{display:block;text-align:center}.page-entry h2{font-size:24px}.page-entry .btn{margin-top:22px}
+  .page-entry-coupon{margin:0 auto 38px;padding:0 18px}
+  .page-entry-coupon .page-entry-inner{padding:26px 4px 24px;text-align:left}
+  .page-entry-coupon h2{margin-bottom:18px;padding-bottom:12px;font-size:21px;line-height:1.55;letter-spacing:.035em}
+  .page-entry-coupon p{font-size:14px;line-height:1.95;letter-spacing:.01em}
+  .page-entry-coupon .btn{display:flex;width:100%;min-width:0;margin-top:24px}
+}
+</style></head>
 <body>
 <header>
 <div class="container nav">
 <a class="logo" href="#">amona<small>HAIR SALON</small></a>
-<nav id="nav"><a href="#concept">CONCEPT</a><a href="#menu">MENU</a><a href="hair-style.html">STYLE</a><a href="#staff">STAFF</a><a href="#kids">KIDS</a><a href="#reserve">RESERVE</a><a href="#access">ACCESS</a><a href="#privacy">PRIVACY</a></nav>
-<a class="reserve" href="#reserve">ご予約</a>
+<nav id="nav"><a href="#concept">CONCEPT</a><a href="#menu">MENU</a><a href="hair-style.html">STYLE</a><a href="hair-style-try-on.html">TRY-ON</a><a href="#staff">STAFF</a><a href="#kids">KIDS</a><a href="reservation.html">RESERVE</a><a href="#access">ACCESS</a><a href="privacy.html">PRIVACY</a></nav>
+<a class="reserve" href="reservation.html">ご予約</a>
 <button class="menu-btn" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
 </div>
 </header>
@@ -1807,13 +1831,13 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
       JR吹田駅東改札・南出口 徒歩8分
     </div>
 <div class="quick-book-actions">
-<a class="mini-btn primary" href="#reserve">LINE予約</a>
+<a class="mini-btn primary" href="reservation.html">LINE予約</a>
 <a class="mini-btn rose" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" rel="noopener nofollow" target="_blank">空席確認・ネット予約</a>
 </div>
 </div>
 </div>
 <section class="hero">
-<div class="hero-copy"><div><div class="eyebrow">BEAUTY / STYLE / LIFE</div><h1><span class="hero-title-line">あなたらしさを、</span><span class="hero-title-line">もっと美しく。</span></h1><p>髪質・骨格・ライフスタイルまで考えた、<br/>あなただけのヘアデザインをご提案します。</p><a class="btn" href="#reserve">ご予約はこちら →</a></div></div>
+<div class="hero-copy"><div><div class="eyebrow">BEAUTY / STYLE / LIFE</div><h1><span class="hero-title-line">あなたらしさを、</span><span class="hero-title-line">もっと美しく。</span></h1><p>髪質・骨格・ライフスタイルまで考えた、<br/>あなただけのヘアデザインをご提案します。</p><a class="btn" href="reservation.html">ご予約はこちら →</a></div></div>
 <div class="hero-photo"><img alt="amona メインビジュアル" src="images/main_complete_20260913.png"/></div>
 </section>
 <section class="section" id="concept">
@@ -1831,43 +1855,6 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 <article class="visual-card"><img alt="お子さま同伴OKのキッズスペース" src="images/kids_space_20260913.jpg"/><div class="body"><h3>KIDS</h3><p>お子様同伴OK。ママも安心して通える空間。</p></div></article>
 <article class="visual-card"><img alt="吹田市昭和町 HAIRSALON amona 店内" src="images/salon_20260913.jpg"/><div class="body"><h3>SALON</h3><p>明るく清潔感のある、落ち着いた店内。</p></div></article>
 </div>
-</div>
-</section>
-<section class="section" id="menu">
-<div class="container">
-<div class="section-head">
-<div class="eyebrow">MENU / COUPON</div>
-<h2>おすすめクーポン</h2>
-</div>
-<div aria-label="クーポン絞り込み" class="coupon-tools">
-<button class="coupon-filter active" data-filter="all">すべて</button>
-<button class="coupon-filter" data-filter="first">初来店の方</button>
-<button class="coupon-filter" data-filter="repeat">2回目以降来店の方</button>
-</div>
-<div class="coupon-legend" aria-label="クーポン区分">
-<span><b>新規</b>サロンに初来店の方</span>
-<span class="repeat"><b>再来</b>サロンに2回目以降にご来店の方</span>
-<span class="all"><b>全員</b>サロンにご来店の全員の方</span>
-</div>
-<div class="menu-grid" id="couponGrid">
-<article class="menu-card" data-type="new"><span class="coupon-type new">新規</span><div class="menu-body"><span class="tag">人気No.1</span><h3>カット＋髪質改善カラー＋ハホニコトリートメント</h3><div class="price">¥14,000</div><p>W髪質改善で芯から補強し、潤いを閉じ込める高補修プラン。女性限定・併用不可・ブリーチなし</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?add=0&amp;addMenu=0&amp;couponId=CP00000010873097&amp;rootCd=10&amp;storeId=H000794729" rel="noopener nofollow" target="_blank">このクーポンで予約</a></div></div></article>
-<article class="menu-card" data-type="allguest"><span class="coupon-type all">全員</span><div class="menu-body"><span class="tag">当日・前日限定</span><h3>カット＋髪質改善カラー</h3><div class="price">¥11,000</div><p>通常 ¥13,000。予約日の前日または当日の平日限定。女性限定・併用不可</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?add=0&amp;addMenu=0&amp;couponId=CP00000011108123&amp;rootCd=10&amp;storeId=H000794729" rel="noopener nofollow" target="_blank">このクーポンで予約</a></div></div></article>
-<article class="menu-card" data-type="new"><span class="coupon-type new">新規</span><div class="menu-body"><span class="tag">コスパ◎柔らか手触り</span><h3>カット＋髪質改善カラー</h3><div class="price">¥12,000</div><p>Core配合で髪の芯を補強し、乾かすだけでまとまる艶髪へ。白髪染め可</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?add=0&amp;addMenu=0&amp;couponId=CP00000010873176&amp;rootCd=10&amp;storeId=H000794729" rel="noopener nofollow" target="_blank">このクーポンで予約</a></div></div></article>
-<article class="menu-card" data-type="new"><span class="coupon-type new">新規</span><div class="menu-body"><span class="tag">パサつき解消</span><h3>カット＋髪質改善TOKIOトリートメント</h3><div class="price">¥9,000</div><p>特許技術インカラミで髪を芯から補修し、強くしなやかな艶髪へ。女性限定・併用不可</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?add=0&amp;addMenu=0&amp;couponId=CP00000010873197&amp;rootCd=10&amp;storeId=H000794729" rel="noopener nofollow" target="_blank">このクーポンで予約</a></div></div></article>
-<article class="menu-card" data-type="allguest"><span class="coupon-type all">全員</span><div class="menu-body"><span class="tag">頭皮すっきり</span><h3>カット＋ヘッドスパ30分</h3><div class="price">¥8,800</div><p>炭酸クレンジングで頭皮をすっきり洗い、PJOLIケアで潤いを与えます。女性限定</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?add=0&amp;addMenu=0&amp;couponId=CP00000011155160&amp;rootCd=10&amp;storeId=H000794729" rel="noopener nofollow" target="_blank">このクーポンで予約</a></div></div></article>
-<article class="menu-card" data-type="new"><span class="coupon-type new">新規</span><div class="menu-body"><span class="tag">柔らか質感</span><h3>カット＋髪質改善縮毛矯正</h3><div class="price">¥18,500</div><p>Core配合でダメージを抑え、広がりや強いうねりもまとまる美髪へ。ロング料金なし</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?add=0&amp;addMenu=0&amp;couponId=CP00000010873231&amp;rootCd=10&amp;storeId=H000794729" rel="noopener nofollow" target="_blank">このクーポンで予約</a></div></div></article>
-<article class="menu-card" data-type="repeat"><span class="coupon-type repeat">再来</span><div class="menu-body"><span class="tag">2回目・3回目限定</span><h3>カット＋髪質改善カラー＋ハホニコトリートメント</h3><div class="price">¥14,000</div><p>W髪質改善で芯から補強し、潤いを閉じ込める高補修プラン。来店3回目までの女性限定</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?add=0&amp;addMenu=0&amp;couponId=CP00000011109372&amp;rootCd=10&amp;storeId=H000794729" rel="noopener nofollow" target="_blank">このクーポンで予約</a></div></div></article>
-<article class="menu-card" data-type="repeat"><span class="coupon-type repeat">再来</span><div class="menu-body"><span class="tag">2回目・3回目限定</span><h3>カット＋髪質改善カラー＋TOKIOトリートメント</h3><div class="price">¥16,000</div><p>CoreとTOKIOで内側・外側から補修する最高峰メニュー。女性限定・併用不可・ブリーチなし</p><div class="coupon-reserve"><a href="#reserve">LINEで相談</a><a class="hp" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?add=0&amp;addMenu=0&amp;couponId=CP00000011161663&amp;rootCd=10&amp;storeId=H000794729" rel="noopener nofollow" target="_blank">このクーポンで予約</a></div></div></article>
-</div>
-<div style="text-align:center;margin-top:24px">
-<a class="btn" href="https://beauty.hotpepper.jp/slnH000794729/" rel="noopener nofollow" target="_blank">Hot Pepper掲載ページを見る →</a>
-</div>
-</div>
-</section>
-<section class="diagnosis-entry" aria-labelledby="diagnosis-entry-title">
-<div class="diagnosis-entry-inner">
-<div class="diagnosis-entry-copy"><div class="eyebrow">HAIR COUNSELING</div><h2 id="diagnosis-entry-title">メニュー選びに迷った方へ</h2><p>5つの質問から、今のお悩みに合う施術と参考スタイルをご案内します。</p></div>
-<a class="btn diagnosis-btn" href="hair-diagnosis.html">髪のお悩み診断をする<span class="free-label">無料・約1分</span></a>
 </div>
 </section>
 <section class="section check-style-section">
@@ -1902,6 +1889,15 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 <div class="check-style-more">
 <a href="hair-style.html">このサロンのHair Styleをすべて見る →</a>
+<section class="tryon-home-card" aria-labelledby="tryon-home-title">
+<div><div class="eyebrow">HAIR STYLE TRY-ON</div><h2 id="tryon-home-title">自分の写真で髪型を試してみる</h2><p>ショート・ボブ・ミディアム・ロング全16種類を、スマートフォンやパソコンで無料シミュレーションできます。写真は端末内だけで処理されます。</p></div>
+<a class="btn" href="hair-style-try-on.html">髪型シミュレーションを試す →</a>
+</section>
+<style>
+.tryon-home-card{max-width:1100px;margin:30px auto 18px;padding:30px 32px;display:flex;align-items:center;justify-content:space-between;gap:28px;background:linear-gradient(135deg,#fbf6f2,#f5e9e6);border:1px solid #eadfd8;text-align:left}
+.tryon-home-card h2{margin:7px 0 10px;font-size:25px;font-weight:500;line-height:1.45}.tryon-home-card p{max-width:700px;margin:0;font-size:14px;line-height:1.9}.tryon-home-card .btn{flex:0 0 auto}
+@media(max-width:767px){.tryon-home-card{margin:24px 0 14px;padding:24px 19px;display:block}.tryon-home-card h2{font-size:21px}.tryon-home-card p{font-size:13px}.tryon-home-card .btn{display:inline-flex;margin-top:18px}}
+</style>
 <section class="hair-consult-guide" aria-labelledby="hair-consult-title">
 <div class="hair-consult-guide__inner">
 <h2 id="hair-consult-title">ヘアスタイルから相談できます</h2>
@@ -1919,6 +1915,15 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 .hair-consult-guide p{font-size:14px;line-height:1.85;letter-spacing:0}
 .hair-consult-guide .pc-only{display:none}}
 </style>
+<section class="page-entry page-entry-coupon" id="menu">
+<div class="page-entry-inner">
+<div>
+<h2>おすすめクーポン</h2>
+<p>髪のお悩みやご来店回数に合わせた、お得なメニューを<span class="no-break">ご用意しています。</span></p>
+</div>
+<a class="btn" href="coupon.html">おすすめクーポンを見る →</a>
+</div>
+</section>
 </div>
 </div>
 </section>
@@ -1981,7 +1986,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 <div class="eyebrow">SALON POINT</div>
 <h3>小さなサロンだからできること。</h3>
 <p>大型店が苦手な方にも過ごしやすい、プライベート感のある空間。髪質改善、トリートメント、ヘッドスパ、白髪染め、キッズカットなど、日常に寄り添うメニューを大切にしています。</p>
-<a class="btn consult-reserve-btn" href="#reserve">相談して予約する →</a>
+<a class="btn consult-reserve-btn" href="reservation.html">相談して予約する →</a>
 </div>
 </div>
 </div>
@@ -1990,66 +1995,6 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 <div class="container story-grid">
 <div class="story-photo"><img alt="お子さま同伴OKのキッズスペース" src="images/kids_space_20260913.jpg"/></div>
 <div class="story-copy"><div class="eyebrow">KIDS &amp; FAMILY</div><h3>お子様連れでも、<br/>安心して過ごせる空間。</h3><p>柵付きキッズスペースを用意。忙しいママも、周りを気にせず施術を受けられる環境を目指しています。</p><p>吹田で子連れOKサロン・美容室をお探しの方にも安心してご利用いただけます。キッズカットにも対応しています。</p></div>
-</div>
-</section>
-<section class="section" id="reserve">
-<div id="consultStylePreview" style="display:none;margin:18px 0;padding:16px 18px;border:1px solid #eadfd8;border-radius:12px;background:#fffaf9">
-<strong>Hair Styleで選んだ相談スタイル</strong>
-<ul id="consultStylePreviewList" style="margin:8px 0 0;padding-left:1.2em"></ul>
-</div>
-<div class="container">
-<div class="reserve-panel">
-<div class="section-head">
-<div class="eyebrow">RESERVATION</div>
-<h2>ご予約</h2>
-<p class="lead">希望内容を入力して、LINEへ送る予約メッセージを作成できます。</p>
-</div>
-<div class="reserve-choices">
-<div class="reserve-choice">
-<h3>LINEで相談しながら予約</h3>
-<p>メニューや髪のお悩みを相談してから予約したい方におすすめ。</p>
-<a class="btn line-action" href="#reserve-form">LINE予約フォームへ</a>
-</div>
-<div class="reserve-choice">
-<h3>空席を見てネット予約</h3>
-<p>Hot Pepper Beautyで空席状況を確認して予約できます。</p>
-<a class="btn" href="https://beauty.hotpepper.jp/CSP/bt/reserve/?storeId=H000794729" rel="noopener nofollow" target="_blank">空席確認・ネット予約 →</a>
-</div>
-</div>
-<div class="form-grid" id="reserve-form">
-<div class="field"><label for="n">お名前</label><input autocomplete="name" id="n" placeholder="例：山田 花子"/></div>
-<div class="field"><label for="t">電話番号</label><input autocomplete="tel" id="t" placeholder="例：090-0000-0000" type="tel"/></div>
-<div class="field full"><label for="m">メニュー</label>
-<select id="m">
-<option value="" selected>メニューを選択してください</option>
-<option>カット＋髪質改善カラー＋ハホニコトリートメント ¥14,000</option>
-<option>【当日・前日限定】カット＋髪質改善カラー ¥11,000</option>
-<option>カット＋髪質改善カラー ¥12,000</option>
-<option>カット＋髪質改善トリートメント ¥9,000</option>
-<option>髪質改善カラー＋ハホニコトリートメント ¥12,000</option>
-<option>髪質改善カラー＋トリートメント ¥14,000</option>
-<option>ヘッドスパ（内容はご相談）</option>
-      <option>キッズカット</option>
-<option>相談して決めたい</option>
-</select>
-<div id="selectedCouponNotice" style="display:none;margin-top:8px;padding:9px 11px;border-radius:8px;background:#fff4f7;color:#b94e6b;font-size:12px;line-height:1.55;border:1px solid #f0d6de"></div>
-</div>
-<div class="field"><label for="d">第1希望日</label><input id="d" type="date"/></div>
-<div class="field"><label for="tm">希望時間</label><input id="tm" type="time"/></div>
-<div class="field full"><label for="note">ご要望</label><textarea id="note" placeholder="髪のお悩み、お子様同伴など"></textarea></div>
-</div>
-<div class="reserve-actions">
-<button class="btn" onclick="previewReservation()" type="button">予約内容を確認</button>
-<button class="btn line-action" onclick="sendReservationToLine()" type="button">LINEで予約する</button>
-<button class="btn secondary" onclick="clearReservation()" type="button">入力をクリア</button>
-</div>
-<div class="reserve-status">
-<span class="status-chip">LINE：@012ykuqw</span>
-<span class="status-chip">この画面では予約未確定</span>
-</div>
-<div class="preview" id="pv"></div>
-<p class="reserve-help">※「LINEで予約する」を押すと予約内容をコピーしてLINEを開きます。店舗からの返信をもって予約確定となります。入力内容はこのページ上ではサーバー保存しません。</p>
-</div>
 </div>
 </section>
 <section class="section blog-top" id="blog-news">
@@ -2134,27 +2079,6 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 </section>
 
-<section class="section" id="privacy">
-<div class="container">
-<div class="section-head">
-<div class="eyebrow">PRIVACY POLICY</div>
-<h2>プライバシーポリシー</h2>
-</div>
-<div class="policy">
-<h3>個人情報の利用目的</h3>
-<p>当サイトでは、ご予約・お問い合わせの際に、お名前、電話番号、希望日時、施術内容などの情報をご入力いただく場合があります。これらの情報は、予約対応、連絡、サービス提供および必要なご案内のために利用します。</p>
-<h3>個人情報の管理</h3>
-<p>取得した個人情報は、利用目的の範囲内で適切に取り扱い、法令に基づく場合を除き、ご本人の同意なく第三者へ提供しません。</p>
-<h3>LINE等の外部サービス</h3>
-<p>当サイトからLINE、Instagram、Google等の外部サービスへ移動した場合、各サービスの利用規約およびプライバシーポリシーが適用されます。</p>
-<h3>免責事項</h3>
-<p>当サイトに掲載する情報は、内容の正確性・最新性の維持に努めますが、利用により生じた損害について、法令上認められる範囲を超えて責任を負うものではありません。料金・営業時間・予約状況等は変更される場合があります。</p>
-<h3>お問い合わせ</h3>
-<p>本ポリシーに関するお問い合わせは、店舗LINEまたは正式な連絡先よりお願いいたします。</p>
-</div>
-</div>
-</section>
-
 <section id="salon-guide" class="ai-info-section" aria-labelledby="salon-guide-title">
   <div class="ai-info-inner">
     <p class="ai-info-kicker">SALON GUIDE</p>
@@ -2169,6 +2093,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
     <a class="faq-link-button" href="faq.html">よくあるご質問を見る →</a>
   </div>
 </section>
+<section class="page-entry page-entry-privacy"><div class="page-entry-inner"><div><div class="eyebrow">PRIVACY POLICY</div><h2>プライバシーポリシー</h2><p>個人情報の取り扱いと、安心してサイトをご利用いただくための方針をご案内します。</p></div><a class="btn" href="privacy.html">詳しく見る →</a></div></section>
 <style id="faq-link-button-style">
 .faq-link-section{
   padding:28px 20px 46px;
@@ -2211,8 +2136,8 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 }
 </style>
 
-<footer><div class="logo">amona<small>HAIR SALON</small></div><p>© 2026 HAIRSALON amona. All Rights Reserved.</p><div class="policy-links"><a href="#privacy">プライバシーポリシー</a><a href="#access">お問い合わせ</a></div></footer>
-<div class="mobile-bar"><a href="#">⌂ HOME</a><a href="#reserve">予約する →</a></div>
+<footer><div class="logo">amona<small>HAIR SALON</small></div><p>© 2026 HAIRSALON amona. All Rights Reserved.</p><div class="policy-links"><a href="privacy.html">プライバシーポリシー</a><a href="#access">お問い合わせ</a></div></footer>
+<div class="mobile-bar"><a href="#">⌂ HOME</a><a href="reservation.html">予約する →</a></div>
 <script>
 const LINE_URL = 'https://line.me/R/ti/p/@012ykuqw';
 
@@ -2404,7 +2329,7 @@ document.addEventListener('DOMContentLoaded', () => {
     reserve.classList.add('form-open');
     window.setTimeout(() => form && form.scrollIntoView({behavior:'smooth', block:'start'}), 30);
   };
-  document.querySelectorAll('a.line-action[href="#reserve-form"]').forEach(link => {
+  document.querySelectorAll('a.line-action[href="reservation.html"]').forEach(link => {
     link.addEventListener('click', openForm);
   });
   if(location.hash === '#reserve-form' || new URLSearchParams(location.search).has('coupon')) openForm();

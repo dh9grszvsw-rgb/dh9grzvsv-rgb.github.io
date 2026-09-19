@@ -530,19 +530,21 @@ body.amona-modal-open{overflow:hidden}
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 </head>
-<body>
+<body><a class="amona-home-back" href="index.html" aria-label="トップページに戻る">← トップページに戻る</a><style>.amona-home-back{position:fixed;top:18px;left:18px;z-index:9999;display:inline-flex;padding:9px 16px;border:1px solid #c86b7d;border-radius:999px;background:rgba(255,253,250,.94);color:#a94d63!important;text-decoration:none!important;font:600 12px sans-serif;box-shadow:0 5px 20px rgba(50,35,30,.07)}@media(max-width:600px){.amona-home-back{top:10px;left:10px;padding:7px 11px;font-size:10px}}</style>
 
 
 <header><div class="head">
 <a class="brand" href="index.html">amona<small>HAIR SALON</small></a>
-<nav><a href="index.html#concept">CONCEPT</a><a href="index.html#menu">MENU</a><a href="hair-style.html">STYLE</a><a href="index.html#staff">STAFF</a><a href="index.html#kids">KIDS</a><a href="index.html#reserve">RESERVE</a><a href="index.html#access">ACCESS</a></nav>
-<a class="reserve" href="index.html#reserve">ご予約</a>
+<nav><a href="index.html#concept">CONCEPT</a><a href="index.html#menu">MENU</a><a href="hair-style.html">STYLE</a><a href="hair-style-try-on.html">TRY-ON</a><a href="index.html#staff">STAFF</a><a href="index.html#kids">KIDS</a><a href="reservation.html">RESERVE</a><a href="index.html#access">ACCESS</a></nav>
+<a class="reserve" href="reservation.html">ご予約</a>
 </div></header>
 <section class="hero">
 <div class="eyebrow">STYLE CATALOG</div>
 <h1>Hair Style</h1>
 <p class="lead">気になるスタイルを選んで、あなたに似合うイメージを探してみてください。</p>
 </section>
+<section class="tryon-catalog-guide" aria-labelledby="tryon-catalog-title"><div><span>HAIR STYLE TRY-ON</span><h2 id="tryon-catalog-title">自分の顔写真で髪型を試せます</h2><p>ショート・ボブ・ミディアム・ロング全16種類。気になる長さを無料でシミュレーションして、相談時のイメージづくりにご利用ください。</p></div><a href="hair-style-try-on.html">髪型シミュレーションを試す →</a></section>
+<style>.tryon-catalog-guide{width:min(1080px,calc(100% - 40px));margin:0 auto 34px;padding:25px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:#fbf6f2;border:1px solid #eadfd8}.tryon-catalog-guide span{font:600 10px sans-serif;letter-spacing:.2em;color:#a94d63}.tryon-catalog-guide h2{margin:6px 0 8px;font-size:23px;font-weight:500}.tryon-catalog-guide p{margin:0;max-width:690px;font:14px/1.8 sans-serif;color:#6e625c}.tryon-catalog-guide a{flex:0 0 auto;padding:11px 20px;border-radius:999px;background:#c86b7d;color:#fff;text-decoration:none;font:600 12px sans-serif}@media(max-width:700px){.tryon-catalog-guide{display:block;padding:21px 18px;margin-bottom:25px}.tryon-catalog-guide h2{font-size:20px}.tryon-catalog-guide p{font-size:13px}.tryon-catalog-guide a{display:inline-flex;margin-top:15px}}</style>
 <section class="filters">
 <div class="row"><span class="label">レディース</span>
 <button class="filter active" data-filter="all">すべて</button>
@@ -785,7 +787,7 @@ body.amona-modal-open{overflow:hidden}
 </div>
 </div>
 <div class="style-detail-actions">
-<button class="style-detail-coupon" id="styleDetailCoupon" type="button">おすすめクーポンを使う</button><a id="styleDetailConsult" href="index.html#reserve-form" hidden aria-hidden="true"></a>
+<button class="style-detail-coupon" id="styleDetailCoupon" type="button">おすすめクーポンを使う</button><a id="styleDetailConsult" href="reservation.html" hidden aria-hidden="true"></a>
 </div>
 </div>
 </div>
@@ -1076,7 +1078,7 @@ document.querySelectorAll('.filter').forEach(btn=>{
       couponPrice:cp.price||'',
       couponMenu:cp.menu||''
     });
-    location.href='index.html?'+qs.toString()+'#reserve-form';
+    location.href='reservation.html?'+qs.toString()+'#form';
   });
   render();
 })();
