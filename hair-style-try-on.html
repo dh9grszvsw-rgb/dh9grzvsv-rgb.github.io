@@ -30,6 +30,9 @@
     @media(max-width:850px){nav{display:none}.head{min-height:64px}.brand{font-size:27px}.head .reserve{margin-left:auto}.app-shell{grid-template-columns:1fr;padding:15px 13px 55px}.panel{border-radius:17px}.viewer{display:contents}.canvas-wrap{position:sticky;top:72px;z-index:12;width:100%;height:40vh;min-height:260px;max-height:360px;aspect-ratio:auto;border:9px solid #fff;border-radius:17px;box-shadow:var(--shadow)}.upload-row,.privacy-note,.image-note{position:relative;z-index:1}.tools{position:relative;z-index:2;padding:17px}.hero{padding:40px 18px 24px}.steps{grid-template-columns:1fr 1fr}}
     @media(max-width:500px){.hero h1{font-size:clamp(20px,5.8vw,24px);white-space:nowrap;letter-spacing:-.03em}.steps{grid-template-columns:1fr}.upload{font-size:13px}.tabs{gap:4px}.styles{gap:5px}.content{padding-left:17px;padding-right:17px}.content h2{font-size:24px}}
   </style>
+  <style>
+    .styles{margin-bottom:18px}.style{background-size:200% 200%}.colors{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin:0 0 21px}.color{border:2px solid #fff;outline:1px solid var(--line);aspect-ratio:1;border-radius:50%;background:var(--swatch)}.color.active{outline:3px solid var(--rose)}
+  </style>
 </head>
 <body>
   <header><div class="head"><a class="brand" href="index.html">amona<small>HAIR SALON</small></a><nav><a href="index.html#concept">CONCEPT</a><a href="index.html#menu">MENU</a><a href="hair-style.html">STYLE</a><a href="hair-style-try-on.html">TRY-ON</a><a href="reservation.html">RESERVE</a><a href="index.html#access">ACCESS</a></nav><a class="reserve" href="reservation.html">ご予約</a></div></header>
@@ -37,7 +40,7 @@
   <main class="app-shell">
     <section class="panel viewer" aria-label="髪型シミュレーション画面">
       <div class="canvas-wrap" id="stage"><canvas id="canvas"></canvas><div class="empty" id="empty"><div><div class="empty-icon">📷</div><strong>正面を向いた写真を選んでください</strong><span>明るい場所で、髪をまとめた写真がおすすめです</span></div></div><span class="badge">TRY-ON</span><button class="compare" id="compare" type="button">長押しで元写真</button></div>
-      <div class="upload-row"><label class="upload">📷 写真を撮影<input id="camera" type="file" accept="image/*" capture="user"></label><label class="upload">▧ 写真を選ぶ<input id="gallery" type="file" accept="image/*"></label></div>
+      <div class="upload-row"><button class="upload" id="cameraButton" type="button">📷 写真を撮影</button><label class="upload">▧ 写真を選ぶ<input id="gallery" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif"></label></div><input id="camera" type="file" accept="image/*" capture="user" hidden>
       <p class="privacy-note">🔒 選択した写真は端末のブラウザ内だけで処理され、amonaへ送信・保存されません。</p>
       <p class="image-note">※表示されるヘアスタイルは、仕上がりを想像するためのイメージです。髪質・毛量・骨格・現在の髪の状態や施術内容により、実際の仕上がりとは異なる場合があります。</p>
     </section>
@@ -45,6 +48,8 @@
       <h2 class="section-title">髪型を選択（各4タイプ）</h2>
       <div class="tabs"><button class="tab active" data-category="0">ショート</button><button class="tab" data-category="1">ボブ</button><button class="tab" data-category="2">ミディアム</button><button class="tab" data-category="3">ロング</button></div>
       <div class="styles"><button class="style active" data-variant="0" aria-label="タイプ1"></button><button class="style" data-variant="1" aria-label="タイプ2"></button><button class="style" data-variant="2" aria-label="タイプ3"></button><button class="style" data-variant="3" aria-label="タイプ4"></button></div>
+      <h2 class="section-title">髪色を選択</h2>
+      <div class="colors" aria-label="髪色"><button class="color active" data-color="natural" style="--swatch:#4b342c" aria-label="ナチュラル"></button><button class="color" data-color="black" style="--swatch:#211c1b" aria-label="ブラック"></button><button class="color" data-color="dark-brown" style="--swatch:#3b2822" aria-label="ダークブラウン"></button><button class="color" data-color="brown" style="--swatch:#704a35" aria-label="ブラウン"></button><button class="color" data-color="light-brown" style="--swatch:#a27652" aria-label="ライトブラウン"></button><button class="color" data-color="beige" style="--swatch:#ad8b6c" aria-label="ベージュ"></button><button class="color" data-color="ash" style="--swatch:#746f6c" aria-label="アッシュ"></button></div>
       <h2 class="section-title">顔写真を調整</h2>
       <label class="control"><span>大きさ</span><input id="photoScale" type="range" min="30" max="180" value="100"><output id="photoScaleOut">100%</output></label>
       <div class="fine"><button data-photo-move="0,-10">↑ 上</button><button data-photo-move="-10,0">← 左</button><button data-photo-move="10,0">右 →</button><button data-photo-move="0,10">↓ 下</button></div><button class="reset" id="photoReset">顔写真の位置と大きさを戻す</button>
@@ -88,6 +93,17 @@
     document.querySelector('#resetAll').onclick=()=>{category=0;variant=0;hasPhoto=false;hideHair=false;hair={x:0,y:0,scale:.95,rotation:0,opacity:1};photoView={x:0,y:0,scale:1};photo.removeAttribute('src');document.querySelector('#empty').hidden=false;document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('active',+el.dataset.category===0));updateStyles();sync();draw()};
     document.querySelector('#consult').onclick=()=>{if(!hasPhoto)return alert('先に写真を選んでください。');const label=names[category]+' タイプ'+(variant+1);sessionStorage.setItem('amona_tryon_style',label);location.href='reservation.html?tryon='+encodeURIComponent(label)+'#form'};
     new ResizeObserver(fitCanvas).observe(stage);fitCanvas();
+  </script>
+  <script>
+    const modernNames=[['エアリーピクシー','丸みショートボブ','マッシュショート','レイヤーショート'],['切りっぱなしボブ','内巻きボブ','フレンチボブ','レイヤーボブ'],['ウルフミディ','鎖骨ロブ','顔まわりレイヤー','くびれミディ'],['前髪ありロングレイヤー','やわらかロングウェーブ','ストレートロング','韓国風ロングレイヤー']];
+    const colorNames={natural:'ナチュラル',black:'ブラック','dark-brown':'ダークブラウン',brown:'ブラウン','light-brown':'ライトブラウン',beige:'ベージュ',ash:'アッシュ'},colorValues={black:'#171313','dark-brown':'#2e1e19',brown:'#70472f','light-brown':'#a66f43',beige:'#b18b68',ash:'#696966'};
+    let hairColor='natural';const tintCanvas=document.createElement('canvas'),tintCtx=tintCanvas.getContext('2d');
+    const originalDraw=draw;draw=function(){ctx.clearRect(0,0,canvas.width,canvas.height);if(!hasPhoto)return;const [px,py,pw,ph]=cover(photo),ps=photoView.scale,rx=canvas.width/stage.clientWidth,ry=canvas.height/stage.clientHeight;ctx.drawImage(photo,px-(pw*ps-pw)/2+photoView.x*rx,py-(ph*ps-ph)/2+photoView.y*ry,pw*ps,ph*ps);if(hideHair)return;const selectedSheet=sheets[category];if(!selectedSheet.complete||!selectedSheet.width)return;const q=selectedSheet.width/2,sx=(variant%2)*q,sy=Math.floor(variant/2)*q,base=canvas.width*.74*hair.scale;tintCanvas.width=q;tintCanvas.height=q;tintCtx.clearRect(0,0,q,q);tintCtx.globalCompositeOperation='source-over';tintCtx.globalAlpha=1;tintCtx.drawImage(selectedSheet,sx,sy,q,q,0,0,q,q);if(hairColor!=='natural'){tintCtx.globalCompositeOperation='source-atop';tintCtx.globalAlpha=.7;tintCtx.fillStyle=colorValues[hairColor];tintCtx.fillRect(0,0,q,q);tintCtx.globalCompositeOperation='multiply';tintCtx.globalAlpha=.3;tintCtx.drawImage(selectedSheet,sx,sy,q,q,0,0,q,q)}tintCtx.globalAlpha=1;tintCtx.globalCompositeOperation='source-over';ctx.save();ctx.globalAlpha=hair.opacity;ctx.translate(canvas.width/2+hair.x*rx,canvas.height*.40+hair.y*ry);ctx.rotate(hair.rotation*Math.PI/180);ctx.drawImage(tintCanvas,-base/2,-base/2,base,base);ctx.restore()};
+    document.querySelectorAll('[data-color]').forEach(b=>b.addEventListener('click',()=>{hairColor=b.dataset.color;document.querySelectorAll('[data-color]').forEach(x=>x.classList.toggle('active',x===b));draw()}));
+    document.querySelector('#cameraButton').addEventListener('click',()=>{const input=document.querySelector('#camera');input.value='';try{input.showPicker?input.showPicker():input.click()}catch(e){input.click()}});
+    document.querySelectorAll('.style').forEach((el,i)=>{el.title=modernNames[category][i]});document.querySelectorAll('[data-category]').forEach(b=>b.addEventListener('click',()=>setTimeout(()=>document.querySelectorAll('.style').forEach((el,i)=>{el.title=modernNames[category][i];el.setAttribute('aria-label',modernNames[category][i])}),0)));
+    document.querySelector('#consult').onclick=()=>{if(!hasPhoto)return alert('先に写真を選んでください。');const label=modernNames[category][variant]+'／'+colorNames[hairColor];sessionStorage.setItem('amona_tryon_style',label);location.href='reservation.html?tryon='+encodeURIComponent(label)+'#form'};
+    document.querySelector('#resetAll').addEventListener('click',()=>{hairColor='natural';document.querySelectorAll('[data-color]').forEach(el=>el.classList.toggle('active',el.dataset.color==='natural'))});
   </script>
 </body>
 </html>
