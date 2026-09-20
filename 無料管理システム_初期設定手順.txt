@@ -1,0 +1,41 @@
+amona 無料管理システム 初期設定手順
+====================================
+
+今回追加した機能
+・admin.htmlから主要画像6か所を差し替え
+・クーポンの追加、編集、公開／非公開、削除
+・スマートフォン／PC対応
+・未設定時は現在の画像とクーポンをそのまま表示
+
+【1】Supabaseで無料プロジェクトを作成
+1. https://supabase.com/ を開き、無料アカウントを作成します。
+2. New projectからamona用プロジェクトを作成します。
+3. Project Settings → APIを開きます。
+4. Project URLとanon public keyを控えます。
+   ※service_role keyは絶対にホームページへ入力しないでください。
+
+【2】管理者を登録
+1. SupabaseのAuthentication → Usersを開きます。
+2. Add userから管理者のメールアドレスとパスワードを登録します。
+3. このメールアドレスとパスワードがadmin.htmlへのログイン情報になります。
+
+【3】データベースを作成
+1. 管理者登録後に、SupabaseのSQL Editorを開きます。
+2. 同梱のsupabase-setup.sqlを開き、内容をすべて貼り付けて実行します。
+3. 最初に登録したユーザーだけが管理者として登録されます。
+
+【4】サイトへ接続
+cms-config.jsをメモ帳などで開き、次の2か所へ入力します。
+
+supabaseUrl: 'ここにProject URL',
+anonKey: 'ここにanon public key'
+
+【5】GitHubへアップロード
+amonaフォルダ内の全ファイルを、現在のホームページへ上書きします。
+公開後、https://amona-hair.com/admin.html を開いてログインします。
+
+注意事項
+・管理画面URLとパスワードは外部へ公開しないでください。
+・画像はJPEG、PNG、WebPの8MB以内を推奨します。
+・無料枠の容量を守るため、必要以上に大きな画像は避けてください。
+・anon public keyはWebサイトで使用する公開用キーです。データ保護はSQLのアクセス制御で行います。

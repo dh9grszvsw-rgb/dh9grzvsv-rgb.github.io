@@ -1843,11 +1843,11 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 <section class="hero">
 <div class="hero-copy"><div><div class="eyebrow">BEAUTY / STYLE / LIFE</div><h1><span class="hero-title-line">あなたらしさを、</span><span class="hero-title-line">もっと美しく。</span></h1><p>髪質・骨格・ライフスタイルまで考えた、<br/>あなただけのヘアデザインをご提案します。</p><a class="btn" href="reservation.html">ご予約はこちら →</a></div></div>
-<div class="hero-photo"><img alt="amona メインビジュアル" src="images/main_complete_20260913.png"/></div>
+<div class="hero-photo"><img alt="amona メインビジュアル" data-cms-image="hero" src="images/main_complete_20260913.png"/></div>
 </section>
 <section class="section" id="concept">
 <div class="container story-grid">
-<div class="story-photo"><img alt="サロン店内" src="images/salon_20260913.jpg"/></div>
+<div class="story-photo"><img alt="サロン店内" data-cms-image="salon" src="images/salon_20260913.jpg"/></div>
 <div class="story-copy"><div class="eyebrow">CONCEPT</div><h3>心をそっと満たす、<br/>優しいひとときを。</h3><p>一人ひとりに寄り添い、落ち着いて過ごせるプライベートサロン。髪質改善・艶髪・トリートメント・ヘッドスパ・キッズカットまで、毎日に寄り添うメニューをご用意しています。</p><p>一人のスタイリストが仕上げまで担当。お子様連れでも過ごしやすい空間づくりを大切にしています。</p></div>
 </div>
 </section>
@@ -1855,10 +1855,10 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 <div class="container">
 <div class="section-head"><div class="eyebrow">FEATURE</div><h2>amonaのこだわり</h2></div>
 <div class="cards4">
-<article class="visual-card"><img alt="髪質改善とヘアケアのイメージ" src="images/hair_care_20260913.jpg"/><div class="body"><h3>HAIR CARE</h3><p>髪質改善で、ずっと触れたくなる艶髪へ。</p></div></article>
+<article class="visual-card"><img alt="髪質改善とヘアケアのイメージ" data-cms-image="haircare" src="images/hair_care_20260913.jpg"/><div class="body"><h3>HAIR CARE</h3><p>髪質改善で、ずっと触れたくなる艶髪へ。</p></div></article>
 <article class="visual-card"><img alt="HAIRSALON amona ヘアスタイル" src="images/style_collection.jpg"/><div class="body"><h3>STYLE</h3><p>自然体で似合う、上品なヘアデザイン。</p></div></article>
-<article class="visual-card"><img alt="お子さま同伴OKのキッズスペース" src="images/kids_space_20260913.jpg"/><div class="body"><h3>KIDS</h3><p>お子様同伴OK。ママも安心して通える空間。</p></div></article>
-<article class="visual-card"><img alt="吹田市昭和町 HAIRSALON amona 店内" src="images/salon_20260913.jpg"/><div class="body"><h3>SALON</h3><p>明るく清潔感のある、落ち着いた店内。</p></div></article>
+<article class="visual-card"><img alt="お子さま同伴OKのキッズスペース" data-cms-image="kids" src="images/kids_space_20260913.jpg"/><div class="body"><h3>KIDS</h3><p>お子様同伴OK。ママも安心して通える空間。</p></div></article>
+<article class="visual-card"><img alt="吹田市昭和町 HAIRSALON amona 店内" data-cms-image="salon-card" src="images/salon_20260913.jpg"/><div class="body"><h3>SALON</h3><p>明るく清潔感のある、落ち着いた店内。</p></div></article>
 </div>
 </div>
 </section>
@@ -2008,7 +2008,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 </div>
 <div class="pickup-staff-card">
 <div class="pickup-staff-photo">
-<img alt="スタイリスト おぎの" src="images/staff-ogino-top.jpg"/>
+<img alt="スタイリスト おぎの" data-cms-image="staff" src="images/staff-ogino-top.jpg"/>
 </div>
 <div class="pickup-staff-info">
 <div class="pickup-staff-name"><span>✂</span><strong>おぎの</strong></div>
@@ -2628,4 +2628,5 @@ document.addEventListener('DOMContentLoaded', () => {
 })();
 </script>
 <script src="blog.js"></script>
+<script src="cms-config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="cms-public.js"></script>
 </body></html>
