@@ -119,5 +119,6 @@
     document.querySelector('#consult').onclick=()=>{if(!hasPhoto)return alert('先に写真を選んでください。');const label=modernNames[category][variant]+'／'+colorNames[hairColor];sessionStorage.setItem('amona_tryon_style',label);location.href='reservation.html?tryon='+encodeURIComponent(label)+'#form'};
     document.querySelector('#resetAll').addEventListener('click',()=>{hairColor='natural';document.querySelectorAll('[data-color]').forEach(el=>el.classList.toggle('active',el.dataset.color==='natural'))});
   </script>
+  <script src="cms-config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="cms-public.js?v=20260921-all"></script>
 </body>
 </html>

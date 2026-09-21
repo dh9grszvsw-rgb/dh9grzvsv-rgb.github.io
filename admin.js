@@ -2,32 +2,39 @@
 const cfg=window.AMONA_CMS||{},configured=cfg.supabaseUrl&&cfg.anonKey&&window.supabase;
 const $=s=>document.querySelector(s),loginCard=$('#loginCard'),adminArea=$('#adminArea'),logout=$('#logout'),message=$('#loginMessage');
 if(!configured){$('#setupNotice').hidden=false;loginCard.hidden=true;return}
-const db=window.supabase.createClient(cfg.supabaseUrl,cfg.anonKey),slots=[
-{slot:'hero',label:'トップのメイン画像',place:'TOPページ最上部・右側の大きな画像',size:'推奨：横長または4:3／横1600px以上',fallback:'images/main_complete_20260913.png'},
-{slot:'salon',label:'店内紹介画像',place:'TOPページ「amona story」文章横の店内写真',size:'推奨：4:3／横1200px以上',fallback:'images/salon_20260913.jpg'},
-{slot:'haircare',label:'ヘアケア画像',place:'TOPページ「HAIR CARE」紹介カード',size:'推奨：4:3／横1000px以上',fallback:'images/hair_care_20260913.jpg'},
-{slot:'kids',label:'キッズ画像',place:'TOPページ「KIDS」紹介カード（3枚並びの中央）',size:'推奨：4:3／横1000px以上',fallback:'images/kids_space_20260913.jpg'},
-{slot:'salon-card',label:'サロンカード画像',place:'TOPページ「SALON」紹介カード（3枚並びの右側）',size:'推奨：4:3／横1000px以上',fallback:'images/salon_20260913.jpg'},
-{slot:'staff',label:'スタイリスト画像',place:'TOPページ下部「スタイリスト おぎの」紹介欄',size:'推奨：縦長4:5または3:4／縦1200px以上',fallback:'images/staff-ogino-top.jpg'}
-];let coupons=[],activeSession=null;
+const db=window.supabase.createClient(cfg.supabaseUrl,cfg.anonKey),mainSlots=[
+{category:'TOP主要画像',slot:'hero',label:'トップのメイン画像',place:'TOPページ最上部・右側の大きな画像',size:'推奨：横長または4:3／横1600px以上',fallback:'images/main_complete_20260913.png'},
+{category:'TOP主要画像',slot:'salon',label:'店内紹介画像',place:'TOPページ「amona story」文章横の店内写真',size:'推奨：4:3／横1200px以上',fallback:'images/salon_20260913.jpg'},
+{category:'TOP主要画像',slot:'haircare',label:'ヘアケア画像',place:'TOPページ「HAIR CARE」紹介カード',size:'推奨：4:3／横1000px以上',fallback:'images/hair_care_20260913.jpg'},
+{category:'TOP主要画像',slot:'kids',label:'キッズ画像',place:'TOPページ「KIDS」紹介カード（3枚並びの中央）',size:'推奨：4:3／横1000px以上',fallback:'images/kids_space_20260913.jpg'},
+{category:'TOP主要画像',slot:'salon-card',label:'サロンカード画像',place:'TOPページ「SALON」紹介カード（3枚並びの右側）',size:'推奨：4:3／横1000px以上',fallback:'images/salon_20260913.jpg'},
+{category:'TOP主要画像',slot:'staff',label:'スタイリスト画像',place:'TOPページ下部「スタイリスト おぎの」紹介欄',size:'推奨：縦長4:5または3:4／縦1200px以上',fallback:'images/staff-ogino-top.jpg'}
+],mainPaths=new Set(mainSlots.map(x=>x.fallback));
+function assetCategory(path){if(path.includes('hair-try-on/'))return '髪型シミュレーション素材';if(path.includes('style_gallery')||path.includes('style_hq/'))return 'ヘアスタイル一覧・詳細';return 'TOP・診断などのその他画像'}
+function assetLabel(path){const name=path.split('/').pop().replace(/\.[^.]+$/,'').replaceAll('_',' ');if(path.includes('hair-try-on/'))return '試着用 '+name;if(path.includes('style_gallery')||path.includes('style_hq/'))return 'ヘアスタイル '+name;return name}
+const assetSlots=(window.AMONA_IMAGE_ASSETS||[]).filter(path=>!mainPaths.has(path)).map(path=>({category:assetCategory(path),slot:'asset:'+path,label:assetLabel(path),place:'元画像が表示されるすべてのページ・箇所',size:'自動で軽量化（長辺2400px以内）',fallback:path})),slots=[...mainSlots,...assetSlots];let coupons=[],activeSession=null;
 function showAdmin(on){loginCard.hidden=on;adminArea.hidden=!on;logout.hidden=!on;if(on){renderImages();loadCoupons()}}
 db.auth.getSession().then(({data})=>{activeSession=data.session;showAdmin(!!activeSession)});db.auth.onAuthStateChange((_e,s)=>{activeSession=s;setTimeout(()=>showAdmin(!!s),0)});
 $('#loginForm').onsubmit=async e=>{e.preventDefault();message.textContent='確認中…';const {data,error}=await db.auth.signInWithPassword({email:$('#email').value,password:$('#password').value});if(error){message.textContent='ログインできません：'+error.message;return}activeSession=data.session;message.textContent='';showAdmin(true)};logout.onclick=async()=>{activeSession=null;await db.auth.signOut();showAdmin(false)};
-function renderImages(){const list=$('#imageList');list.replaceChildren(...slots.map((item,index)=>{const box=document.createElement('div');box.className='image-item';box.innerHTML='<div class="image-number"></div><img alt=""><strong></strong><div class="image-place"></div><div class="image-size"></div><label class="image-upload">この画像を変更する<input type="file" accept="image/jpeg,image/png,image/webp"></label><small class="image-help">画像を選ぶと、すぐに公開サイトへ反映されます</small>';box.querySelector('.image-number').textContent='画像 '+(index+1);box.querySelector('strong').textContent=item.label;box.querySelector('.image-place').textContent='掲載場所：'+item.place;box.querySelector('.image-size').textContent=item.size;const img=box.querySelector('img');img.src=item.fallback;img.alt=item.label+'の現在の画像';db.from('site_images').select('url').eq('slot',item.slot).maybeSingle().then(({data})=>{if(data?.url)img.src=data.url});box.querySelector('input').onchange=e=>uploadImage(item.slot,item.label,e.target.files[0],img);return box}))}
-async function uploadImage(slot,label,file,img){
+function imageCard(item,index){const box=document.createElement('div');box.className='image-item';box.innerHTML='<div class="image-number"></div><img alt=""><strong></strong><div class="image-place"></div><div class="image-path"></div><div class="image-size"></div><label class="image-upload">この画像を変更する<input type="file" accept="image/jpeg,image/png,image/webp"></label><small class="image-help">画像を選ぶと、すぐに公開サイトへ反映されます</small>';box.querySelector('.image-number').textContent='画像 '+(index+1);box.querySelector('strong').textContent=item.label;box.querySelector('.image-place').textContent='掲載場所：'+item.place;box.querySelector('.image-path').textContent='元画像：'+item.fallback;box.querySelector('.image-size').textContent=item.size;const img=box.querySelector('img');img.src=item.fallback;img.alt=item.label+'の現在の画像';db.from('site_images').select('url').eq('slot',item.slot).maybeSingle().then(({data})=>{if(data?.url)img.src=data.url});box.querySelector('input').onchange=e=>uploadImage(item.slot,item.label,e.target.files[0],img,box.querySelector('.image-help'));return box}
+function renderImages(){const list=$('#imageList'),categories=[...new Set(slots.map(x=>x.category))];list.replaceChildren(...categories.map((category,groupIndex)=>{const items=slots.filter(x=>x.category===category),details=document.createElement('details');details.className='image-group';details.open=groupIndex===0;const summary=document.createElement('summary');summary.textContent=category;const count=document.createElement('span');count.className='image-group-count';count.textContent='（'+items.length+'枚）';summary.appendChild(count);const grid=document.createElement('div');grid.className='image-list';grid.append(...items.map(item=>imageCard(item,slots.indexOf(item))));details.append(summary,grid);return details}))}
+async function compressImage(file){if(file.type==='image/gif')return{blob:file,ext:'gif'};let bitmap;try{bitmap=await createImageBitmap(file)}catch(_){return{blob:file,ext:(file.name.split('.').pop()||'jpg').toLowerCase()}}const max=2400,scale=Math.min(1,max/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close?.();const type=file.type==='image/png'||file.type==='image/webp'?'image/webp':'image/jpeg',quality=type==='image/webp'?.88:.86,blob=await new Promise(resolve=>canvas.toBlob(resolve,type,quality));if(!blob||blob.size>=file.size)return{blob:file,ext:(file.name.split('.').pop()||'jpg').toLowerCase()};return{blob,ext:type==='image/webp'?'webp':'jpg'}}
+function storedPath(url){const marker='/storage/v1/object/public/site-images/';if(!url||!url.includes(marker))return null;try{return decodeURIComponent(url.split(marker)[1].split('?')[0])}catch(_){return null}}
+async function uploadImage(slot,label,file,img,help){
 if(!file)return;
-if(file.size>8*1024*1024)return alert('画像は8MB以内にしてください。');
+if(file.size>20*1024*1024)return alert('画像は20MB以内にしてください。');
 let session=activeSession;
 if(!session){const result=await db.auth.getSession();session=result.data.session;activeSession=session;}
 if(!session)return alert('ログインの有効期限が切れました。もう一度ログインしてください。');
-const ext=(file.name.split('.').pop()||'jpg').toLowerCase(),path=slot+'-'+Date.now()+'.'+ext;
+const oldResult=await db.from('site_images').select('url').eq('slot',slot).maybeSingle(),oldUrl=oldResult.data?.url||'',compressed=await compressImage(file),safeSlot=slot.replace(/[^a-zA-Z0-9_-]+/g,'-').slice(0,90),path=safeSlot+'-'+Date.now()+'.'+compressed.ext;if(help)help.textContent='保存中…（画像を軽量化しました）';
 const headers={apikey:cfg.anonKey,Authorization:'Bearer '+session.access_token};
-const uploadResponse=await fetch(cfg.supabaseUrl+'/storage/v1/object/site-images/'+encodeURIComponent(path),{method:'POST',headers:{...headers,'Content-Type':file.type||'application/octet-stream','cache-control':'3600','x-upsert':'false'},body:file});
-if(!uploadResponse.ok){const detail=await uploadResponse.json().catch(()=>({}));return alert('画像を保存できません：'+(detail.message||detail.error||uploadResponse.statusText));}
+const uploadResponse=await fetch(cfg.supabaseUrl+'/storage/v1/object/site-images/'+encodeURIComponent(path),{method:'POST',headers:{...headers,'Content-Type':compressed.blob.type||file.type||'application/octet-stream','cache-control':'3600','x-upsert':'false'},body:compressed.blob});
+if(!uploadResponse.ok){if(help)help.textContent='保存できませんでした';const detail=await uploadResponse.json().catch(()=>({}));return alert('画像を保存できません：'+(detail.message||detail.error||uploadResponse.statusText));}
 const publicUrl=cfg.supabaseUrl+'/storage/v1/object/public/site-images/'+encodeURIComponent(path);
 const saveResponse=await fetch(cfg.supabaseUrl+'/rest/v1/site_images?on_conflict=slot',{method:'POST',headers:{...headers,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates,return=minimal'},body:JSON.stringify({slot,url:publicUrl,alt_text:label,updated_at:new Date().toISOString()})});
-if(!saveResponse.ok){const detail=await saveResponse.json().catch(()=>({}));return alert('表示設定を保存できません：'+(detail.message||detail.error||saveResponse.statusText));}
+if(!saveResponse.ok){if(help)help.textContent='表示設定を保存できませんでした';const detail=await saveResponse.json().catch(()=>({}));return alert('表示設定を保存できません：'+(detail.message||detail.error||saveResponse.statusText));}
 img.src=publicUrl;
+const oldPath=storedPath(oldUrl);if(oldPath&&oldPath!==path)fetch(cfg.supabaseUrl+'/storage/v1/object/site-images/'+encodeURIComponent(oldPath),{method:'DELETE',headers}).catch(()=>{});if(help)help.textContent='更新済み：公開サイトへ反映されました';
 alert('画像を更新しました。');
 }
 async function loadCoupons(){const {data,error}=await db.from('coupons').select('*').order('sort_order').order('created_at',{ascending:false});if(error)return alert('クーポンを読み込めません：'+error.message);coupons=data||[];renderCoupons()}

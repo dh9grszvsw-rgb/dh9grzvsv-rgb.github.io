@@ -89,5 +89,6 @@
     document.getElementById('lineBtn').addEventListener('click',async()=>{const r=results[selectedResult];const text=`【amona 髪のお悩み診断】\nおすすめ：${r.title} ${r.price}\n参考スタイル：${r.style}\n相談したいこと：${r.point}\n\nこの診断結果について相談したいです。`;try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const toast=document.getElementById('toast');toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800);setTimeout(()=>window.open('https://line.me/R/ti/p/@012ykuqw','_blank','noopener'),250)});
     draw();
   </script>
+  <script src="cms-config.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="cms-public.js?v=20260921-all"></script>
 </body>
 </html>

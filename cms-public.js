@@ -6,12 +6,17 @@
   const typeLabel={new:'新規',repeat:'再来',all:'全員'};
 
   async function loadImages(){
-    const nodes=[...document.querySelectorAll('[data-cms-image]')];
-    if(!nodes.length)return;
     const {data,error}=await db.from('site_images').select('slot,url,alt_text');
     if(error||!data)return;
     const map=Object.fromEntries(data.map(x=>[x.slot,x]));
-    nodes.forEach(img=>{const item=map[img.dataset.cmsImage];if(item&&item.url){img.src=item.url;if(item.alt_text)img.alt=item.alt_text}});
+    document.querySelectorAll('[data-cms-image]').forEach(img=>{const item=map[img.dataset.cmsImage];if(item&&item.url){img.src=item.url;if(item.alt_text)img.alt=item.alt_text}});
+    const assets=new Map(data.filter(x=>x.slot.startsWith('asset:')&&x.url).map(x=>[x.slot.slice(6),x]));
+    const originalPath=value=>{if(!value)return'';try{const url=new URL(value,location.href),path=decodeURIComponent(url.pathname).replace(/^\//,'');const at=path.indexOf('images/');return at>=0?path.slice(at):''}catch(_){return value.replace(/^\.\//,'')}};
+    const applyAsset=img=>{if(!(img instanceof HTMLImageElement))return;const path=originalPath(img.getAttribute('src'));const item=assets.get(path);if(item&&item.url&&img.src!==item.url){img.src=item.url;if(item.alt_text&&!img.alt)img.alt=item.alt_text}};
+    document.querySelectorAll('img').forEach(applyAsset);
+    const observer=new MutationObserver(changes=>changes.forEach(change=>{if(change.type==='attributes')applyAsset(change.target);change.addedNodes.forEach(node=>{if(node.nodeType!==1)return;applyAsset(node);node.querySelectorAll?.('img').forEach(applyAsset)})}));
+    observer.observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['src']});
+    document.querySelectorAll('meta[property="og:image"],meta[name="twitter:image"]').forEach(meta=>{const item=assets.get(originalPath(meta.content));if(item?.url)meta.content=item.url});
   }
 
   function couponCard(item){
