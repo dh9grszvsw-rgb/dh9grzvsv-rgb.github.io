@@ -1852,50 +1852,32 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
   object-fit:contain;
   filter:invert(1) grayscale(1) brightness(2.4);
 }
+.amona-opening-scissors{
+  position:absolute;
+  right:-9%;
+  bottom:5%;
+  z-index:2;
+  width:clamp(132px,18vw,190px);
+  color:#6f6a65;
+  filter:drop-shadow(0 7px 9px rgba(65,59,54,.2));
+  transform:rotate(-18deg);
+  transform-origin:52% 55%;
+}
+.amona-opening-scissors svg{display:block;width:100%;height:auto;overflow:visible}
+.amona-opening-scissors .scissor-top,
+.amona-opening-scissors .scissor-bottom{
+  transform-box:fill-box;
+  transform-origin:12% 50%;
+  animation:amona-scissor-cut .42s ease-in-out 2 alternate;
+}
+.amona-opening-scissors .scissor-bottom{animation-direction:alternate-reverse}
+@keyframes amona-scissor-cut{
+  from{transform:rotate(-8deg)}
+  to{transform:rotate(8deg)}
+}
 .amona-opening.is-visible .amona-opening-logo{
   opacity:1;
   transform:scale(1);
-}
-.amona-opening-scissors{
-  position:absolute;
-  right:clamp(34px,9vw,142px);
-  bottom:clamp(42px,10vh,108px);
-  width:clamp(112px,12vw,168px);
-  color:#fff;
-  opacity:0;
-  transform:translate3d(0,10px,0) rotate(-8deg);
-  filter:drop-shadow(0 2px 3px rgba(74,68,63,.42));
-  transition:opacity .35s ease,transform .55s cubic-bezier(.2,.7,.2,1);
-  pointer-events:none;
-}
-.amona-opening-scissors svg{display:block;width:100%;height:auto;overflow:visible}
-.amona-opening-scissors .scissors-part{
-  transform-box:view-box;
-  transform-origin:90px 60px;
-}
-.amona-opening.is-snipping .amona-opening-logo{
-  opacity:.22;
-  transform:scale(1.018);
-  filter:blur(1px);
-}
-.amona-opening.is-snipping .amona-opening-scissors{
-  opacity:1;
-  transform:translate3d(0,0,0) rotate(-8deg);
-}
-.amona-opening.is-snipping .scissors-upper{animation:amona-snip-upper .9s ease-in-out 1 both}
-.amona-opening.is-snipping .scissors-lower{animation:amona-snip-lower .9s ease-in-out 1 both}
-.amona-opening.is-scissors-leaving .amona-opening-scissors{
-  opacity:0;
-  transform:translate3d(120px,-6px,0) rotate(-5deg);
-  transition-duration:.58s;
-}
-@keyframes amona-snip-upper{
-  0%,50%,100%{transform:rotate(-8deg)}
-  25%,75%{transform:rotate(0deg)}
-}
-@keyframes amona-snip-lower{
-  0%,50%,100%{transform:rotate(8deg)}
-  25%,75%{transform:rotate(0deg)}
 }
 .amona-opening.is-leaving{
   opacity:0;
@@ -1909,33 +1891,31 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
 body.amona-opening-active{overflow:hidden}
 @media(max-width:767px){
   .amona-opening-logo{width:min(74vw,340px)}
-  .amona-opening-scissors{right:8vw;bottom:9vh;width:clamp(104px,31vw,132px)}
+  .amona-opening-scissors{right:-10%;bottom:4%;width:clamp(118px,34vw,150px)}
 }
 @media(min-width:768px) and (max-width:1100px){
   .amona-opening-logo{width:min(54vw,430px)}
-  .amona-opening-scissors{right:8vw;bottom:9vh;width:clamp(124px,15vw,158px)}
 }
 @media(orientation:landscape) and (max-height:600px){
   .amona-opening-logo{width:min(58vh,330px)}
-  .amona-opening-scissors{right:8vw;bottom:8vh;width:min(22vh,126px)}
 }
 @media(prefers-reduced-motion:reduce){
   .amona-opening,.amona-opening-logo{transition-duration:.2s}
-  .amona-opening-scissors{display:none}
 }
 </style></head>
 <body>
 <div aria-hidden="true" class="amona-opening" id="amonaOpening">
-<div class="amona-opening-logo"><img alt="" src="images/amona-logo-hires.png"/></div>
+<div class="amona-opening-logo"><img alt="" src="images/amona-logo-hires.png"/>
 <div class="amona-opening-scissors">
-<svg aria-hidden="true" viewBox="0 0 180 120">
-<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3.2">
-<g class="scissors-part scissors-upper"><path d="M90 60 22 24 82 67"/><path d="M91 60c16-3 25-17 38-25"/><circle cx="143" cy="27" r="17"/></g>
-<g class="scissors-part scissors-lower"><path d="M90 60 22 96 82 53"/><path d="M91 60c16 3 25 17 38 25"/><circle cx="143" cy="93" r="17"/></g>
-<circle cx="89" cy="60" r="4.8"/>
-</g>
-</svg>
-</div>
+<svg aria-hidden="true" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg">
+<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="38" cy="38" r="25" stroke-width="9"/><circle cx="38" cy="94" r="25" stroke-width="9"/>
+<path d="M57 53L91 67" stroke-width="10"/>
+<g class="scissor-top"><path d="M86 66L205 22L112 78Z" fill="currentColor" stroke-width="4"/></g>
+<g class="scissor-bottom"><path d="M86 68L205 112L112 56Z" fill="currentColor" stroke-width="4"/></g>
+<circle cx="91" cy="67" r="7" fill="#f8f5f1" stroke-width="4"/>
+</g></svg>
+</div></div>
 </div>
 <script>
 (function(){
@@ -1950,12 +1930,8 @@ body.amona-opening-active{overflow:hidden}
     requestAnimationFrame(function(){opening.classList.add('is-visible');});
   });
   var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var snipTime=reduced?180:1180;
-  var leaveScissorsTime=reduced?260:2180;
-  var displayTime=reduced?350:2380;
-  var removeTime=reduced?650:3500;
-  window.setTimeout(function(){opening.classList.add('is-snipping');},snipTime);
-  window.setTimeout(function(){opening.classList.add('is-scissors-leaving');},leaveScissorsTime);
+  var displayTime=reduced?350:1550;
+  var removeTime=reduced?650:2700;
   window.setTimeout(function(){
     opening.classList.add('is-leaving');
     document.body.classList.remove('amona-opening-active');
