@@ -1818,8 +1818,94 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
   .page-entry-coupon p{font-size:14px;line-height:1.95;letter-spacing:.01em}
   .page-entry-coupon .btn{display:flex;width:100%;min-width:0;margin-top:24px}
 }
+</style>
+<style id="amona-opening-style">
+/* amona opening: the current top page remains underneath this overlay. */
+.amona-opening{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:#f8f5f1;
+  opacity:1;
+  visibility:visible;
+  transition:opacity 1.05s cubic-bezier(.45,0,.2,1),visibility 0s linear 1.05s;
+}
+.amona-opening-logo{
+  display:grid;
+  place-items:center;
+  width:min(62vw,460px);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:#c9c9c6;
+  box-shadow:0 18px 42px rgba(65,59,54,.16),0 2px 8px rgba(65,59,54,.09);
+  opacity:0;
+  transform:scale(.94);
+  transition:opacity .9s ease,transform 1.25s cubic-bezier(.2,.7,.2,1),filter .9s ease;
+}
+.amona-opening-logo img{
+  display:block;
+  width:90%;
+  height:90%;
+  object-fit:contain;
+  filter:invert(1) grayscale(1) brightness(2.4);
+}
+.amona-opening.is-visible .amona-opening-logo{
+  opacity:1;
+  transform:scale(1);
+}
+.amona-opening.is-leaving{
+  opacity:0;
+  pointer-events:none;
+}
+.amona-opening.is-leaving .amona-opening-logo{
+  opacity:0;
+  transform:scale(1.035);
+  filter:blur(2px);
+}
+body.amona-opening-active{overflow:hidden}
+@media(max-width:767px){
+  .amona-opening-logo{width:min(74vw,340px)}
+}
+@media(min-width:768px) and (max-width:1100px){
+  .amona-opening-logo{width:min(54vw,430px)}
+}
+@media(orientation:landscape) and (max-height:600px){
+  .amona-opening-logo{width:min(58vh,330px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .amona-opening,.amona-opening-logo{transition-duration:.2s}
+}
 </style></head>
 <body>
+<div aria-hidden="true" class="amona-opening" id="amonaOpening">
+<div class="amona-opening-logo"><img alt="" src="images/amona-logo-hires.png"/></div>
+</div>
+<script>
+(function(){
+  var opening=document.getElementById('amonaOpening');
+  if(!opening)return;
+  var key='amonaOpeningShown';
+  var alreadyShown=false;
+  try{alreadyShown=sessionStorage.getItem(key)==='1';}catch(e){}
+  if(alreadyShown){opening.remove();return;}
+  document.body.classList.add('amona-opening-active');
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){opening.classList.add('is-visible');});
+  });
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var displayTime=reduced?350:1550;
+  var removeTime=reduced?650:2700;
+  window.setTimeout(function(){
+    opening.classList.add('is-leaving');
+    document.body.classList.remove('amona-opening-active');
+    try{sessionStorage.setItem(key,'1');}catch(e){}
+  },displayTime);
+  window.setTimeout(function(){opening.remove();},removeTime);
+})();
+</script>
 <header>
 <div class="container nav">
 <a class="logo" href="#">amona<small>HAIR SALON</small></a>
