@@ -2,15 +2,16 @@
 const cfg=window.AMONA_CMS||{},configured=cfg.supabaseUrl&&cfg.anonKey&&window.supabase;
 const $=s=>document.querySelector(s),loginCard=$('#loginCard'),adminArea=$('#adminArea'),logout=$('#logout'),message=$('#loginMessage');
 if(!configured){$('#setupNotice').hidden=false;loginCard.hidden=true;return}
-const db=window.supabase.createClient(cfg.supabaseUrl,cfg.anonKey),slots=[['hero','トップのメイン画像'],['salon','店内紹介画像'],['haircare','ヘアケア画像'],['kids','キッズ画像'],['salon-card','サロンカード画像'],['staff','スタイリスト画像']];let coupons=[];
+const db=window.supabase.createClient(cfg.supabaseUrl,cfg.anonKey),slots=[['hero','トップのメイン画像'],['salon','店内紹介画像'],['haircare','ヘアケア画像'],['kids','キッズ画像'],['salon-card','サロンカード画像'],['staff','スタイリスト画像']];let coupons=[],activeSession=null;
 function showAdmin(on){loginCard.hidden=on;adminArea.hidden=!on;logout.hidden=!on;if(on){renderImages();loadCoupons()}}
-db.auth.getSession().then(({data})=>showAdmin(!!data.session));db.auth.onAuthStateChange((_e,s)=>showAdmin(!!s));
-$('#loginForm').onsubmit=async e=>{e.preventDefault();message.textContent='確認中…';const {error}=await db.auth.signInWithPassword({email:$('#email').value,password:$('#password').value});message.textContent=error?'ログインできません：'+error.message:''};logout.onclick=()=>db.auth.signOut();
+db.auth.getSession().then(({data})=>{activeSession=data.session;showAdmin(!!activeSession)});db.auth.onAuthStateChange((_e,s)=>{activeSession=s;setTimeout(()=>showAdmin(!!s),0)});
+$('#loginForm').onsubmit=async e=>{e.preventDefault();message.textContent='確認中…';const {data,error}=await db.auth.signInWithPassword({email:$('#email').value,password:$('#password').value});if(error){message.textContent='ログインできません：'+error.message;return}activeSession=data.session;message.textContent='';showAdmin(true)};logout.onclick=async()=>{activeSession=null;await db.auth.signOut();showAdmin(false)};
 function renderImages(){const list=$('#imageList');list.replaceChildren(...slots.map(([slot,label])=>{const box=document.createElement('div');box.className='image-item';box.innerHTML='<img alt=""><strong></strong><input type="file" accept="image/jpeg,image/png,image/webp">';box.querySelector('strong').textContent=label;const img=box.querySelector('img');db.from('site_images').select('url').eq('slot',slot).maybeSingle().then(({data})=>{if(data?.url)img.src=data.url});box.querySelector('input').onchange=e=>uploadImage(slot,label,e.target.files[0],img);return box}))}
 async function uploadImage(slot,label,file,img){
 if(!file)return;
 if(file.size>8*1024*1024)return alert('画像は8MB以内にしてください。');
-const {data:{session}}=await db.auth.getSession();
+let session=activeSession;
+if(!session){const result=await db.auth.getSession();session=result.data.session;activeSession=session;}
 if(!session)return alert('ログインの有効期限が切れました。もう一度ログインしてください。');
 const ext=(file.name.split('.').pop()||'jpg').toLowerCase(),path=slot+'-'+Date.now()+'.'+ext;
 const headers={apikey:cfg.anonKey,Authorization:'Bearer '+session.access_token};
