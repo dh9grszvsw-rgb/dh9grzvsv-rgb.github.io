@@ -1831,7 +1831,7 @@ document.querySelectorAll('.style-thumb').forEach(btn => {
   background:#f8f5f1;
   opacity:1;
   visibility:visible;
-  transition:opacity 1.05s cubic-bezier(.45,0,.2,1),visibility 0s linear 1.05s;
+  transition:opacity .8s cubic-bezier(.45,0,.2,1),visibility 0s linear .8s;
 }
 .amona-opening-logo{
   display:grid;
@@ -1950,10 +1950,10 @@ body.amona-opening-active{overflow:hidden}
     requestAnimationFrame(function(){opening.classList.add('is-visible');});
   });
   var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var snipTime=reduced?180:1180;
-  var leaveScissorsTime=reduced?260:2180;
-  var displayTime=reduced?350:2380;
-  var removeTime=reduced?650:3500;
+  var snipTime=reduced?180:600;
+  var leaveScissorsTime=reduced?260:1100;
+  var displayTime=reduced?350:1200;
+  var removeTime=reduced?650:2050;
   window.setTimeout(function(){opening.classList.add('is-snipping');},snipTime);
   window.setTimeout(function(){opening.classList.add('is-scissors-leaving');},leaveScissorsTime);
   window.setTimeout(function(){
